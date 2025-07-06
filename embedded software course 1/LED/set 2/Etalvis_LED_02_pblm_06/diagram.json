@@ -1,0 +1,98 @@
+{
+  "version": 1,
+  "author": "Anwar Bajarinti",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-mega", "id": "mega", "top": -153, "left": -166.8, "attrs": {} },
+    {
+      "type": "wokwi-led-bar-graph",
+      "id": "bargraph1",
+      "top": -72,
+      "left": 292.8,
+      "attrs": { "color": "lime" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": -72.85,
+      "left": 374.4,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": -15.25,
+      "left": 374.4,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r3",
+      "top": -24.85,
+      "left": 374.4,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r4",
+      "top": -53.65,
+      "left": 374.4,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r5",
+      "top": -44.05,
+      "left": 374.4,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r6",
+      "top": -34.45,
+      "left": 374.4,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r7",
+      "top": -63.25,
+      "left": 374.4,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r8",
+      "top": -5.65,
+      "left": 374.4,
+      "attrs": { "value": "1000" }
+    }
+  ],
+  "connections": [
+    [ "bargraph1:C1", "r1:1", "green", [ "v0" ] ],
+    [ "bargraph1:C2", "r7:1", "green", [ "h48.22" ] ],
+    [ "bargraph1:C3", "r4:1", "green", [ "h0" ] ],
+    [ "bargraph1:C4", "r5:1", "green", [ "h0" ] ],
+    [ "bargraph1:C5", "r6:1", "green", [ "h0" ] ],
+    [ "bargraph1:C6", "r3:1", "green", [ "h0" ] ],
+    [ "bargraph1:C7", "r2:1", "green", [ "h0" ] ],
+    [ "bargraph1:C8", "r8:1", "green", [ "h0" ] ],
+    [ "r1:2", "r7:2", "green", [ "v0" ] ],
+    [ "r7:2", "r4:2", "green", [ "v0" ] ],
+    [ "r4:2", "r5:2", "green", [ "v0" ] ],
+    [ "r5:2", "r6:2", "green", [ "v0" ] ],
+    [ "r3:2", "r5:2", "green", [ "v0" ] ],
+    [ "r2:2", "r3:2", "green", [ "v0" ] ],
+    [ "r8:2", "r2:2", "green", [ "v0" ] ],
+    [ "r1:2", "mega:GND.1", "yellow", [ "v-57.6", "h-394.8", "v0", "h-86.4" ] ],
+    [ "mega:A8", "bargraph1:A1", "green", [ "v16.5", "h97.35", "v-115.2", "h76.8" ] ],
+    [ "mega:A9", "bargraph1:A2", "green", [ "v26.1", "h97.2", "v-115.2" ] ],
+    [ "mega:A10", "bargraph1:A3", "green", [ "v35.7", "h97.3", "v-115.2" ] ],
+    [ "mega:A11", "bargraph1:A4", "green", [ "v45.3", "h97.15", "v-115.2" ] ],
+    [ "mega:A12", "bargraph1:A5", "green", [ "v54.9", "h97.25", "v-115.2" ] ],
+    [ "mega:A13", "bargraph1:A6", "green", [ "v64.5", "h97.1", "v-115.2" ] ],
+    [ "mega:A14", "bargraph1:A7", "green", [ "v74.1", "h97.2", "v-115.2" ] ],
+    [ "mega:A15", "bargraph1:A8", "green", [ "v83.7", "h97.05", "v-115.2" ] ]
+  ],
+  "dependencies": {}
+}

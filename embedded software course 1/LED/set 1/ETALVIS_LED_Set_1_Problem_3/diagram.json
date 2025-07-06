@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-mega", "id": "mega", "top": 125.4, "left": 25.2, "attrs": {} },
+    { "type": "wokwi-led", "id": "led2", "top": 44.4, "left": 224.6, "attrs": { "color": "red" } },
+    { "type": "wokwi-led", "id": "led3", "top": 44.4, "left": 186.2, "attrs": { "color": "red" } }
+  ],
+  "connections": [
+    [ "led2:A", "mega:17", "green", [ "v0", "h28.8" ] ],
+    [ "led3:A", "mega:16", "green", [ "v9.6", "h48" ] ],
+    [ "led3:C", "led2:C", "green", [ "v0" ] ],
+    [ "led3:C", "mega:GND.1", "green", [ "v19.2", "h-57.2" ] ]
+  ],
+  "dependencies": {}
+}

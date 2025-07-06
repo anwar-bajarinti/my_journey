@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "author": "Anwar Bajarinti",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-mega", "id": "mega", "top": 0, "left": 0, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -109.2,
+      "left": 234.2,
+      "attrs": { "color": "red" }
+    }
+  ],
+  "connections": [
+    [ "led1:A", "mega:15", "red", [ "v0", "h19.2" ] ],
+    [ "led1:C", "mega:GND.1", "gold", [ "v9.6", "h-134" ] ]
+  ],
+  "dependencies": {}
+}
