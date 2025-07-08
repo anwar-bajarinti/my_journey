@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "author": "Anwar Bajarinti",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-mega", "id": "mega", "top": 19.8, "left": -272.4, "attrs": {} },
+    {
+      "type": "wokwi-7segment",
+      "id": "sevseg1",
+      "top": 44.22,
+      "left": 173.92,
+      "attrs": { "digits": "4", "common": "cathode" }
+    }
+  ],
+  "connections": [
+    [ "sevseg1:A", "mega:22", "green", [ "v-57.6", "h-163.2" ] ],
+    [ "sevseg1:B", "mega:23", "green", [ "v-48", "h-192" ] ],
+    [ "sevseg1:C", "mega:24", "green", [ "v18.36", "h-105.6", "v-163.2", "h-76.8", "v9.6" ] ],
+    [ "sevseg1:D", "mega:25", "green", [ "v27.96", "h-86.4", "v-172.8", "h-76.8", "v9.6" ] ],
+    [ "sevseg1:E", "mega:26", "green", [ "v37.56", "h-67.19", "v-144", "h-96" ] ],
+    [ "sevseg1:F", "mega:27", "green", [ "v-48", "h-57.6", "v-19.2", "h-105.6" ] ],
+    [ "sevseg1:G", "mega:28", "green", [ "v47.16", "h-124.8", "v-163.2", "h-76.8" ] ],
+    [ "sevseg1:DP", "mega:29", "green", [ "v66.36", "h-86.4", "v-115.2", "h-48" ] ],
+    [ "mega:GND.3", "sevseg1:COM", "black", [ "v26.1", "h405.45", "v-19.2" ] ],
+    [ "mega:GND.1", "sevseg1:CLN", "black", [ "v-76.8", "h451" ] ],
+    [ "sevseg1:DIG1", "mega:53", "green", [ "v0", "h-86.39", "v144" ] ],
+    [
+      "sevseg1:DIG2",
+      "mega:52",
+      "green",
+      [ "v-19.2", "h-124.8", "v163.2", "h9.6", "v48", "h-67.2" ]
+    ],
+    [ "sevseg1:DIG3", "mega:51", "green", [ "v0", "h-144", "v124.8" ] ],
+    [ "sevseg1:DIG4", "mega:50", "green", [ "v133.56", "h-201.6" ] ]
+  ],
+  "dependencies": {}
+}

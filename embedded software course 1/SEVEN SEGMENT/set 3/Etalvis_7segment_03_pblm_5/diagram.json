@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "author": "Anwar Bajarinti",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-mega", "id": "mega", "top": 19.8, "left": -186, "attrs": {} },
+    {
+      "type": "wokwi-7segment",
+      "id": "sevseg1",
+      "top": -4.62,
+      "left": 254.68,
+      "attrs": { "common": "cathode" }
+    },
+    {
+      "type": "wokwi-7segment",
+      "id": "sevseg2",
+      "top": -4.62,
+      "left": 302.68,
+      "attrs": { "common": "cathode" }
+    }
+  ],
+  "connections": [
+    [ "sevseg1:A", "mega:22", "green", [ "v-27.96", "h-115.2", "v9.6" ] ],
+    [ "sevseg1:B", "mega:23", "green", [ "v-37.56", "h-115.2" ] ],
+    [ "sevseg1:C", "mega:24", "green", [ "v19.2", "h-38.4", "v-144", "h-57.6", "v0", "h-19.2" ] ],
+    [ "sevseg1:D", "mega:25", "green", [ "v28.8", "h-28.8", "v-172.8", "h-57.6" ] ],
+    [ "sevseg1:E", "mega:26", "green", [ "v38.4", "h-28.8", "v-201.6", "h-57.6" ] ],
+    [ "sevseg1:F", "mega:27", "green", [ "v-66.36", "h-67.2" ] ],
+    [ "sevseg1:G", "mega:28", "green", [ "v-18.36", "h-96" ] ],
+    [ "sevseg1:DP", "mega:29", "green", [ "v38.4", "h-86.4", "v-57.6" ] ],
+    [ "sevseg1:DP", "sevseg2:DP", "green", [ "v48", "h57.6", "v-9.6" ] ],
+    [ "sevseg1:C", "sevseg2:C", "green", [ "v67.2", "h57.6" ] ],
+    [ "sevseg1:D", "sevseg2:D", "green", [ "v86.4", "h48" ] ],
+    [ "sevseg1:E", "sevseg2:E", "green", [ "v96", "h48" ] ],
+    [ "sevseg1:B", "sevseg2:B", "green", [ "v-47.16", "h48" ] ],
+    [ "sevseg1:A", "sevseg2:A", "green", [ "v-37.56", "h48" ] ],
+    [ "sevseg1:F", "sevseg2:F", "green", [ "v-47.16", "h48", "v19.2" ] ],
+    [ "sevseg1:G", "sevseg2:G", "green", [ "v-47.16", "h48", "v19.2" ] ],
+    [ "sevseg1:COM.2", "mega:53", "violet", [ "h-67.2", "v183.24", "h9.6" ] ],
+    [ "sevseg1:COM.1", "mega:53", "magenta", [ "h-38.4", "v115.2" ] ],
+    [
+      "sevseg2:COM.2",
+      "mega:52",
+      "yellow",
+      [ "h0", "v-27.96", "h57.6", "v240", "h-201.6", "v19.2" ]
+    ],
+    [ "sevseg2:COM.1", "mega:52", "yellow", [ "h0", "v163.2", "h-153.6" ] ]
+  ],
+  "dependencies": {}
+}
