@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "author": "Anwar Bajarinti",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-mega", "id": "mega", "top": 67.8, "left": -13.2, "attrs": {} },
+    {
+      "type": "wokwi-max7219-matrix",
+      "id": "matrix1",
+      "top": -47.4,
+      "left": 26.64,
+      "attrs": { "chain": "4" }
+    }
+  ],
+  "connections": [
+    [ "matrix1:V+", "mega:5V.2", "green", [ "h19.2", "v86.4", "h0", "v19.2" ] ],
+    [ "mega:GND.1", "matrix1:GND", "black", [ "v-38.4", "h-105.8", "v-96", "h374.4", "v38.4" ] ],
+    [ "matrix1:CS", "mega:53", "green", [ "h48", "v240" ] ],
+    [ "matrix1:CLK", "mega:52", "magenta", [ "h28.8", "v249.6", "h-48", "v9.6" ] ],
+    [ "matrix1:DIN", "mega:51", "gold", [ "h57.6", "v230.4" ] ]
+  ],
+  "dependencies": {}
+}
