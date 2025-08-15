@@ -1,0 +1,37 @@
+A51 MACRO ASSEMBLER  SQR                                                                  07/25/2025 11:23:33 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\SQR.obj
+ASSEMBLER INVOKED BY: C:\Users\notty\Keil_v5\C51\BIN\A51.EXE SQR.ASM SET(SMALL) DEBUG PRINT(.\Listings\SQR.lst) OBJECT(.
+                      \Objects\SQR.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00H
+0000 E540              2             MOV A,40H
+0002 7802              3             MOV R0,#2H
+0004 7942              4             MOV R1,#42H
+0006 F5F0              5             MOV B,A;
+0008 A4                6             MUL AB
+0009 F7                7        MOV @R1,A
+000A 19                8        DEC R1
+000B E5F0              9        MOV A,B
+000D F7               10        MOV @R1,A
+                      11        END
+                                     
+A51 MACRO ASSEMBLER  SQR                                                                  07/25/2025 11:23:33 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

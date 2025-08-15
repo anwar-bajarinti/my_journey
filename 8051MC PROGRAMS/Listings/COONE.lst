@@ -1,0 +1,38 @@
+A51 MACRO ASSEMBLER  COONE                                                                07/25/2025 11:02:12 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\COONE.obj
+ASSEMBLER INVOKED BY: C:\Users\notty\Keil_v5\C51\BIN\A51.EXE COONE.ASM SET(SMALL) DEBUG PRINT(.\Listings\COONE.lst) OBJE
+                      CT(.\Objects\COONE.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00H
+0000 7808              2             MOV R0,#08H
+0002 7900              3             MOV R1,#00H
+0004 7407              4             MOV A,#07H
+0006 C3                5             CLR C
+0007 33                6     L1: RLC A
+0008 5001              7             JNC L2
+000A 09                8         INC R1
+000B D8FA              9     L2: DJNZ R0,L1
+000D 8940             10             MOV 40H,R1
+                      11             END
+                                     
+A51 MACRO ASSEMBLER  COONE                                                                07/25/2025 11:02:12 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+L1 . . . . . . . .  C ADDR   0007H   A   
+L2 . . . . . . . .  C ADDR   000BH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

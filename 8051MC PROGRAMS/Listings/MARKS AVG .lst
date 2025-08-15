@@ -1,0 +1,39 @@
+A51 MACRO ASSEMBLER  MARKS_AVG_                                                           08/01/2025 11:42:06 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\MARKS AVG .obj
+ASSEMBLER INVOKED BY: C:\Users\notty\Keil_v5\C51\BIN\A51.EXE MARKS AVG .ASM SET(SMALL) DEBUG PRINT(.\Listings\MARKS AVG 
+                      .lst) OBJECT(.\Objects\MARKS AVG .obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00H
+0000 7440              2             MOV A,#40H
+0002 F8                3             MOV R0,A
+0003 7903              4             MOV R1,#03H
+0005 75F01E            5             MOV B,#030
+0008 7400              6             MOV A,#00H
+000A 26                7             AGAIN:ADD A,@R0;
+000B 08                8             INC R0
+000C D9FC              9             DJNZ R1,AGAIN
+000E 84               10             DIV AB
+000F F590             11             MOV P1,A
+                      12             END
+A51 MACRO ASSEMBLER  MARKS_AVG_                                                           08/01/2025 11:42:06 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AGAIN. . . . . . .  C ADDR   000AH   A   
+B. . . . . . . . .  D ADDR   00F0H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

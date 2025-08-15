@@ -1,0 +1,14 @@
+ORG 00H
+	MOV A,40H
+	MOV R0,#2H
+	MOV R1,#42H
+	MOV B,A;
+L1: MUL AB
+	MOV B,40H
+	DJNZ R0,L1
+   MOV @R1,A
+   DEC R1
+   MOV A,B
+   MOV @R1,A
+   END
+	

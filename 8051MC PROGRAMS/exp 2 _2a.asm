@@ -1,0 +1,21 @@
+ORG 00H
+	   MOV TMOD,#01H
+	   MOV A,#55H
+	L2:MOV DPTR,#0FFC0H
+	   ACALL DELAY
+	   MOVX @DPTR,A
+	   MOV P2,A
+	   CPL A
+	   SJMP L2
+DELAY :MOV R0,#0EH
+L1	  :MOV TL0,#00H
+	   MOV TH0,#00H
+	   SETB TR0
+HERE  :JNB TF0,HERE
+	   CLR TF0
+	   CLR TR0
+	   DJNZ R0,L1
+	   RET 
+	   END
+		
+	

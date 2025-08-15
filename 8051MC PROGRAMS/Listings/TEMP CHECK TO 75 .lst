@@ -1,0 +1,44 @@
+A51 MACRO ASSEMBLER  TEMP_CHECK_TO_75_                                                    08/01/2025 11:24:36 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\TEMP CHECK TO 75 .obj
+ASSEMBLER INVOKED BY: C:\Users\notty\Keil_v5\C51\BIN\A51.EXE TEMP CHECK TO 75 .ASM SET(SMALL) DEBUG PRINT(.\Listings\TEM
+                      P CHECK TO 75 .lst) OBJECT(.\Objects\TEMP CHECK TO 75 .obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00H
+0000 E580              2             LOOP:MOV A,P0
+0002 F8                3             MOV R0,A
+0003 944B              4             SUBB A,#75
+0005 5005              5             JNC L1
+0007 E8                6             MOV A,R0
+0008 F590              7             MOV P1,A
+000A 8003              8             SJMP L3
+000C E8                9     L1: MOV A,R0
+000D F5A0             10             MOV P2,A
+000F 80EF             11     L3: SJMP LOOP
+                      12             END
+                                     
+                                     
+A51 MACRO ASSEMBLER  TEMP_CHECK_TO_75_                                                    08/01/2025 11:24:36 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+L1 . . . . . . . .  C ADDR   000CH   A   
+L3 . . . . . . . .  C ADDR   000FH   A   
+LOOP . . . . . . .  C ADDR   0000H   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

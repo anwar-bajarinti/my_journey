@@ -1,0 +1,36 @@
+A51 MACRO ASSEMBLER  N_NATURAL_                                                           07/25/2025 11:50:56 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\N NATURAL .obj
+ASSEMBLER INVOKED BY: C:\Users\notty\Keil_v5\C51\BIN\A51.EXE N NATURAL .ASM SET(SMALL) DEBUG PRINT(.\Listings\N NATURAL 
+                      .lst) OBJECT(.\Objects\N NATURAL .obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00H
+0000 E540              2             MOV A,40H
+0002 7801              3             MOV R0,#01H
+0004 F9                4             MOV R1,A
+0005 7400              5             MOV A,#00H
+0007 28                6     L1:     ADD A,R0;
+0008 08                7             INC R0
+0009 D9FC              8             DJNZ R1,L1
+000B F541              9        MOV 41H,A
+                      10        END
+                                     
+A51 MACRO ASSEMBLER  N_NATURAL_                                                           07/25/2025 11:50:56 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+L1 . . . . . . . .  C ADDR   0007H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

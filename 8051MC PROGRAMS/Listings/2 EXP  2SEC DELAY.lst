@@ -1,0 +1,54 @@
+A51 MACRO ASSEMBLER  2_EXP__2SEC_DELAY                                                    08/08/2025 11:17:22 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\2 EXP  2SEC DELAY.obj
+ASSEMBLER INVOKED BY: C:\Users\notty\Keil_v5\C51\BIN\A51.EXE 2 EXP  2SEC DELAY.ASM SET(SMALL) DEBUG PRINT(.\Listings\2 E
+                      XP  2SEC DELAY.lst) OBJECT(.\Objects\2 EXP  2SEC DELAY.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00H
+0000 758920            2     MOV TMOD,#20H
+0003 7455              3     MOV A,#55H
+0005 90FFC0            4     MOV DPTR,#0FFC0H
+0008 1110              5     LOOP:ACALL DELAY
+000A F4                6             CPL A
+000B F0                7             MOVX @DPTR,A
+000C F5A0              8             MOV P2,A
+000E 80F8              9             SJMP LOOP
+0010 7924             10     DELAY:MOV R1,#24H
+0012 7AFF             11     BACK2:MOV R2,#0FFH
+0014 758D00           12     BACK1:MOV TH1,#00H
+0017 D28E             13             SETB TR1
+0019 308FFD           14             HERE:JNB TF1,HERE
+001C C28F             15             CLR TF1
+001E C28E             16             CLR TR1
+0020 DAF2             17             DJNZ R2,BACK1
+0022 D9EE             18             DJNZ R1,BACK2
+0024 22               19             RET
+                      20             END
+A51 MACRO ASSEMBLER  2_EXP__2SEC_DELAY                                                    08/08/2025 11:17:22 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+BACK1. . . . . . .  C ADDR   0014H   A   
+BACK2. . . . . . .  C ADDR   0012H   A   
+DELAY. . . . . . .  C ADDR   0010H   A   
+HERE . . . . . . .  C ADDR   0019H   A   
+LOOP . . . . . . .  C ADDR   0008H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+TF1. . . . . . . .  B ADDR   0088H.7 A   
+TH1. . . . . . . .  D ADDR   008DH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR1. . . . . . . .  B ADDR   0088H.6 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

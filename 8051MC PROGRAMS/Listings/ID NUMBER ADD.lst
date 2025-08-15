@@ -1,0 +1,45 @@
+A51 MACRO ASSEMBLER  ID_NUMBER_ADD                                                        08/01/2025 10:27:41 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\ID NUMBER ADD.obj
+ASSEMBLER INVOKED BY: C:\Users\notty\Keil_v5\C51\BIN\A51.EXE ID NUMBER ADD.ASM SET(SMALL) DEBUG PRINT(.\Listings\ID NUMB
+                      ER ADD.lst) OBJECT(.\Objects\ID NUMBER ADD.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000H
+                       2     
+                       3     ; Example: 4-digit ID stored at 30H to 33H
+                       4     ; 30H = 01H, 31H = 02H, 32H = 03H, 33H = 04H
+                       5     
+0000 7830              6     MOV R0, #30H      ; Pointer to ID digits
+0002 E6                7     MOV A, @R0        ; Load first digit
+0003 08                8     INC R0
+0004 26                9     ADD A, @R0        ; Add second digit
+0005 08               10     INC R0
+0006 26               11     ADD A, @R0        ; Add third digit
+0007 08               12     INC R0
+0008 26               13     ADD A, @R0        ; Add fourth digit
+                      14     
+0009 D4               15     DA A              ; Convert result to BCD (if needed)
+                      16     
+000A FB               17     MOV R3, A         ; Save final BCD result in R3
+                      18     
+000B 80FE             19     SJMP $
+                      20     
+                      21     END
+A51 MACRO ASSEMBLER  ID_NUMBER_ADD                                                        08/01/2025 10:27:41 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

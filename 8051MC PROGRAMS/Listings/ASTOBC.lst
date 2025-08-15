@@ -1,0 +1,37 @@
+A51 MACRO ASSEMBLER  ASTOBC                                                               07/25/2025 10:47:39 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\ASTOBC.obj
+ASSEMBLER INVOKED BY: C:\Users\notty\Keil_v5\C51\BIN\A51.EXE ASTOBC.ASM SET(SMALL) DEBUG PRINT(.\Listings\ASTOBC.lst) OB
+                      JECT(.\Objects\ASTOBC.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00H
+0000 7840              2     MOV R0,#40H
+0002 E6                3     MOV A,@R0
+0003 540F              4     ANL A,#0FH
+0005 C4                5     SWAP A
+0006 F9                6     MOV R1,A
+0007 08                7     INC R0
+0008 E6                8     MOV A,@R0
+0009 540F              9     ANL A,#0FH
+000B 29               10     ADD A,R1
+000C 08               11     INC R0
+000D F6               12     MOV @R0,A
+                      13     END
+A51 MACRO ASSEMBLER  ASTOBC                                                               07/25/2025 10:47:39 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

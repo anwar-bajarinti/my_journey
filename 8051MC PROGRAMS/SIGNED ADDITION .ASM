@@ -1,0 +1,5 @@
+ORG 00H
+	MOV A,#7FH
+	ADD A,#01H
+	MOV R1,A;
+	END

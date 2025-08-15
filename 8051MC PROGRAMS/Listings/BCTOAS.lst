@@ -1,0 +1,36 @@
+A51 MACRO ASSEMBLER  BCTOAS                                                               07/25/2025 10:41:50 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\BCTOAS.obj
+ASSEMBLER INVOKED BY: C:\Users\notty\Keil_v5\C51\BIN\A51.EXE BCTOAS.ASM SET(SMALL) DEBUG PRINT(.\Listings\BCTOAS.lst) OB
+                      JECT(.\Objects\BCTOAS.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00H
+0000 7840              2     MOV R0,#40H
+0002 E6                3     MOV A,@R0
+0003 54F0              4     ANL A,#0F0H
+0005 C4                5     SWAP A
+0006 2430              6     ADD A,#30H
+0008 F541              7     MOV 41H,A
+000A E6                8     MOV A,@R0
+000B 540F              9     ANL A,#0FH
+000D 2430             10     ADD A,#30H
+000F F542             11     MOV 42H,A
+                      12     END
+A51 MACRO ASSEMBLER  BCTOAS                                                               07/25/2025 10:41:50 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

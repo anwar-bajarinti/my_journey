@@ -1,0 +1,44 @@
+A51 MACRO ASSEMBLER  BIGGEST_DIGIT_                                                       08/01/2025 12:00:37 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\BIGGEST DIGIT .obj
+ASSEMBLER INVOKED BY: C:\Users\notty\Keil_v5\C51\BIN\A51.EXE BIGGEST DIGIT .ASM SET(SMALL) DEBUG PRINT(.\Listings\BIGGES
+                      T DIGIT .lst) OBJECT(.\Objects\BIGGEST DIGIT .obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00H
+0000 7440              2             MOV A,#40H
+0002 F8                3             MOV R0,A
+0003 7A05              4             MOV R2,#05H;
+0005 08                5     AGAIN:INC R0;
+0006 E540              6         MOV A,40H;
+0008 96                7             SUBB A,@R0;
+0009 5004              8             JNC  L1;
+000B E6                9             MOV A,@R0
+000C F9               10             MOV R1,A
+000D 8003             11             SJMP L2
+000F 18               12     L1: DEC R0
+0010 E6               13             MOV A,@R0
+0011 F9               14             MOV R1,A;
+0012 DAF1             15     L2 :DJNZ R2,AGAIN
+                      16        END
+                                     
+A51 MACRO ASSEMBLER  BIGGEST_DIGIT_                                                       08/01/2025 12:00:37 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AGAIN. . . . . . .  C ADDR   0005H   A   
+L1 . . . . . . . .  C ADDR   000FH   A   
+L2 . . . . . . . .  C ADDR   0012H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

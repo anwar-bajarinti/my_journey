@@ -1,0 +1,40 @@
+A51 MACRO ASSEMBLER  CUBE                                                                 07/25/2025 11:33:34 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\CUBE.obj
+ASSEMBLER INVOKED BY: C:\Users\notty\Keil_v5\C51\BIN\A51.EXE CUBE.ASM SET(SMALL) DEBUG PRINT(.\Listings\CUBE.lst) OBJECT
+                      (.\Objects\CUBE.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00H
+0000 E540              2             MOV A,40H
+0002 7802              3             MOV R0,#2H
+0004 7942              4             MOV R1,#42H
+0006 F5F0              5             MOV B,A;
+0008 A4                6     L1: MUL AB
+0009 8540F0            7             MOV B,40H
+000C D8FA              8             DJNZ R0,L1
+000E F7                9        MOV @R1,A
+000F 19               10        DEC R1
+0010 E5F0             11        MOV A,B
+0012 F7               12        MOV @R1,A
+                      13        END
+                                     
+A51 MACRO ASSEMBLER  CUBE                                                                 07/25/2025 11:33:34 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+L1 . . . . . . . .  C ADDR   0008H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
