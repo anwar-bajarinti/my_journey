@@ -1,0 +1,20 @@
+; Q) Perform division:
+;    a = 10, b = 20.
+;    c = a / b, store result at 5200H.
+
+        ORG 0000H
+
+START:  MVI A,0AH        ; Load a = 10 in Accumulator
+        MVI B,14H        ; Load b = 20 in B
+        MVI C,00H        ; Quotient = 0
+
+DIVLOOP: CMP B           ; Compare A with B
+        JC END           ; If A < B, division complete
+        SUB B            ; A = A - B
+        INR C            ; Quotient++
+        JMP DIVLOOP      ; Repeat
+
+END:    STA 5201H        ; Store remainder (A) at 5201H
+        MOV A,C          ; Move Quotient into A
+        STA 5200H        ; Store quotient at 5200H
+        HLT

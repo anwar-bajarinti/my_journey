@@ -1,0 +1,17 @@
+; Q) Multiply two 8-bit numbers:
+;    a = 10, b = 20.
+;    c = a * b, store result at 5200H (2 bytes).
+
+        ORG 0000H
+
+START:  MVI B,0AH          ; Load a = 10 into register B
+        MVI C,14H          ; Load b = 20 into register C (count)
+        MVI H,00H          ; Clear higher byte of result
+        MVI L,00H          ; Clear lower byte of result (HL = 0000H)
+
+LOOP:   DAD B              ; HL = HL + BC (Add 'a' to result)
+        DCR C              ; Decrement counter
+        JNZ LOOP           ; Repeat until counter becomes 0
+
+        SHLD 5200H         ; Store result HL at memory 5200H, 5201H
+        HLT

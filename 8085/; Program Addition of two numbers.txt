@@ -1,0 +1,15 @@
+; Program: Addition of two numbers
+JMP START         ; Jump to program start
+
+; -------- Code Section --------
+START:  NOP
+
+MVI A,0AH         ; Load A = 0AH (10 decimal)
+MVI B,14H         ; Load B = 14H (20 decimal)
+
+ADD B             ; A = A + B (0AH + 14H = 1EH = 30 decimal)
+
+STA 5200H         ; Store result (1EH) at memory location 5200H
+
+HLT               ; Stop execution
+

@@ -1,0 +1,21 @@
+; This program performs a 16-bit bitwise NOT on the value 10.
+
+ORG 2000H       ; Program starts at memory address 2000H
+
+; Load 'a' = 10 (000AH) into the HL register pair.
+LXI H, 000AH    ; Load Immediate 16-bit value into HL pair.
+
+; Perform the bitwise NOT on the low byte (L) and high byte (H) of 'a'.
+MOV A, H        ; Move the high byte (00H) of 'a' into the Accumulator.
+CMA             ; Complement the Accumulator. A now holds FFH.
+MOV H, A        ; Move the complemented value (FFH) back to H.
+
+MOV A, L        ; Move the low byte (0AH) of 'a' into the Accumulator.
+CMA             ; Complement the Accumulator. A now holds F5H.
+MOV L, A        ; Move the complemented value (F5H) back to L.
+
+; The result of ~a is now in the HL pair (FF F5H), which is -11 in decimal.
+; Store the 16-bit result into memory for variable 'c'.
+SHLD 2050H      ; Store the value from the HL pair into memory starting at 2050H.
+
+HLT             ; Halt the program.

@@ -1,0 +1,22 @@
+; Q) Perform bitwise OR of two 16-bit numbers:
+;    a = 10 (000AH), b = 20 (0014H).
+;    c = a | b, store result at memory 5200H.
+
+        ORG 0000H           ; Origin, program starts at 0000H
+
+START:  LXI H,000AH         ; HL = 000AH (a = 10 decimal)
+        LXI D,0014H         ; DE = 0014H (b = 20 decimal)
+
+        ; Perform OR operation byte by byte
+        MOV A,L             ; Load lower byte of HL (0AH) into Accumulator
+        ORA E               ; A = A | E  → 0AH | 14H = 1EH
+        MOV L,A             ; Store result in L
+
+        MOV A,H             ; Load higher byte of HL (00H)
+        ORA D               ; A = A | D → 00H | 00H = 00H
+        MOV H,A             ; Store result in H
+
+        SHLD 5200H          ; Store result HL at memory location 5200H
+                            ; (L → 5200H, H → 5201H)
+
+        HLT                 ; Stop execution

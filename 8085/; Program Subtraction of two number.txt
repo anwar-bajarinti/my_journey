@@ -1,0 +1,20 @@
+; Program: Subtraction of two numbers
+JMP START        ; Jump to start of program
+
+; -------- Code Section --------
+START:  NOP
+
+; Load numbers
+MVI A,0AH        ; A = 10 (decimal)
+MVI B,14H        ; B = 20 (decimal)
+
+; Perform subtraction
+SUB B            ; A = A - B  (10 - 20 = F6H = -10 in 2’s complement)
+
+; Store result into memory
+STA 5200H        ; Result stored at 5200H
+
+; End program
+HLT
+; CHECK HERE
+https://www.sim8085.com?share=QqrORHdbcwzv

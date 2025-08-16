@@ -1,0 +1,10 @@
+; Q) Add two 16-bit numbers 000AH and 0014H, 
+;    and store the result at memory location 5200H.
+
+        ORG 0000H          ; Origin, program starts at address 0000H
+
+START:  LXI H,000AH        ; Load HL pair with 000AH (first 16-bit number, i.e., 10 decimal)
+        LXI D,0014H        ; Load DE pair with 0014H (second 16-bit number, i.e., 20 decimal)
+        DAD D              ; HL = HL + DE (HL = 000AH + 0014H = 001EH → 30 decimal)
+        SHLD 5200H         ; Store HL into memory at 5200H (L→5200H, H→5201H)
+        HLT                ; Halt program execution

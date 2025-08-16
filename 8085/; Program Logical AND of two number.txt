@@ -1,0 +1,15 @@
+; Program: Logical AND of two numbers
+JMP START        ; Jump to start of program
+
+; -------- Code Section --------
+START:  NOP
+
+MVI A,0AH        ; Load A = 0AH (00001010)
+MVI B,14H        ; Load B = 14H (00010100)
+
+ANA B            ; A = A AND B (00001010 AND 00010100 = 00000000)
+
+STA 5200H        ; Store result (00H) at memory 5200H
+HLT              ; Stop
+CHECK HERE
+https://www.sim8085.com?share=5tRt6MfIuFQk

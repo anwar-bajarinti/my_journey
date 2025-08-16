@@ -1,0 +1,12 @@
+; C Code:
+; char a = 10;
+; char c = ~a;
+
+; 8085 Assembly Translation
+
+ORG 2000H       ; Program starts at memory address 2000H
+
+MVI A, 0AH      ; a = 10. Load the value 10 (0AH) into the accumulator (A).
+CMA             ; c = ~a. Complement the accumulator's value (bitwise NOT).
+STA 2050H       ; Store the result into memory location 2050H (variable 'c').
+HLT             ; Stop the program.

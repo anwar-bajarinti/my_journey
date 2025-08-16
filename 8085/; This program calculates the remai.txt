@@ -1,0 +1,19 @@
+; This program calculates the remainder of 17 / 5.
+; The remainder is stored in 'c'.
+
+ORG 2000H       ; Program starts at memory address 2000H
+
+MVI A, 11H      ; Load dividend a = 17 (11H) into the accumulator (A).
+MVI B, 05H      ; Load divisor b = 5 (05H) into register B.
+MVI C, 00H      ; Initialize a counter for the quotient (C).
+
+LOOP:
+CMP B           ; Compare the accumulator (A) with register B.
+JC DONE         ; If A < B (carry flag is set), the remainder is found.
+SUB B           ; Subtract B from A. This is one step of the division.
+INR C           ; Increment the quotient counter (C).
+JMP LOOP        ; Jump back to the start of the loop.
+
+DONE:
+STA 2050H       ; Store the remainder (the value in A) in memory location 2050H.
+HLT             ; Halt the program.

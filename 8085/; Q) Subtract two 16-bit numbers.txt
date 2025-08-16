@@ -1,0 +1,23 @@
+; Q) Subtract two 16-bit numbers: 
+;    a = 10 (000AH), b = 20 (0014H). 
+;    Perform c = a - b and store result at memory location 5200H.
+
+        ORG 0000H           ; Origin, program starts at address 0000H
+
+START:  LXI H,000AH         ; Load HL pair with 000AH (a = 10 decimal)
+        LXI D,0014H         ; Load DE pair with 0014H (b = 20 decimal)
+
+        ; We need to do HL = HL - DE  
+        ; 8085 does not have direct 16-bit SUB, so we use SUB with borrow logic.
+
+        MOV A,L             ; Load lower byte of HL into Accumulator (A = 0AH)
+        SUB E               ; Subtract lower byte of DE (A = A - E = 0AH - 14H)
+        MOV L,A             ; Store result back into L register
+        MOV A,H             ; Load higher byte of HL into Accumulator
+        SBB D               ; Subtract higher byte of DE with borrow
+        MOV H,A             ; Store result back into H register
+
+        SHLD 5200H          ; Store result HL at memory location 5200H
+                            ; (L → 5200H, H → 5201H)
+
+        HLT                 ; Stop program execution

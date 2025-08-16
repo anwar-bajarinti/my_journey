@@ -1,0 +1,39 @@
+; This program calculates c = ~(a & b) where a and b are 16-bit numbers.
+
+ORG 2000H       ; Program starts at memory address 2000H
+
+; Load 'a' = 10 (000AH) into the BC register pair.
+LXI B, 000AH    ; Load Immediate 16-bit value into BC pair.
+
+; Load 'b' = 20 (0014H) into the DE register pair.
+LXI D, 0014H    ; Load Immediate 16-bit value into DE pair.
+
+; Perform the 16-bit bitwise AND operation (a & b).
+; AND the low bytes.
+MOV A, C        ; Move the low byte of 'a' (0AH) into the Accumulator.
+ANA E           ; Perform bitwise AND with the low byte of 'b' (14H). A now holds 00H.
+MOV L, A        ; Move the result (00H) into the L register (low byte of the result).
+
+; AND the high bytes.
+MOV A, B        ; Move the high byte of 'a' (00H) into the Accumulator.
+ANA D           ; Perform bitwise AND with the high byte of 'b' (00H). A now holds 00H.
+MOV H, A        ; Move the result (00H) into the H register (high byte of the result).
+
+; The result of (a & b) is now in the HL pair (0000H).
+
+; Perform the 16-bit bitwise NOT operation.
+; Complement the high and low bytes of the result.
+MOV A, H        ; Move the high byte (00H) into the Accumulator.
+CMA             ; Complement the Accumulator. A now holds FFH.
+MOV H, A        ; Move the complemented value (FFH) back to H.
+
+MOV A, L        ; Move the low byte (00H) into the Accumulator.
+CMA             ; Complement the Accumulator. A now holds FFH.
+MOV L, A        ; Move the complemented value (FFH) back to L.
+
+; The final result of ~(a & b) is now in the HL pair (FFFFH), which is -1 in decimal.
+
+; Store the 16-bit result into memory for variable 'c'.
+SHLD 2050H      ; Store the value from the HL pair into memory starting at 2050H.
+
+HLT             ; Halt the program.

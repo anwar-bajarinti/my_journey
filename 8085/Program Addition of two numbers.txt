@@ -1,0 +1,23 @@
+; Program: Addition of two numbers
+JMP START      ; Jump to start of program
+
+; -------- Data Section --------
+; Let's store result at memory location 8050H
+
+; -------- Code Section --------
+START:  NOP
+
+; Load numbers into registers
+MVI A,0AH      ; A = 0AH (10 in decimal)
+MVI B,14H      ; B = 14H (20 in decimal)
+
+; Perform addition
+ADD B          ; A = A + B (A = 0AH + 14H = 1EH = 30 decimal)
+
+; Store result into memory 8050H AS C
+STA 8050H
+
+; End program
+HLT
+CHECK HERE 
+https://www.sim8085.com?share=aNSWdAgFcMdG

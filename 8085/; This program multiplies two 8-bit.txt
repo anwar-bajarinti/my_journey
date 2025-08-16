@@ -1,0 +1,24 @@
+; This program multiplies two 8-bit numbers (10 and 20)
+; and stores the 16-bit result (200) in memory.
+
+ORG 2000H       ; Program starts at memory address 2000H
+
+MVI D, 00H      ; Initialize register D to 00H (high byte of the result).
+MVI E, 00H      ; Initialize register E to 00H (low byte of the result).
+MVI B, 0AH      ; Load 'a' = 10 (0AH) into register B.
+MVI C, 14H      ; Load 'b' = 20 (14H) into register C.
+
+LOOP:
+ADD C           ; Add the value of 'b' (in C) to the accumulator (A).
+JNC NEXT        ; Jump to NEXT if there's no carry.
+INR D           ; Increment D (the high byte of the result) if there's a carry.
+
+NEXT:
+DCR B           ; Decrement 'a' (in B).
+JNZ LOOP        ; Jump back to LOOP if 'a' is not zero.
+
+MOV H, D        ; Move the high byte of the result from D to H.
+MOV L, E        ; Move the low byte of the result from E to L.
+SHLD 2050H      ; Store the 16-bit result (in HL pair) into memory, starting at 2050H.
+
+HLT             ; Halt the program.

@@ -1,0 +1,21 @@
+; This program divides the 8-bit dividend 'a' by the 8-bit divisor 'b'.
+; The quotient is stored in 'c'.
+
+ORG 2000H       ; Program starts at memory address 2000H
+
+MVI A, 0AH      ; Load dividend a = 10 (0AH) into the accumulator (A).
+MVI B, 14H      ; Load divisor b = 20 (14H) into register B.
+MVI C, 00H      ; Initialize quotient c = 00H in register C.
+
+LOOP:
+CMP B           ; Compare the accumulator (A) with register B.
+JC DONE         ; If A < B (carry flag is set), the division is complete.
+SUB B           ; Subtract B from A. This is one step of the division.
+INR C           ; Increment the quotient counter (C).
+JMP LOOP        ; Jump back to the start of the loop.
+
+DONE:
+STA 2050H       ; Store the remainder in memory location 2050H.
+MOV A, C        ; Move the quotient from register C to the accumulator.
+STA 2051H       ; Store the quotient in memory location 2051H.
+HLT             ; Halt the program.

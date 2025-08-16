@@ -1,0 +1,14 @@
+; Program: C = A % B
+; A = 17, B = 5
+
+        MVI A,17H     ; Load dividend = 17 into A
+        MVI B,05H     ; Load divisor = 5 into B
+        MVI C,00H     ; Clear C (remainder register, will be updated)
+
+LOOP:   CMP B         ; Compare A with B
+        JC DONE       ; If A < B, remainder found → jump to DONE
+        SUB B         ; A = A - B
+        JMP LOOP      ; Repeat subtraction
+
+DONE:   MOV C,A       ; Store remainder in C
+        HLT           ; Stop execution

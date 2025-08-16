@@ -1,0 +1,17 @@
+; Program: Logical XOR of two numbers
+JMP START         ; Jump to program start
+
+; -------- Code Section --------
+START:  NOP
+
+MVI A,0AH         ; Load A = 0AH (00001010)
+MVI B,14H         ; Load B = 14H (00010100)
+
+XRA B             ; A = A XOR B (00001010 XOR 00010100 = 00011110 = 1EH)
+
+STA 5200H         ; Store result (1EH) at memory location 5200H
+
+HLT               ; Stop execution
+
+CHECK HERE
+https://www.sim8085.com?share=okdvCAJdYdIY

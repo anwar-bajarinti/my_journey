@@ -1,0 +1,16 @@
+; Program: Logical OR of two numbers
+JMP START        ; Jump to program start
+
+; -------- Code Section --------
+START:  NOP
+
+MVI A,0AH        ; Load A = 0AH (00001010)
+MVI B,14H        ; Load B = 14H (00010100)
+
+ORA B            ; A = A OR B (00001010 OR 00010100 = 00011110 = 1EH)
+
+STA 5200H        ; Store result (1EH) into memory location 5200H
+
+HLT              ; Halt execution
+ CHECK HERE
+https://www.sim8085.com?share=YlJrmoGJocaM

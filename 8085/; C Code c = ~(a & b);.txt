@@ -1,0 +1,17 @@
+; C Code: c = ~(a & b);
+; a = 10 (0AH), b = 20 (14H)
+
+ORG 2000H       ; Set program start address to 2000H
+
+MVI A, 0AH      ; Load 10 (0AH) into the Accumulator. This is 'a'.
+MVI B, 14H      ; Load 20 (14H) into register B. This is 'b'.
+
+ANA B           ; Perform a bitwise AND of A (10) and B (20).
+                ; The result (0) is stored in the Accumulator.
+                ; (0000 1010) & (0001 0100) = (0000 0000)
+
+CMA             ; Perform a bitwise NOT (complement) on the Accumulator.
+                ; The value (0000 0000) becomes (1111 1111).
+
+STA 2050H       ; Store the final result in memory location 2050H.
+HLT             ; Halt the program.
