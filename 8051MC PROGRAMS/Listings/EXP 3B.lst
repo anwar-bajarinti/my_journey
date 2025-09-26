@@ -1,0 +1,72 @@
+A51 MACRO ASSEMBLER  EXP_3B                                                               08/22/2025 11:55:42 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\EXP 3B.obj
+ASSEMBLER INVOKED BY: C:\Users\notty\Keil_v5\C51\BIN\A51.EXE EXP 3B.ASM SET(SMALL) DEBUG PRINT(.\Listings\EXP 3B.lst) OB
+                      JECT(.\Objects\EXP 3B.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00H
+0000 758961            2         MOV TMOD,#61H         ; Timer 1: Mode 2, Timer 0: Mode 1
+0003 D2B5              3         SETB P3.5             ; Set P3.5 high
+0005 90FFC1            4         MOV DPTR,#0FFC1H       ; External RAM address
+0008 758D00            5         MOV TH1,#00H          ; Auto-reload value
+                       6     
+000B                   7     AGAIN:
+000B D28E              8         SETB TR1              ; Start Timer 1
+                       9     
+000D                  10     L2:
+000D 111F             11         ACALL DELAY           ; Timer 0 delay
+000F B2B5             12         CPL P3.5              ; Toggle P3.5
+0011 E58B             13         MOV A,TL1             ; Read Timer 1 low byte
+0013 F0               14         MOVX @DPTR,A          ; Store at DPTR
+0014 F5A0             15         MOV P2,A              ; Output to P2
+0016 308FF4           16         JNB TF1,L2            ; Repeat until Timer 1 overflow
+                      17     
+0019 C28E             18         CLR TR1               ; Stop Timer 1
+001B C28F             19         CLR TF1               ; Clear overflow flag
+001D 80EC             20         SJMP AGAIN            ; Repeat
+                      21     
+                      22     ; Delay using Timer 0
+001F                  23     DELAY:
+001F 758A1A           24         MOV TL0,#1AH
+0022 758CFF           25         MOV TH0,#0FFH
+0025 D28C             26         SETB TR0
+0027                  27     HERE:
+0027 308DFD           28         JNB TF0,HERE
+002A C28D             29         CLR TF0
+002C C28C             30         CLR TR0
+002E 22               31         RET
+                      32     
+                      33     END
+A51 MACRO ASSEMBLER  EXP_3B                                                               08/22/2025 11:55:42 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AGAIN. . . . . . .  C ADDR   000BH   A   
+DELAY. . . . . . .  C ADDR   001FH   A   
+HERE . . . . . . .  C ADDR   0027H   A   
+L2 . . . . . . . .  C ADDR   000DH   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+TF0. . . . . . . .  B ADDR   0088H.5 A   
+TF1. . . . . . . .  B ADDR   0088H.7 A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TH1. . . . . . . .  D ADDR   008DH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TL1. . . . . . . .  D ADDR   008BH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+TR1. . . . . . . .  B ADDR   0088H.6 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

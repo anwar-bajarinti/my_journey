@@ -377,9 +377,9 @@
           <GroupName>Source Group 1</GroupName>
           <Files>
             <File>
-              <FileName>2 EXP  2SEC DELAY.ASM</FileName>
+              <FileName>lcd.asm</FileName>
               <FileType>2</FileType>
-              <FilePath>.\2 EXP  2SEC DELAY.ASM</FilePath>
+              <FilePath>.\lcd.asm</FilePath>
             </File>
           </Files>
         </Group>

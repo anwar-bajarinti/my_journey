@@ -1,0 +1,55 @@
+A51 MACRO ASSEMBLER  EXP_3A                                                               08/22/2025 10:40:53 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\EXP 3A.obj
+ASSEMBLER INVOKED BY: C:\Users\notty\Keil_v5\C51\BIN\A51.EXE EXP 3A.ASM SET(SMALL) DEBUG PRINT(.\Listings\EXP 3A.lst) OB
+                      JECT(.\Objects\EXP 3A.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00H            ; Program starts at address 0000H
+                       2     
+0000 758906            3     MOV TMOD, #06H     ; TMOD = 0000 0110
+                       4                        ; - Timer 0 in Mode 2 (8-bit auto-reload)
+                       5                        ; - Timer 1 unused
+0003 900FC1            6     MOV DPTR, #0FC1H  ; Load DPTR (Data Pointer) with address 0FFC1H
+0006 758C00            7     MOV TH0, #00H      ; Load TH0 = 00H (reload value for Timer 0)
+                       8     ;SETB P3.4          ; Set P3.4 = 1 (possibly to enable something or as an output)
+                       9     
+0009                  10     AGAIN: 
+0009 D28C             11         SETB TR0       ; Start Timer 0
+                      12     
+000B                  13     BACK: 
+000B E58A             14         MOV A, TL0     ; Move Timer 0 low byte into Accumulator
+000D F0               15         MOVX @DPTR, A   ; Store A into external RAM at address 0FFC1H
+000E F5A0             16         MOV P2, A      ; Output the value of A to Port 2
+0010 308DF8           17         JNB TF0, BACK  ; Keep looping until Timer 0 overflows (TF0=1)
+                      18     
+0013 C28C             19         CLR TR0        ; Stop Timer 0
+0015 C28D             20         CLR TF0        ; Clear overflow flag
+0017 80F0             21         SJMP AGAIN     ; Repeat the process
+                      22     
+                      23     END                ; End of program
+A51 MACRO ASSEMBLER  EXP_3A                                                               08/22/2025 10:40:53 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AGAIN. . . . . . .  C ADDR   0009H   A   
+BACK . . . . . . .  C ADDR   000BH   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+TF0. . . . . . . .  B ADDR   0088H.5 A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

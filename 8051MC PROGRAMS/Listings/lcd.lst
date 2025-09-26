@@ -1,0 +1,115 @@
+A51 MACRO ASSEMBLER  LCD                                                                  09/26/2025 11:44:55 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\lcd.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE lcd.asm SET(SMALL) DEBUG PRINT(.\Listings\lcd.lst) OBJECT(.\Objects\lcd
+                      .obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;----------------------------------------
+                       2     ; 8051 Program to Display "ANWAR" on LCD
+                       3     ; LCD connected in 8-bit mode
+                       4     ; RS -> P3.7
+                       5     ; RW -> P3.6
+                       6     ; EN -> P3.5
+                       7     ; Data -> P2
+                       8     ;----------------------------------------
+                       9     
+0400                  10     ORG 0400H               ; Store string in program memory
+0400 414E5741         11     MSG: DB "ANWAR",0       ; String to display
+0404 5200                    
+                      12     
+0000                  13     ORG 0000H               ; Program execution starts here
+0000                  14     MAIN:
+0000 900400           15         MOV DPTR,#MSG       ; Load DPTR with address of string
+                      16                             
+                      17         ;---- LCD Initialization ----
+0003 7438             18         MOV A,#38H          ; Function Set (8-bit, 2 lines, 5x7 dots)
+0005 1124             19         ACALL CMD
+0007 7401             20         MOV A,#01H          ; Clear display
+0009 1124             21         ACALL CMD
+000B 740F             22         MOV A,#0FH          ; Display ON, cursor ON, blink ON
+000D 1124             23         ACALL CMD
+000F 7406             24         MOV A,#06H          ; Entry mode (cursor right)
+0011 1124             25         ACALL CMD
+0013 7482             26         MOV A,#82H          ; Cursor at 1st row, 2nd position
+0015 1124             27         ACALL CMD
+                      28     
+                      29         ;---- Display Loop ----
+0017 7F05             30         MOV R7,#05H         ; Number of characters = 5 ("ANWAR")
+0019 7800             31         MOV R0,#00H
+                      32     
+001B                  33     BACK: 
+001B E8               34         MOV A,R0
+001C 93               35         MOVC A,@A+DPTR      ; Fetch character from code memory
+001D 1131             36         ACALL INFO          ; Send to LCD
+001F 08               37         INC R0
+0020 DFF9             38         DJNZ R7,BACK        ; Repeat until all characters displayed
+                      39     
+0022 80FE             40         SJMP $              ; Infinite loop (stop program here)
+                      41     
+                      42     ;----------------------------------------
+                      43     ; SUBROUTINE: Send Command to LCD
+                      44     ;----------------------------------------
+0024                  45     CMD:
+0024 C2B7             46         CLR P3.7            ; RS = 0 (command)
+0026 C2B6             47         CLR P3.6            ; RW = 0 (write)
+0028 F5A0             48         MOV P2,A            ; Put command on data pins
+002A D2B5             49         SETB P3.5           ; EN = 1
+002C C2B5             50         CLR P3.5            ; EN = 0 (latch command)
+002E 113E             51         ACALL DELAY
+0030 22               52         RET
+                      53     
+                      54     ;----------------------------------------
+                      55     ; SUBROUTINE: Send Data (character) to LCD
+                      56     ;----------------------------------------
+A51 MACRO ASSEMBLER  LCD                                                                  09/26/2025 11:44:55 PAGE     2
+
+0031                  57     INFO:
+0031 D2B7             58         SETB P3.7           ; RS = 1 (data)
+0033 C2B6             59         CLR P3.6            ; RW = 0 (write)
+0035 F5A0             60         MOV P2,A            ; Put data on data pins
+0037 D2B5             61         SETB P3.5           ; EN = 1
+0039 C2B5             62         CLR P3.5            ; EN = 0 (latch data)
+003B 113E             63         ACALL DELAY
+003D 22               64         RET
+                      65     
+                      66     ;----------------------------------------
+                      67     ; SUBROUTINE: Delay
+                      68     ;----------------------------------------
+003E                  69     DELAY:
+003E 79FF             70         MOV R1,#0FFH
+0040                  71     WAIT1: 
+0040 7AFF             72         MOV R2,#0FFH
+0042                  73     WAIT2: 
+0042 DAFE             74         DJNZ R2,WAIT2
+0044 D9FA             75         DJNZ R1,WAIT1
+0046 22               76         RET
+                      77     
+                      78     END
+A51 MACRO ASSEMBLER  LCD                                                                  09/26/2025 11:44:55 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+BACK . . . . . . .  C ADDR   001BH   A   
+CMD. . . . . . . .  C ADDR   0024H   A   
+DELAY. . . . . . .  C ADDR   003EH   A   
+INFO . . . . . . .  C ADDR   0031H   A   
+MAIN . . . . . . .  C ADDR   0000H   A   
+MSG. . . . . . . .  C ADDR   0400H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+WAIT1. . . . . . .  C ADDR   0040H   A   
+WAIT2. . . . . . .  C ADDR   0042H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

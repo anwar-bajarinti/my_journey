@@ -1,16 +1,16 @@
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    08/08/2025  11:17:22  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    09/26/2025  11:44:55  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22.4.0, INVOKED BY:
-C:\USERS\NOTTY\KEIL_V5\C51\BIN\BL51.EXE .\Objects\2 EXP  2SEC DELAY.obj TO .\Objects\MICROCONTROLLER PROGRAMS PRINT (.\L
->> istings\MICROCONTROLLER PROGRAMS.m51) RAMSIZE (256)
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\lcd.obj TO .\Objects\MICROCONTROLLER PROGRAMS PRINT (.\Listings\MICROCONTROLLER PR
+>> OGRAMS.m51) RAMSIZE (256)
 
 
 INPUT MODULES INCLUDED:
-  .\Objects\2 EXP  2SEC DELAY.obj (2_EXP__2SEC_DELAY)
+  .\Objects\lcd.obj (LCD)
 
 
-LINK MAP OF MODULE:  .\Objects\MICROCONTROLLER PROGRAMS (2_EXP__2SEC_DELAY)
+LINK MAP OF MODULE:  .\Objects\MICROCONTROLLER PROGRAMS (LCD)
 
 
             TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
@@ -20,52 +20,72 @@ LINK MAP OF MODULE:  .\Objects\MICROCONTROLLER PROGRAMS (2_EXP__2SEC_DELAY)
             REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
 
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
-            CODE    0000H     0025H     ABSOLUTE     
+            CODE    0000H     0406H     ABSOLUTE     
 
 
 
-SYMBOL TABLE OF MODULE:  .\Objects\MICROCONTROLLER PROGRAMS (2_EXP__2SEC_DELAY)
+SYMBOL TABLE OF MODULE:  .\Objects\MICROCONTROLLER PROGRAMS (LCD)
 
   VALUE           TYPE          NAME
   ----------------------------------
 
-  -------         MODULE        2_EXP__2SEC_DELAY
-  C:0014H         SYMBOL        BACK1
-  C:0012H         SYMBOL        BACK2
-  C:0010H         SYMBOL        DELAY
-  C:0019H         SYMBOL        HERE
-  C:0008H         SYMBOL        LOOP
+  -------         MODULE        LCD
+  C:001BH         SYMBOL        BACK
+  C:0024H         SYMBOL        CMD
+  C:003EH         SYMBOL        DELAY
+  C:0031H         SYMBOL        INFO
+  C:0000H         SYMBOL        MAIN
+  C:0400H         SYMBOL        MSG
   D:00A0H         SYMBOL        P2
-  B:0088H.7       SYMBOL        TF1
-  D:008DH         SYMBOL        TH1
-  D:0089H         SYMBOL        TMOD
-  B:0088H.6       SYMBOL        TR1
-  C:0000H         LINE#         2
-  C:0003H         LINE#         3
-  C:0005H         LINE#         4
-  C:0008H         LINE#         5
-  C:000AH         LINE#         6
-  C:000BH         LINE#         7
-  C:000CH         LINE#         8
-  C:000EH         LINE#         9
-  C:0010H         LINE#         10
-  C:0012H         LINE#         11
-  C:0014H         LINE#         12
-  C:0017H         LINE#         13
-  C:0019H         LINE#         14
-  C:001CH         LINE#         15
-  C:001EH         LINE#         16
-  C:0020H         LINE#         17
-  C:0022H         LINE#         18
-  C:0024H         LINE#         19
-  -------         ENDMOD        2_EXP__2SEC_DELAY
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  08/08/2025  11:17:22  PAGE 2
+  D:00B0H         SYMBOL        P3
+  C:0040H         SYMBOL        WAIT1
+  C:0042H         SYMBOL        WAIT2
+  C:0000H         LINE#         15
+  C:0003H         LINE#         18
+  C:0005H         LINE#         19
+  C:0007H         LINE#         20
+  C:0009H         LINE#         21
+  C:000BH         LINE#         22
+  C:000DH         LINE#         23
+  C:000FH         LINE#         24
+  C:0011H         LINE#         25
+  C:0013H         LINE#         26
+  C:0015H         LINE#         27
+  C:0017H         LINE#         30
+  C:0019H         LINE#         31
+  C:001BH         LINE#         34
+  C:001CH         LINE#         35
+  C:001DH         LINE#         36
+  C:001FH         LINE#         37
+  C:0020H         LINE#         38
+  C:0022H         LINE#         40
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  09/26/2025  11:44:55  PAGE 2
 
 
+  C:0024H         LINE#         46
+  C:0026H         LINE#         47
+  C:0028H         LINE#         48
+  C:002AH         LINE#         49
+  C:002CH         LINE#         50
+  C:002EH         LINE#         51
+  C:0030H         LINE#         52
+  C:0031H         LINE#         58
+  C:0033H         LINE#         59
+  C:0035H         LINE#         60
+  C:0037H         LINE#         61
+  C:0039H         LINE#         62
+  C:003BH         LINE#         63
+  C:003DH         LINE#         64
+  C:003EH         LINE#         70
+  C:0040H         LINE#         72
+  C:0042H         LINE#         74
+  C:0044H         LINE#         75
+  C:0046H         LINE#         76
+  -------         ENDMOD        LCD
 
 ******************************************************************************
-* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0025H BYTE ( 1%) *
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 004DH BYTE ( 3%) *
 ******************************************************************************
 
-Program Size: data=8.0 xdata=0 code=37
+Program Size: data=8.0 xdata=0 code=1030
 LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

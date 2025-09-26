@@ -1,0 +1,72 @@
+A51 MACRO ASSEMBLER  EXP_4                                                                08/29/2025 11:15:38 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\EXP 4.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE EXP 4.ASM SET(SMALL) DEBUG PRINT(.\Listings\EXP 4.lst) OBJECT(.\Objects
+                      \EXP 4.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00H
+0000 75A0FF            2             MOV P2,#0FFH
+0003 758920            3             MOV TMOD,#20H
+0006 758D03            4             MOV TH1,#3
+0009 759850            5             MOV SCON,#50H
+000C D28E              6             SETB TR1;
+000E 90002D            7             MOV DPTR,#MYDATA;
+0011 E4                8             H1:CLR A
+0012 93                9             MOVC A,@A+DPTR;
+0013 600D             10             JZ RECV;
+0015 111A             11             ACALL SEND;
+0017 A3               12             INC DPTR;
+0018 80F7             13             SJMP H1;
+001A F599             14             SEND:MOV SBUF,A;
+001C 3099FD           15             H2:JNB TI,H2;
+001F C299             16             CLR TI;
+0021 22               17             RET;
+0022                  18             RECV:
+0022 3098FD           19             H3:JNB RI,H3;
+0025 C298             20             CLR RI;
+0027 E599             21             MOV A,SBUF;
+0029 F5A0             22             MOV P2,A;
+002B 80F5             23             SJMP RECV;
+002D 57454C43         24             MYDATA:DB "WELCOME TO MICROCONTROLLER PROGRAMMING",0;
+0031 4F4D4520                
+0035 544F204D                
+0039 4943524F                
+003D 434F4E54                
+0041 524F4C4C                
+0045 45522050                
+0049 524F4752                
+004D 414D4D49                
+0051 4E4700                  
+                      25                     END
+A51 MACRO ASSEMBLER  EXP_4                                                                08/29/2025 11:15:38 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+H1 . . . . . . . .  C ADDR   0011H   A   
+H2 . . . . . . . .  C ADDR   001CH   A   
+H3 . . . . . . . .  C ADDR   0022H   A   
+MYDATA . . . . . .  C ADDR   002DH   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+RECV . . . . . . .  C ADDR   0022H   A   
+RI . . . . . . . .  B ADDR   0098H.0 A   
+SBUF . . . . . . .  D ADDR   0099H   A   
+SCON . . . . . . .  D ADDR   0098H   A   
+SEND . . . . . . .  C ADDR   001AH   A   
+TH1. . . . . . . .  D ADDR   008DH   A   
+TI . . . . . . . .  B ADDR   0098H.1 A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR1. . . . . . . .  B ADDR   0088H.6 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

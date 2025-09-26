@@ -1,0 +1,27 @@
+Wp=0.2*pi; 
+Ws=0.6*pi;
+rp=0.8;
+rs=0.2;
+t=1;
+fs=1/t;
+Wp=2/t*tan(Wp/2);
+Ws=2/t*tan(Ws/2);
+rp=abs(20*log10(rp));
+rs=abs(20*log10(rs));
+[N,wn]=cheb1ord(Wp,Ws,rp,rs,'s');
+display(N)
+disp(wn)
+[b,a]=cheby1(N,rp,1,'low','s');
+disp(b)
+disp(a)
+[num,den]=lp2lp(b,a,wn);
+disp(num)
+disp(den)
+[numd ,dend]=bilinear(num,den,fs);
+disp(numd)
+disp(dend)
+w=0:0.01:pi;
+figure(1);
+freqz(numd,dend,w)
+figure(2);
+zplane(numd,dend)
