@@ -139,24 +139,14 @@ Disassembly of section .text:
  80002ae:	bf00      	nop
 
 080002b0 <array_fill_numbers>:
-int numbers[] = { 456,345,678,567,890,456,3456,123,765,456,896,456,678,987,000,145,90};
-
-int  someData = 90;
-
-void array_fill_numbers(int pNumbers[], unsigned int len)
-{
  80002b0:	b580      	push	{r7, lr}
  80002b2:	b084      	sub	sp, #16
  80002b4:	af00      	add	r7, sp, #0
  80002b6:	6078      	str	r0, [r7, #4]
  80002b8:	6039      	str	r1, [r7, #0]
-
-    for ( unsigned int i = 0 ; i < len ; i++)
  80002ba:	2300      	movs	r3, #0
  80002bc:	60fb      	str	r3, [r7, #12]
  80002be:	e015      	b.n	80002ec <array_fill_numbers+0x3c>
-    {
-        pNumbers[i] = rand() % 1000;
  80002c0:	f000 fa10 	bl	80006e4 <rand>
  80002c4:	4602      	mov	r2, r0
  80002c6:	68fb      	ldr	r3, [r7, #12]
@@ -172,7 +162,6 @@ void array_fill_numbers(int pNumbers[], unsigned int len)
  80002de:	fb00 f303 	mul.w	r3, r0, r3
  80002e2:	1ad3      	subs	r3, r2, r3
  80002e4:	600b      	str	r3, [r1, #0]
-    for ( unsigned int i = 0 ; i < len ; i++)
  80002e6:	68fb      	ldr	r3, [r7, #12]
  80002e8:	3301      	adds	r3, #1
  80002ea:	60fb      	str	r3, [r7, #12]
@@ -180,9 +169,6 @@ void array_fill_numbers(int pNumbers[], unsigned int len)
  80002ee:	683b      	ldr	r3, [r7, #0]
  80002f0:	429a      	cmp	r2, r3
  80002f2:	d3e5      	bcc.n	80002c0 <array_fill_numbers+0x10>
-    }
-
-}
  80002f4:	bf00      	nop
  80002f6:	bf00      	nop
  80002f8:	3710      	adds	r7, #16
@@ -192,26 +178,18 @@ void array_fill_numbers(int pNumbers[], unsigned int len)
  8000300:	10624dd3 	.word	0x10624dd3
 
 08000304 <display_numbers>:
-
-void display_numbers(int *pNumbers, unsigned int len, char *pMessage)
-{
  8000304:	b580      	push	{r7, lr}
  8000306:	b086      	sub	sp, #24
  8000308:	af00      	add	r7, sp, #0
  800030a:	60f8      	str	r0, [r7, #12]
  800030c:	60b9      	str	r1, [r7, #8]
  800030e:	607a      	str	r2, [r7, #4]
-    printf("%s",pMessage);
  8000310:	6879      	ldr	r1, [r7, #4]
  8000312:	480e      	ldr	r0, [pc, #56]	@ (800034c <display_numbers+0x48>)
  8000314:	f000 fae6 	bl	80008e4 <iprintf>
-
-    for (unsigned i = 0 ; i < len ; i++)
  8000318:	2300      	movs	r3, #0
  800031a:	617b      	str	r3, [r7, #20]
  800031c:	e00b      	b.n	8000336 <display_numbers+0x32>
-    {
-        printf("%5d  ",pNumbers[i]);
  800031e:	697b      	ldr	r3, [r7, #20]
  8000320:	009b      	lsls	r3, r3, #2
  8000322:	68fa      	ldr	r2, [r7, #12]
@@ -220,7 +198,6 @@ void display_numbers(int *pNumbers, unsigned int len, char *pMessage)
  8000328:	4619      	mov	r1, r3
  800032a:	4809      	ldr	r0, [pc, #36]	@ (8000350 <display_numbers+0x4c>)
  800032c:	f000 fada 	bl	80008e4 <iprintf>
-    for (unsigned i = 0 ; i < len ; i++)
  8000330:	697b      	ldr	r3, [r7, #20]
  8000332:	3301      	adds	r3, #1
  8000334:	617b      	str	r3, [r7, #20]
@@ -228,12 +205,8 @@ void display_numbers(int *pNumbers, unsigned int len, char *pMessage)
  8000338:	68bb      	ldr	r3, [r7, #8]
  800033a:	429a      	cmp	r2, r3
  800033c:	d3ef      	bcc.n	800031e <display_numbers+0x1a>
-    }
-
-    printf("\n");
  800033e:	200a      	movs	r0, #10
  8000340:	f000 fae2 	bl	8000908 <putchar>
-}
  8000344:	bf00      	nop
  8000346:	3718      	adds	r7, #24
  8000348:	46bd      	mov	sp, r7
@@ -242,38 +215,24 @@ void display_numbers(int *pNumbers, unsigned int len, char *pMessage)
  8000350:	08001758 	.word	0x08001758
 
 08000354 <swap_numbers>:
-
-
-void swap_numbers(int *x,int *y)
-{
  8000354:	b480      	push	{r7}
  8000356:	b085      	sub	sp, #20
  8000358:	af00      	add	r7, sp, #0
  800035a:	6078      	str	r0, [r7, #4]
  800035c:	6039      	str	r1, [r7, #0]
-     int temp=*x;
  800035e:	687b      	ldr	r3, [r7, #4]
  8000360:	681b      	ldr	r3, [r3, #0]
  8000362:	60fb      	str	r3, [r7, #12]
-     *x=*y;
  8000364:	683b      	ldr	r3, [r7, #0]
  8000366:	681a      	ldr	r2, [r3, #0]
  8000368:	687b      	ldr	r3, [r7, #4]
  800036a:	601a      	str	r2, [r3, #0]
-     *y=temp;
  800036c:	683b      	ldr	r3, [r7, #0]
  800036e:	68fa      	ldr	r2, [r7, #12]
  8000370:	601a      	str	r2, [r3, #0]
-     void (*jump_addr) (void);
-     jump_addr = (void*)0x20000009;
-     jump_addr();
-#endif
-
-     someData = 10;
  8000372:	4b04      	ldr	r3, [pc, #16]	@ (8000384 <swap_numbers+0x30>)
  8000374:	220a      	movs	r2, #10
  8000376:	601a      	str	r2, [r3, #0]
-}
  8000378:	bf00      	nop
  800037a:	3714      	adds	r7, #20
  800037c:	46bd      	mov	sp, r7
@@ -282,35 +241,21 @@ void swap_numbers(int *x,int *y)
  8000384:	20000044 	.word	0x20000044
 
 08000388 <bubble_sort>:
-
-
-void bubble_sort(int *pNumbers , unsigned int len)
-{
  8000388:	b580      	push	{r7, lr}
  800038a:	b086      	sub	sp, #24
  800038c:	af00      	add	r7, sp, #0
  800038e:	6078      	str	r0, [r7, #4]
  8000390:	6039      	str	r1, [r7, #0]
-
-    int i,j,flag=0;
  8000392:	2300      	movs	r3, #0
  8000394:	60fb      	str	r3, [r7, #12]
-
-    for(i=0;i<len-1;i++)
  8000396:	2300      	movs	r3, #0
  8000398:	617b      	str	r3, [r7, #20]
  800039a:	e02f      	b.n	80003fc <bubble_sort+0x74>
-    {
-        flag=0;
  800039c:	2300      	movs	r3, #0
  800039e:	60fb      	str	r3, [r7, #12]
-
-        for(j=0;j<len-1-i;j++)
  80003a0:	2300      	movs	r3, #0
  80003a2:	613b      	str	r3, [r7, #16]
  80003a4:	e01d      	b.n	80003e2 <bubble_sort+0x5a>
-        {
-            if(pNumbers[j] > pNumbers[j+1])
  80003a6:	693b      	ldr	r3, [r7, #16]
  80003a8:	009b      	lsls	r3, r3, #2
  80003aa:	687a      	ldr	r2, [r7, #4]
@@ -324,8 +269,6 @@ void bubble_sort(int *pNumbers , unsigned int len)
  80003ba:	681b      	ldr	r3, [r3, #0]
  80003bc:	429a      	cmp	r2, r3
  80003be:	dd0d      	ble.n	80003dc <bubble_sort+0x54>
-            {
-                swap_numbers(&pNumbers[j],&pNumbers[j+1]);
  80003c0:	693b      	ldr	r3, [r7, #16]
  80003c2:	009b      	lsls	r3, r3, #2
  80003c4:	687a      	ldr	r2, [r7, #4]
@@ -337,10 +280,8 @@ void bubble_sort(int *pNumbers , unsigned int len)
  80003d0:	4413      	add	r3, r2
  80003d2:	4619      	mov	r1, r3
  80003d4:	f7ff ffbe 	bl	8000354 <swap_numbers>
-                flag=1;
  80003d8:	2301      	movs	r3, #1
  80003da:	60fb      	str	r3, [r7, #12]
-        for(j=0;j<len-1-i;j++)
  80003dc:	693b      	ldr	r3, [r7, #16]
  80003de:	3301      	adds	r3, #1
  80003e0:	613b      	str	r3, [r7, #16]
@@ -351,14 +292,9 @@ void bubble_sort(int *pNumbers , unsigned int len)
  80003ea:	693b      	ldr	r3, [r7, #16]
  80003ec:	429a      	cmp	r2, r3
  80003ee:	d8da      	bhi.n	80003a6 <bubble_sort+0x1e>
-            }
-        }
-
-        if(flag==0)
  80003f0:	68fb      	ldr	r3, [r7, #12]
  80003f2:	2b00      	cmp	r3, #0
  80003f4:	d008      	beq.n	8000408 <bubble_sort+0x80>
-    for(i=0;i<len-1;i++)
  80003f6:	697b      	ldr	r3, [r7, #20]
  80003f8:	3301      	adds	r3, #1
  80003fa:	617b      	str	r3, [r7, #20]
@@ -367,52 +303,32 @@ void bubble_sort(int *pNumbers , unsigned int len)
  8000400:	697b      	ldr	r3, [r7, #20]
  8000402:	429a      	cmp	r2, r3
  8000404:	d8ca      	bhi.n	800039c <bubble_sort+0x14>
-            break;
-    }
-}
  8000406:	e000      	b.n	800040a <bubble_sort+0x82>
-            break;
  8000408:	bf00      	nop
-}
  800040a:	bf00      	nop
  800040c:	3718      	adds	r7, #24
  800040e:	46bd      	mov	sp, r7
  8000410:	bd80      	pop	{r7, pc}
 
 08000412 <insertion_sort>:
-
-void insertion_sort(int *pNumbers , unsigned int len)
-{
  8000412:	b480      	push	{r7}
  8000414:	b087      	sub	sp, #28
  8000416:	af00      	add	r7, sp, #0
  8000418:	6078      	str	r0, [r7, #4]
  800041a:	6039      	str	r1, [r7, #0]
-
-     int i,j,num;
-
-     for(i=1 ; i<len ; i++)
  800041c:	2301      	movs	r3, #1
  800041e:	617b      	str	r3, [r7, #20]
  8000420:	e02c      	b.n	800047c <insertion_sort+0x6a>
-     {
-         j=i-1;
  8000422:	697b      	ldr	r3, [r7, #20]
  8000424:	3b01      	subs	r3, #1
  8000426:	613b      	str	r3, [r7, #16]
-
-         num = pNumbers[i];
  8000428:	697b      	ldr	r3, [r7, #20]
  800042a:	009b      	lsls	r3, r3, #2
  800042c:	687a      	ldr	r2, [r7, #4]
  800042e:	4413      	add	r3, r2
  8000430:	681b      	ldr	r3, [r3, #0]
  8000432:	60fb      	str	r3, [r7, #12]
-
-         while( (j>-1) && (pNumbers[j] > num) )
  8000434:	e00d      	b.n	8000452 <insertion_sort+0x40>
-         {
-             pNumbers[j+1] = pNumbers[j];
  8000436:	693b      	ldr	r3, [r7, #16]
  8000438:	009b      	lsls	r3, r3, #2
  800043a:	687a      	ldr	r2, [r7, #4]
@@ -424,11 +340,9 @@ void insertion_sort(int *pNumbers , unsigned int len)
  8000446:	440b      	add	r3, r1
  8000448:	6812      	ldr	r2, [r2, #0]
  800044a:	601a      	str	r2, [r3, #0]
-             j--;
  800044c:	693b      	ldr	r3, [r7, #16]
  800044e:	3b01      	subs	r3, #1
  8000450:	613b      	str	r3, [r7, #16]
-         while( (j>-1) && (pNumbers[j] > num) )
  8000452:	693b      	ldr	r3, [r7, #16]
  8000454:	2b00      	cmp	r3, #0
  8000456:	db07      	blt.n	8000468 <insertion_sort+0x56>
@@ -440,9 +354,6 @@ void insertion_sort(int *pNumbers , unsigned int len)
  8000462:	68fa      	ldr	r2, [r7, #12]
  8000464:	429a      	cmp	r2, r3
  8000466:	dbe6      	blt.n	8000436 <insertion_sort+0x24>
-         }
-
-         pNumbers[j+1]=num;
  8000468:	693b      	ldr	r3, [r7, #16]
  800046a:	3301      	adds	r3, #1
  800046c:	009b      	lsls	r3, r3, #2
@@ -450,7 +361,6 @@ void insertion_sort(int *pNumbers , unsigned int len)
  8000470:	4413      	add	r3, r2
  8000472:	68fa      	ldr	r2, [r7, #12]
  8000474:	601a      	str	r2, [r3, #0]
-     for(i=1 ; i<len ; i++)
  8000476:	697b      	ldr	r3, [r7, #20]
  8000478:	3301      	adds	r3, #1
  800047a:	617b      	str	r3, [r7, #20]
@@ -458,10 +368,6 @@ void insertion_sort(int *pNumbers , unsigned int len)
  800047e:	683a      	ldr	r2, [r7, #0]
  8000480:	429a      	cmp	r2, r3
  8000482:	d8ce      	bhi.n	8000422 <insertion_sort+0x10>
-     }
-
-
-}
  8000484:	bf00      	nop
  8000486:	bf00      	nop
  8000488:	371c      	adds	r7, #28
@@ -471,68 +377,40 @@ void insertion_sort(int *pNumbers , unsigned int len)
 	...
 
 08000494 <main>:
-
-
-
-int main()
-{
  8000494:	b580      	push	{r7, lr}
  8000496:	b082      	sub	sp, #8
  8000498:	af00      	add	r7, sp, #0
-
-    unsigned int len = sizeof(numbers)/sizeof(int);
  800049a:	2311      	movs	r3, #17
  800049c:	607b      	str	r3, [r7, #4]
-
-    		array_fill_numbers(numbers,len);
  800049e:	6879      	ldr	r1, [r7, #4]
  80004a0:	4813      	ldr	r0, [pc, #76]	@ (80004f0 <main+0x5c>)
  80004a2:	f7ff ff05 	bl	80002b0 <array_fill_numbers>
-
-    display_numbers(numbers,len,"B-unsorted array :");
  80004a6:	4a13      	ldr	r2, [pc, #76]	@ (80004f4 <main+0x60>)
  80004a8:	6879      	ldr	r1, [r7, #4]
  80004aa:	4811      	ldr	r0, [pc, #68]	@ (80004f0 <main+0x5c>)
  80004ac:	f7ff ff2a 	bl	8000304 <display_numbers>
-
-    bubble_sort(numbers,len);
  80004b0:	6879      	ldr	r1, [r7, #4]
  80004b2:	480f      	ldr	r0, [pc, #60]	@ (80004f0 <main+0x5c>)
  80004b4:	f7ff ff68 	bl	8000388 <bubble_sort>
-
-    display_numbers(numbers,len,"B-sorted array   :");
  80004b8:	4a0f      	ldr	r2, [pc, #60]	@ (80004f8 <main+0x64>)
  80004ba:	6879      	ldr	r1, [r7, #4]
  80004bc:	480c      	ldr	r0, [pc, #48]	@ (80004f0 <main+0x5c>)
  80004be:	f7ff ff21 	bl	8000304 <display_numbers>
-
-    array_fill_numbers(numbers,len);
  80004c2:	6879      	ldr	r1, [r7, #4]
  80004c4:	480a      	ldr	r0, [pc, #40]	@ (80004f0 <main+0x5c>)
  80004c6:	f7ff fef3 	bl	80002b0 <array_fill_numbers>
-
-    display_numbers(numbers,len,"I-unsorted array :");
  80004ca:	4a0c      	ldr	r2, [pc, #48]	@ (80004fc <main+0x68>)
  80004cc:	6879      	ldr	r1, [r7, #4]
  80004ce:	4808      	ldr	r0, [pc, #32]	@ (80004f0 <main+0x5c>)
  80004d0:	f7ff ff18 	bl	8000304 <display_numbers>
-
-    insertion_sort(numbers,len);
  80004d4:	6879      	ldr	r1, [r7, #4]
  80004d6:	4806      	ldr	r0, [pc, #24]	@ (80004f0 <main+0x5c>)
  80004d8:	f7ff ff9b 	bl	8000412 <insertion_sort>
-
-    display_numbers(numbers,len,"I-sorted array   :");
  80004dc:	4a08      	ldr	r2, [pc, #32]	@ (8000500 <main+0x6c>)
  80004de:	6879      	ldr	r1, [r7, #4]
  80004e0:	4803      	ldr	r0, [pc, #12]	@ (80004f0 <main+0x5c>)
  80004e2:	f7ff ff0f 	bl	8000304 <display_numbers>
-
-
-
-    return 0;
  80004e6:	2300      	movs	r3, #0
-}
  80004e8:	4618      	mov	r0, r3
  80004ea:	3708      	adds	r7, #8
  80004ec:	46bd      	mov	sp, r7
@@ -544,82 +422,51 @@ int main()
  8000500:	0800179c 	.word	0x0800179c
 
 08000504 <_getpid>:
-void initialise_monitor_handles()
-{
-}
-
-int _getpid(void)
-{
  8000504:	b480      	push	{r7}
  8000506:	af00      	add	r7, sp, #0
-  return 1;
  8000508:	2301      	movs	r3, #1
-}
  800050a:	4618      	mov	r0, r3
  800050c:	46bd      	mov	sp, r7
  800050e:	f85d 7b04 	ldr.w	r7, [sp], #4
  8000512:	4770      	bx	lr
 
 08000514 <_kill>:
-
-int _kill(int pid, int sig)
-{
  8000514:	b580      	push	{r7, lr}
  8000516:	b082      	sub	sp, #8
  8000518:	af00      	add	r7, sp, #0
  800051a:	6078      	str	r0, [r7, #4]
  800051c:	6039      	str	r1, [r7, #0]
-  (void)pid;
-  (void)sig;
-  errno = EINVAL;
  800051e:	f000 fa8d 	bl	8000a3c <__errno>
  8000522:	4603      	mov	r3, r0
  8000524:	2216      	movs	r2, #22
  8000526:	601a      	str	r2, [r3, #0]
-  return -1;
  8000528:	f04f 33ff 	mov.w	r3, #4294967295
-}
  800052c:	4618      	mov	r0, r3
  800052e:	3708      	adds	r7, #8
  8000530:	46bd      	mov	sp, r7
  8000532:	bd80      	pop	{r7, pc}
 
 08000534 <_exit>:
-
-void _exit (int status)
-{
  8000534:	b580      	push	{r7, lr}
  8000536:	b082      	sub	sp, #8
  8000538:	af00      	add	r7, sp, #0
  800053a:	6078      	str	r0, [r7, #4]
-  _kill(status, -1);
  800053c:	f04f 31ff 	mov.w	r1, #4294967295
  8000540:	6878      	ldr	r0, [r7, #4]
  8000542:	f7ff ffe7 	bl	8000514 <_kill>
-  while (1) {}    /* Make sure we hang here */
  8000546:	bf00      	nop
  8000548:	e7fd      	b.n	8000546 <_exit+0x12>
 
 0800054a <_read>:
-}
-
-__attribute__((weak)) int _read(int file, char *ptr, int len)
-{
  800054a:	b580      	push	{r7, lr}
  800054c:	b086      	sub	sp, #24
  800054e:	af00      	add	r7, sp, #0
  8000550:	60f8      	str	r0, [r7, #12]
  8000552:	60b9      	str	r1, [r7, #8]
  8000554:	607a      	str	r2, [r7, #4]
-  (void)file;
-  int DataIdx;
-
-  for (DataIdx = 0; DataIdx < len; DataIdx++)
  8000556:	2300      	movs	r3, #0
  8000558:	617b      	str	r3, [r7, #20]
  800055a:	e00a      	b.n	8000572 <_read+0x28>
-  {
-    *ptr++ = __io_getchar();
  800055c:	f3af 8000 	nop.w
  8000560:	4601      	mov	r1, r0
  8000562:	68bb      	ldr	r3, [r7, #8]
@@ -627,7 +474,6 @@ __attribute__((weak)) int _read(int file, char *ptr, int len)
  8000566:	60ba      	str	r2, [r7, #8]
  8000568:	b2ca      	uxtb	r2, r1
  800056a:	701a      	strb	r2, [r3, #0]
-  for (DataIdx = 0; DataIdx < len; DataIdx++)
  800056c:	697b      	ldr	r3, [r7, #20]
  800056e:	3301      	adds	r3, #1
  8000570:	617b      	str	r3, [r7, #20]
@@ -635,42 +481,28 @@ __attribute__((weak)) int _read(int file, char *ptr, int len)
  8000574:	687b      	ldr	r3, [r7, #4]
  8000576:	429a      	cmp	r2, r3
  8000578:	dbf0      	blt.n	800055c <_read+0x12>
-  }
-
-  return len;
  800057a:	687b      	ldr	r3, [r7, #4]
-}
  800057c:	4618      	mov	r0, r3
  800057e:	3718      	adds	r7, #24
  8000580:	46bd      	mov	sp, r7
  8000582:	bd80      	pop	{r7, pc}
 
 08000584 <_write>:
-
-__attribute__((weak)) int _write(int file, char *ptr, int len)
-{
  8000584:	b580      	push	{r7, lr}
  8000586:	b086      	sub	sp, #24
  8000588:	af00      	add	r7, sp, #0
  800058a:	60f8      	str	r0, [r7, #12]
  800058c:	60b9      	str	r1, [r7, #8]
  800058e:	607a      	str	r2, [r7, #4]
-  (void)file;
-  int DataIdx;
-
-  for (DataIdx = 0; DataIdx < len; DataIdx++)
  8000590:	2300      	movs	r3, #0
  8000592:	617b      	str	r3, [r7, #20]
  8000594:	e009      	b.n	80005aa <_write+0x26>
-  {
-    __io_putchar(*ptr++);
  8000596:	68bb      	ldr	r3, [r7, #8]
  8000598:	1c5a      	adds	r2, r3, #1
  800059a:	60ba      	str	r2, [r7, #8]
  800059c:	781b      	ldrb	r3, [r3, #0]
  800059e:	4618      	mov	r0, r3
  80005a0:	f3af 8000 	nop.w
-  for (DataIdx = 0; DataIdx < len; DataIdx++)
  80005a4:	697b      	ldr	r3, [r7, #20]
  80005a6:	3301      	adds	r3, #1
  80005a8:	617b      	str	r3, [r7, #20]
@@ -678,27 +510,18 @@ __attribute__((weak)) int _write(int file, char *ptr, int len)
  80005ac:	687b      	ldr	r3, [r7, #4]
  80005ae:	429a      	cmp	r2, r3
  80005b0:	dbf1      	blt.n	8000596 <_write+0x12>
-  }
-  return len;
  80005b2:	687b      	ldr	r3, [r7, #4]
-}
  80005b4:	4618      	mov	r0, r3
  80005b6:	3718      	adds	r7, #24
  80005b8:	46bd      	mov	sp, r7
  80005ba:	bd80      	pop	{r7, pc}
 
 080005bc <_close>:
-
-int _close(int file)
-{
  80005bc:	b480      	push	{r7}
  80005be:	b083      	sub	sp, #12
  80005c0:	af00      	add	r7, sp, #0
  80005c2:	6078      	str	r0, [r7, #4]
-  (void)file;
-  return -1;
  80005c4:	f04f 33ff 	mov.w	r3, #4294967295
-}
  80005c8:	4618      	mov	r0, r3
  80005ca:	370c      	adds	r7, #12
  80005cc:	46bd      	mov	sp, r7
@@ -706,23 +529,15 @@ int _close(int file)
  80005d2:	4770      	bx	lr
 
 080005d4 <_fstat>:
-
-
-int _fstat(int file, struct stat *st)
-{
  80005d4:	b480      	push	{r7}
  80005d6:	b083      	sub	sp, #12
  80005d8:	af00      	add	r7, sp, #0
  80005da:	6078      	str	r0, [r7, #4]
  80005dc:	6039      	str	r1, [r7, #0]
-  (void)file;
-  st->st_mode = S_IFCHR;
  80005de:	683b      	ldr	r3, [r7, #0]
  80005e0:	f44f 5200 	mov.w	r2, #8192	@ 0x2000
  80005e4:	605a      	str	r2, [r3, #4]
-  return 0;
  80005e6:	2300      	movs	r3, #0
-}
  80005e8:	4618      	mov	r0, r3
  80005ea:	370c      	adds	r7, #12
  80005ec:	46bd      	mov	sp, r7
@@ -730,17 +545,11 @@ int _fstat(int file, struct stat *st)
  80005f2:	4770      	bx	lr
 
 080005f4 <_isatty>:
-
-int _isatty(int file)
-{
  80005f4:	b480      	push	{r7}
  80005f6:	b083      	sub	sp, #12
  80005f8:	af00      	add	r7, sp, #0
  80005fa:	6078      	str	r0, [r7, #4]
-  (void)file;
-  return 1;
  80005fc:	2301      	movs	r3, #1
-}
  80005fe:	4618      	mov	r0, r3
  8000600:	370c      	adds	r7, #12
  8000602:	46bd      	mov	sp, r7
@@ -748,21 +557,13 @@ int _isatty(int file)
  8000608:	4770      	bx	lr
 
 0800060a <_lseek>:
-
-int _lseek(int file, int ptr, int dir)
-{
  800060a:	b480      	push	{r7}
  800060c:	b085      	sub	sp, #20
  800060e:	af00      	add	r7, sp, #0
  8000610:	60f8      	str	r0, [r7, #12]
  8000612:	60b9      	str	r1, [r7, #8]
  8000614:	607a      	str	r2, [r7, #4]
-  (void)file;
-  (void)ptr;
-  (void)dir;
-  return 0;
  8000616:	2300      	movs	r3, #0
-}
  8000618:	4618      	mov	r0, r3
  800061a:	3714      	adds	r7, #20
  800061c:	46bd      	mov	sp, r7
@@ -770,44 +571,23 @@ int _lseek(int file, int ptr, int dir)
  8000622:	4770      	bx	lr
 
 08000624 <_sbrk>:
- *
- * @param incr Memory size
- * @return Pointer to allocated memory
- */
-void *_sbrk(ptrdiff_t incr)
-{
  8000624:	b580      	push	{r7, lr}
  8000626:	b086      	sub	sp, #24
  8000628:	af00      	add	r7, sp, #0
  800062a:	6078      	str	r0, [r7, #4]
-  extern uint8_t _end; /* Symbol defined in the linker script */
-  extern uint8_t _estack; /* Symbol defined in the linker script */
-  extern uint32_t _Min_Stack_Size; /* Symbol defined in the linker script */
-  const uint32_t stack_limit = (uint32_t)&_estack - (uint32_t)&_Min_Stack_Size;
  800062c:	4a14      	ldr	r2, [pc, #80]	@ (8000680 <_sbrk+0x5c>)
  800062e:	4b15      	ldr	r3, [pc, #84]	@ (8000684 <_sbrk+0x60>)
  8000630:	1ad3      	subs	r3, r2, r3
  8000632:	617b      	str	r3, [r7, #20]
-  const uint8_t *max_heap = (uint8_t *)stack_limit;
  8000634:	697b      	ldr	r3, [r7, #20]
  8000636:	613b      	str	r3, [r7, #16]
-  uint8_t *prev_heap_end;
-
-  /* Initialize heap end at first call */
-  if (NULL == __sbrk_heap_end)
  8000638:	4b13      	ldr	r3, [pc, #76]	@ (8000688 <_sbrk+0x64>)
  800063a:	681b      	ldr	r3, [r3, #0]
  800063c:	2b00      	cmp	r3, #0
  800063e:	d102      	bne.n	8000646 <_sbrk+0x22>
-  {
-    __sbrk_heap_end = &_end;
  8000640:	4b11      	ldr	r3, [pc, #68]	@ (8000688 <_sbrk+0x64>)
  8000642:	4a12      	ldr	r2, [pc, #72]	@ (800068c <_sbrk+0x68>)
  8000644:	601a      	str	r2, [r3, #0]
-  }
-
-  /* Protect heap from growing into the reserved MSP stack */
-  if (__sbrk_heap_end + incr > max_heap)
  8000646:	4b10      	ldr	r3, [pc, #64]	@ (8000688 <_sbrk+0x64>)
  8000648:	681a      	ldr	r2, [r3, #0]
  800064a:	687b      	ldr	r3, [r7, #4]
@@ -815,32 +595,22 @@ void *_sbrk(ptrdiff_t incr)
  800064e:	693a      	ldr	r2, [r7, #16]
  8000650:	429a      	cmp	r2, r3
  8000652:	d207      	bcs.n	8000664 <_sbrk+0x40>
-  {
-    errno = ENOMEM;
  8000654:	f000 f9f2 	bl	8000a3c <__errno>
  8000658:	4603      	mov	r3, r0
  800065a:	220c      	movs	r2, #12
  800065c:	601a      	str	r2, [r3, #0]
-    return (void *)-1;
  800065e:	f04f 33ff 	mov.w	r3, #4294967295
  8000662:	e009      	b.n	8000678 <_sbrk+0x54>
-  }
-
-  prev_heap_end = __sbrk_heap_end;
  8000664:	4b08      	ldr	r3, [pc, #32]	@ (8000688 <_sbrk+0x64>)
  8000666:	681b      	ldr	r3, [r3, #0]
  8000668:	60fb      	str	r3, [r7, #12]
-  __sbrk_heap_end += incr;
  800066a:	4b07      	ldr	r3, [pc, #28]	@ (8000688 <_sbrk+0x64>)
  800066c:	681a      	ldr	r2, [r3, #0]
  800066e:	687b      	ldr	r3, [r7, #4]
  8000670:	4413      	add	r3, r2
  8000672:	4a05      	ldr	r2, [pc, #20]	@ (8000688 <_sbrk+0x64>)
  8000674:	6013      	str	r3, [r2, #0]
-
-  return (void *)prev_heap_end;
  8000676:	68fb      	ldr	r3, [r7, #12]
-}
  8000678:	4618      	mov	r0, r3
  800067a:	3718      	adds	r7, #24
  800067c:	46bd      	mov	sp, r7
@@ -851,111 +621,49 @@ void *_sbrk(ptrdiff_t incr)
  800068c:	20000210 	.word	0x20000210
 
 08000690 <Reset_Handler>:
-
-  .section .text.Reset_Handler
-  .weak Reset_Handler
-  .type Reset_Handler, %function
-Reset_Handler:
-  ldr   r0, =_estack
  8000690:	480d      	ldr	r0, [pc, #52]	@ (80006c8 <LoopForever+0x2>)
-  mov   sp, r0          /* set stack pointer */
  8000692:	4685      	mov	sp, r0
-/* Call the clock system initialization function.*/
-  bl  SystemInit
  8000694:	f3af 8000 	nop.w
-
-/* Copy the data segment initializers from flash to SRAM */
-  ldr r0, =_sdata
  8000698:	480c      	ldr	r0, [pc, #48]	@ (80006cc <LoopForever+0x6>)
-  ldr r1, =_edata
  800069a:	490d      	ldr	r1, [pc, #52]	@ (80006d0 <LoopForever+0xa>)
-  ldr r2, =_sidata
  800069c:	4a0d      	ldr	r2, [pc, #52]	@ (80006d4 <LoopForever+0xe>)
-  movs r3, #0
  800069e:	2300      	movs	r3, #0
-  b LoopCopyDataInit
  80006a0:	e002      	b.n	80006a8 <LoopCopyDataInit>
 
 080006a2 <CopyDataInit>:
-
-CopyDataInit:
-  ldr r4, [r2, r3]
  80006a2:	58d4      	ldr	r4, [r2, r3]
-  str r4, [r0, r3]
  80006a4:	50c4      	str	r4, [r0, r3]
-  adds r3, r3, #4
  80006a6:	3304      	adds	r3, #4
 
 080006a8 <LoopCopyDataInit>:
-
-LoopCopyDataInit:
-  adds r4, r0, r3
  80006a8:	18c4      	adds	r4, r0, r3
-  cmp r4, r1
  80006aa:	428c      	cmp	r4, r1
-  bcc CopyDataInit
  80006ac:	d3f9      	bcc.n	80006a2 <CopyDataInit>
-
-/* Zero fill the bss segment. */
-  ldr r2, =_sbss
  80006ae:	4a0a      	ldr	r2, [pc, #40]	@ (80006d8 <LoopForever+0x12>)
-  ldr r4, =_ebss
  80006b0:	4c0a      	ldr	r4, [pc, #40]	@ (80006dc <LoopForever+0x16>)
-  movs r3, #0
  80006b2:	2300      	movs	r3, #0
-  b LoopFillZerobss
  80006b4:	e001      	b.n	80006ba <LoopFillZerobss>
 
 080006b6 <FillZerobss>:
-
-FillZerobss:
-  str  r3, [r2]
  80006b6:	6013      	str	r3, [r2, #0]
-  adds r2, r2, #4
  80006b8:	3204      	adds	r2, #4
 
 080006ba <LoopFillZerobss>:
-
-LoopFillZerobss:
-  cmp r2, r4
  80006ba:	42a2      	cmp	r2, r4
-  bcc FillZerobss
  80006bc:	d3fb      	bcc.n	80006b6 <FillZerobss>
-
-
-/* Call static constructors */
-  bl __libc_init_array
  80006be:	f000 f9c3 	bl	8000a48 <__libc_init_array>
-/* Call the application's entry point.*/
-
-  bl main
  80006c2:	f7ff fee7 	bl	8000494 <main>
 
 080006c6 <LoopForever>:
-
-LoopForever:
-  b LoopForever
  80006c6:	e7fe      	b.n	80006c6 <LoopForever>
-  ldr   r0, =_estack
  80006c8:	20020000 	.word	0x20020000
-  ldr r0, =_sdata
  80006cc:	20000000 	.word	0x20000000
-  ldr r1, =_edata
  80006d0:	200000a4 	.word	0x200000a4
-  ldr r2, =_sidata
  80006d4:	080018a0 	.word	0x080018a0
-  ldr r2, =_sbss
  80006d8:	200000a4 	.word	0x200000a4
-  ldr r4, =_ebss
  80006dc:	20000210 	.word	0x20000210
 
 080006e0 <ADC_IRQHandler>:
- * @retval : None
-*/
-  .section .text.Default_Handler,"ax",%progbits
-Default_Handler:
-Infinite_Loop:
-  b Infinite_Loop
  80006e0:	e7fe      	b.n	80006e0 <ADC_IRQHandler>
 	...
 

@@ -1,16 +1,16 @@
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    09/26/2025  11:44:55  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    10/10/2025  10:43:35  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22.4.0, INVOKED BY:
-C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\lcd.obj TO .\Objects\MICROCONTROLLER PROGRAMS PRINT (.\Listings\MICROCONTROLLER PR
->> OGRAMS.m51) RAMSIZE (256)
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\seven_segment.obj TO .\Objects\MICROCONTROLLER PROGRAMS PRINT (.\Listings\MICROCON
+>> TROLLER PROGRAMS.m51) RAMSIZE (256)
 
 
 INPUT MODULES INCLUDED:
-  .\Objects\lcd.obj (LCD)
+  .\Objects\seven_segment.obj (SEVEN_SEGMENT)
 
 
-LINK MAP OF MODULE:  .\Objects\MICROCONTROLLER PROGRAMS (LCD)
+LINK MAP OF MODULE:  .\Objects\MICROCONTROLLER PROGRAMS (SEVEN_SEGMENT)
 
 
             TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
@@ -20,72 +20,60 @@ LINK MAP OF MODULE:  .\Objects\MICROCONTROLLER PROGRAMS (LCD)
             REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
 
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
-            CODE    0000H     0406H     ABSOLUTE     
+            CODE    0000H     040BH     ABSOLUTE     
 
 
 
-SYMBOL TABLE OF MODULE:  .\Objects\MICROCONTROLLER PROGRAMS (LCD)
+SYMBOL TABLE OF MODULE:  .\Objects\MICROCONTROLLER PROGRAMS (SEVEN_SEGMENT)
 
   VALUE           TYPE          NAME
   ----------------------------------
 
-  -------         MODULE        LCD
-  C:001BH         SYMBOL        BACK
-  C:0024H         SYMBOL        CMD
-  C:003EH         SYMBOL        DELAY
-  C:0031H         SYMBOL        INFO
-  C:0000H         SYMBOL        MAIN
-  C:0400H         SYMBOL        MSG
+  -------         MODULE        SEVEN_SEGMENT
+  C:0003H         SYMBOL        AGAIN
+  C:002DH         SYMBOL        DELAY
+  D:0090H         SYMBOL        P1
   D:00A0H         SYMBOL        P2
-  D:00B0H         SYMBOL        P3
-  C:0040H         SYMBOL        WAIT1
-  C:0042H         SYMBOL        WAIT2
-  C:0000H         LINE#         15
-  C:0003H         LINE#         18
-  C:0005H         LINE#         19
-  C:0007H         LINE#         20
-  C:0009H         LINE#         21
-  C:000BH         LINE#         22
-  C:000DH         LINE#         23
-  C:000FH         LINE#         24
-  C:0011H         LINE#         25
-  C:0013H         LINE#         26
-  C:0015H         LINE#         27
-  C:0017H         LINE#         30
-  C:0019H         LINE#         31
-  C:001BH         LINE#         34
-  C:001CH         LINE#         35
-  C:001DH         LINE#         36
-  C:001FH         LINE#         37
-  C:0020H         LINE#         38
-  C:0022H         LINE#         40
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  09/26/2025  11:44:55  PAGE 2
+  C:002FH         SYMBOL        WAIT1
+  C:0031H         SYMBOL        WAIT2
+  C:0033H         SYMBOL        WAIT3
+  C:0000H         LINE#         4
+  C:0003H         LINE#         5
+  C:0005H         LINE#         6
+  C:0006H         LINE#         7
+  C:0009H         LINE#         8
+  C:000BH         LINE#         9
+  C:000DH         LINE#         10
+  C:000FH         LINE#         11
+  C:0010H         LINE#         12
+  C:0013H         LINE#         13
+  C:0015H         LINE#         14
+  C:0017H         LINE#         15
+  C:0019H         LINE#         16
+  C:001AH         LINE#         17
+  C:001DH         LINE#         18
+  C:001FH         LINE#         19
+  C:0021H         LINE#         20
+  C:0023H         LINE#         21
+  C:0024H         LINE#         22
+  C:0027H         LINE#         23
+  C:0029H         LINE#         24
+  C:002BH         LINE#         25
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  10/10/2025  10:43:35  PAGE 2
 
 
-  C:0024H         LINE#         46
-  C:0026H         LINE#         47
-  C:0028H         LINE#         48
-  C:002AH         LINE#         49
-  C:002CH         LINE#         50
-  C:002EH         LINE#         51
-  C:0030H         LINE#         52
-  C:0031H         LINE#         58
-  C:0033H         LINE#         59
-  C:0035H         LINE#         60
-  C:0037H         LINE#         61
-  C:0039H         LINE#         62
-  C:003BH         LINE#         63
-  C:003DH         LINE#         64
-  C:003EH         LINE#         70
-  C:0040H         LINE#         72
-  C:0042H         LINE#         74
-  C:0044H         LINE#         75
-  C:0046H         LINE#         76
-  -------         ENDMOD        LCD
+  C:002DH         LINE#         26
+  C:002FH         LINE#         27
+  C:0031H         LINE#         28
+  C:0033H         LINE#         29
+  C:0035H         LINE#         30
+  C:0037H         LINE#         31
+  C:0039H         LINE#         32
+  -------         ENDMOD        SEVEN_SEGMENT
 
 ******************************************************************************
-* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 004DH BYTE ( 3%) *
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0045H BYTE ( 3%) *
 ******************************************************************************
 
-Program Size: data=8.0 xdata=0 code=1030
+Program Size: data=8.0 xdata=0 code=1035
 LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

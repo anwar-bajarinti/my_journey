@@ -233,7 +233,7 @@
               <RCB>
                 <Type>0</Type>
                 <StartAddress>0x0</StartAddress>
-                <Size>0x0</Size>
+                <Size>0x10000</Size>
               </RCB>
               <RXB>
                 <Type>0</Type>
@@ -377,9 +377,9 @@
           <GroupName>Source Group 1</GroupName>
           <Files>
             <File>
-              <FileName>lcd.asm</FileName>
+              <FileName>seven_segment.asm</FileName>
               <FileType>2</FileType>
-              <FilePath>.\lcd.asm</FilePath>
+              <FilePath>.\seven_segment.asm</FilePath>
             </File>
           </Files>
         </Group>

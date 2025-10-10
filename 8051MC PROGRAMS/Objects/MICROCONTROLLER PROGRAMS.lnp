@@ -1,3 +1,3 @@
-".\Objects\lcd.obj" 
+".\Objects\seven_segment.obj" 
 TO ".\Objects\MICROCONTROLLER PROGRAMS" 
 PRINT(".\Listings\MICROCONTROLLER PROGRAMS.m51") RAMSIZE(256) 

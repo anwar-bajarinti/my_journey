@@ -1,0 +1,66 @@
+A51 MACRO ASSEMBLER  SEVEN_SEGMENT                                                        10/10/2025 10:43:35 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\seven_segment.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE seven_segment.asm SET(SMALL) DEBUG PRINT(.\Listings\seven_segment.lst) 
+                      OBJECT(.\Objects\seven_segment.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0400                   1     ORG 0400H
+0400 3F065B4F          2             DB 3FH,06H,5BH,4FH,66H,60H,7DH,07H,7FH,6FH,0
+0404 66607D07                
+0408 7F6F00                  
+0000                   3                     ORG 0000H
+0000 900400            4                             MOV DPTR,#0400H
+0003 7403              5                             AGAIN:MOV A,#03H
+0005 93                6                             MOVC A,@A+DPTR
+0006 75A008            7                             MOV P2,#08H
+0009 F590              8                             MOV P1,A
+000B 112D              9                             ACALL DELAY
+000D 7400             10                             MOV A,#00H
+000F 93               11                             MOVC A,@A+DPTR
+0010 75A004           12                             MOV P2,#04H
+0013 F590             13                             MOV P1,A
+0015 112D             14                             ACALL DELAY
+0017 7401             15                             MOV A,#01H
+0019 93               16                             MOVC A,@A+DPTR
+001A 75A002           17                             MOV P2,#02H
+001D F590             18                             MOV P1,A
+001F 112D             19                             ACALL DELAY
+0021 7408             20                             MOV A,#08H
+0023 93               21                             MOVC A,@A+DPTR
+0024 75A001           22                             MOV P2,#01H
+0027 F590             23                             MOV P1,A
+0029 112D             24                             ACALL DELAY
+002B 80D6             25                             SJMP AGAIN
+002D 7890             26                                     DELAY:MOV R0,#90H
+002F 79FF             27                                     WAIT1:MOV R1,#0FFH
+0031 7AFF             28                                     WAIT2:MOV R2,#0FFH
+0033 DAFE             29                                     WAIT3:DJNZ R2,WAIT3
+0035 D9FA             30                                     DJNZ R1,WAIT2
+0037 D8F6             31                                     DJNZ R0,WAIT1
+0039 22               32                                     RET
+                      33                                     END
+A51 MACRO ASSEMBLER  SEVEN_SEGMENT                                                        10/10/2025 10:43:35 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AGAIN. . . . . . .  C ADDR   0003H   A   
+DELAY. . . . . . .  C ADDR   002DH   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+WAIT1. . . . . . .  C ADDR   002FH   A   
+WAIT2. . . . . . .  C ADDR   0031H   A   
+WAIT3. . . . . . .  C ADDR   0033H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
