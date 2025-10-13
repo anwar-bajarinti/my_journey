@@ -1,2 +1,5 @@
 1760024022951	Delete resource '002sampleapp'
 1760024063532	Delete resource '001 Hello world'
+1760109477233	Rename resource '003 peri_clk_enable.c'
+1760173619285	Delete resource '004 hse_clk_mco'
+1760173679400	Delete resource '004 HSE_MCO'
