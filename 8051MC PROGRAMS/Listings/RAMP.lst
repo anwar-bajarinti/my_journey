@@ -1,0 +1,46 @@
+A51 MACRO ASSEMBLER  RAMP                                                                 10/17/2025 11:12:11 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\RAMP.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE DAC\RAMP.ASM SET(SMALL) DEBUG PRINT(.\Listings\RAMP.lst) OBJECT(.\Objec
+                      ts\RAMP.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000H
+0000 7400              2     MOV A,#00H
+0002 F590              3     BACK:MOV P1,A
+0004 04                4             INC A
+0005 110B              5             ACALL DELAY
+0007 70F9              6             JNZ BACK
+0009 80FE              7             HERE:SJMP HERE
+000B 7800              8             DELAY:MOV R0,#00H
+000D 79FF              9             WAIT1:MOV R1,#0FFH
+000F 7AFF             10             WAIT2:MOV R2,#0FFH
+0011 DAFE             11             WAIT3:DJNZ R2,WAIT3
+0013 D9FA             12                       DJNZ R1,WAIT2
+0015 D8F6             13                       DJNZ R0,WAIT1
+0017 22               14                       RET
+                      15                       END
+A51 MACRO ASSEMBLER  RAMP                                                                 10/17/2025 11:12:11 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+BACK . . . . . . .  C ADDR   0002H   A   
+DELAY. . . . . . .  C ADDR   000BH   A   
+HERE . . . . . . .  C ADDR   0009H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+WAIT1. . . . . . .  C ADDR   000DH   A   
+WAIT2. . . . . . .  C ADDR   000FH   A   
+WAIT3. . . . . . .  C ADDR   0011H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

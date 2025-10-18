@@ -377,9 +377,9 @@
           <GroupName>Source Group 1</GroupName>
           <Files>
             <File>
-              <FileName>seven_segment.asm</FileName>
+              <FileName>RAMP.ASM</FileName>
               <FileType>2</FileType>
-              <FilePath>.\seven_segment.asm</FilePath>
+              <FilePath>.\DAC\RAMP.ASM</FilePath>
             </File>
           </Files>
         </Group>

@@ -1,0 +1,64 @@
+A51 MACRO ASSEMBLER  TRAINGULAR                                                           10/17/2025 10:52:05 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\TRAINGULAR.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE DAC\TRAINGULAR.ASM SET(SMALL) DEBUG PRINT(.\Listings\TRAINGULAR.lst) OB
+                      JECT(.\Objects\TRAINGULAR.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000H
+                       2     
+0000                   3     MAIN:
+0000 7400              4         MOV A,#00H         ; Start from 0
+                       5     
+0002                   6     AGAIN:
+                       7     ; ----------- UP RAMP ------------
+0002                   8     UP_LOOP:
+0002 F590              9         MOV P1,A           ; Output to DAC
+0004 04               10         INC A              ; Increment
+0005 1114             11         ACALL DELAY
+0007 B4FFF8           12         CJNE A,#0FFH,UP_LOOP  ; Until A = 0xFF
+                      13     
+                      14     ; ----------- DOWN RAMP ----------
+000A                  15     DOWN_LOOP:
+000A F590             16         MOV P1,A           ; Output current value (255 first)
+000C 14               17         DEC A              ; Decrement
+000D 1114             18         ACALL DELAY
+000F B400F8           19         CJNE A,#00H,DOWN_LOOP  ; Until A = 0x00
+                      20     
+0012 80EE             21         SJMP AGAIN         ; Repeat (no reinitialization!)
+                      22     ; ----------- DELAY --------------
+0014                  23     DELAY:
+0014 7890             24         MOV R0,#90H
+0016 79FF             25     W1: MOV R1,#0FFH
+0018 7AFF             26     W2: MOV R2,#0FFH
+001A DAFE             27     W3: DJNZ R2,W3
+001C D9FA             28         DJNZ R1,W2
+001E D8F6             29         DJNZ R0,W1
+0020 22               30         RET
+                      31     END
+A51 MACRO ASSEMBLER  TRAINGULAR                                                           10/17/2025 10:52:05 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AGAIN. . . . . . .  C ADDR   0002H   A   
+DELAY. . . . . . .  C ADDR   0014H   A   
+DOWN_LOOP. . . . .  C ADDR   000AH   A   
+MAIN . . . . . . .  C ADDR   0000H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+UP_LOOP. . . . . .  C ADDR   0002H   A   
+W1 . . . . . . . .  C ADDR   0016H   A   
+W2 . . . . . . . .  C ADDR   0018H   A   
+W3 . . . . . . . .  C ADDR   001AH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

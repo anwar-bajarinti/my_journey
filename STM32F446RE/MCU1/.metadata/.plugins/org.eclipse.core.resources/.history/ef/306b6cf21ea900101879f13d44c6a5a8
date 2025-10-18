@@ -1,0 +1,29 @@
+/*
+ * STM32F446RE_GPIO_DRIVER.h
+ *
+ *  Created on: Oct 14, 2025
+ *      Author: notty
+ */
+#include"STM32F446RE.h"
+#include<stdint.h>
+
+#ifndef INC_STM32F446RE_GPIO_DRIVER_H_
+#define INC_STM32F446RE_GPIO_DRIVER_H_
+typedef struct
+{  uint8_t  GPIO_PinNumber;
+   uint8_t	GPIO_PiMode;
+   uint8_t	GPIO_PinSpeed;
+   uint8_t	GPIO_PinPupdControl;
+   uint8_t	GPIO_PinOpType;
+   uint8_t  GPIO_PinAltFunMode;
+
+}GPIO_Pin_Config_t;
+typedef struct
+{   GPIO_Reg_Def *pGPIOX;
+    GPIO_Pin_Config_t  *GPIO_Pin_Config;
+
+}GPIO_Handle_t;
+
+
+
+#endif /* INC_STM32F446RE_GPIO_DRIVER_H_ */

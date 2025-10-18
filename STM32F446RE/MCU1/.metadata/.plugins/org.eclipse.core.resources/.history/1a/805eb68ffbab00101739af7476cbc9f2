@@ -1,0 +1,131 @@
+/*
+ * STM32F446RE.h
+ *
+ * Created on: Oct 13, 2025
+ * Author: notty
+ */
+
+#ifndef STM32F446RE_H_
+#define STM32F446RE_H_
+
+//#include <stdint.h>
+
+#define __vo volatile
+
+//------------------------- CORE & MEMORY BASE ADDRESSES -------------------------
+#define FLASH_BASEADDR                  0x08000000UL
+#define SRAM1_BASEADDR                  0x20000000UL
+#define SRAM2_BASEADDR                  0x2001C000UL
+#define ROM_BASEADDR                    0x1FFF0000UL
+#define SRAM                            SRAM1_BASEADDR
+
+//--------------------------- BUS BASE ADDRESSES --------------------------------
+#define PERIPH_BASEADDR                 0x40000000UL
+#define APB1_BASEADDR                   0x40000000UL
+#define APB2_BASEADDR                   0x40010000UL
+#define AHB1_BASEADDR                   0x40020000UL
+#define AHB2_BASEADDR                   0x50000000UL
+#define AHB3_BASEADDR                   0x60000000UL
+
+//----------------------- AHB1 PERIPHERAL BASE ADDRESSES ------------------------
+#define GPIOA_BASEADDR                  (AHB1_BASEADDR + 0x0000UL)
+#define GPIOB_BASEADDR                  (AHB1_BASEADDR + 0x0400UL)
+#define GPIOC_BASEADDR                  (AHB1_BASEADDR + 0x0800UL)
+#define GPIOD_BASEADDR                  (AHB1_BASEADDR + 0x0C00UL)
+#define GPIOE_BASEADDR                  (AHB1_BASEADDR + 0x1000UL)
+#define GPIOF_BASEADDR                  (AHB1_BASEADDR + 0x1400UL)
+#define GPIOG_BASEADDR                  (AHB1_BASEADDR + 0x1800UL)
+#define GPIOH_BASEADDR                  (AHB1_BASEADDR + 0x1C00UL)
+#define RCC_BASEADDR                    (AHB1_BASEADDR + 0x3800UL)
+
+//========================= PERIPHERAL REGISTER DEFINITIONS =========================
+
+//------------------------- GPIO Register Structure -----------------------------
+typedef struct
+{
+    __vo uint32_t MODER;    // GPIO port mode register
+    __vo uint32_t OTYPER;   // GPIO port output type register
+    __vo uint32_t OSPEEDR;  // GPIO port output speed register
+    __vo uint32_t PUPDR;    // GPIO port pull-up/pull-down register
+    __vo uint32_t IDR;      // GPIO port input data register
+    __vo uint32_t ODR;      // GPIO port output data register
+    __vo uint32_t BSRR;     // GPIO port bit set/reset register
+    __vo uint32_t LCKR;     // GPIO port configuration lock register
+    __vo uint32_t AFR[2];   // AFR[0]: AFRL, AFR[1]: AFRH
+} GPIO_Reg_Def;
+
+//-------------------------- RCC Register Structure (CORRECTED) -----------------------------
+typedef struct
+{
+    __vo uint32_t CR;             // Offset: 0x00
+    __vo uint32_t PLLCFGR;        // Offset: 0x04
+    __vo uint32_t CFGR;           // Offset: 0x08
+    __vo uint32_t CIR;            // Offset: 0x0C
+    __vo uint32_t AHB1RSTR;       // Offset: 0x10
+    __vo uint32_t AHB2RSTR;       // Offset: 0x14
+    __vo uint32_t AHB3RSTR;       // Offset: 0x18
+    uint32_t      RESERVED0;      // Offset: 0x1C
+    __vo uint32_t APB1RSTR;       // Offset: 0x20
+    __vo uint32_t APB2RSTR;       // Offset: 0x24
+    uint32_t      RESERVED1[2];   // Offset: 0x28-0x2C
+    __vo uint32_t AHB1ENR;        // Offset: 0x30
+    __vo uint32_t AHB2ENR;        // Offset: 0x34
+    __vo uint32_t AHB3ENR;        // Offset: 0x38
+    uint32_t      RESERVED2;      // Offset: 0x3C
+    __vo uint32_t APB1ENR;        // Offset: 0x40
+    __vo uint32_t APB2ENR;        // Offset: 0x44
+    // ... other registers can be added here if needed
+} RCC_RegDef;
+
+
+//========================= PERIPHERAL DEFINITIONS (POINTERS) =====================
+#define GPIOA   ((GPIO_Reg_Def*)GPIOA_BASEADDR)
+#define GPIOB   ((GPIO_Reg_Def*)GPIOB_BASEADDR)
+#define GPIOC   ((GPIO_Reg_Def*)GPIOC_BASEADDR)
+#define GPIOD   ((GPIO_Reg_Def*)GPIOD_BASEADDR)
+#define GPIOE   ((GPIO_Reg_Def*)GPIOE_BASEADDR)
+#define GPIOF   ((GPIO_Reg_Def*)GPIOF_BASEADDR)
+#define GPIOG   ((GPIO_Reg_Def*)GPIOG_BASEADDR)
+#define GPIOH   ((GPIO_Reg_Def*)GPIOH_BASEADDR)
+
+#define RCC     ((RCC_RegDef*)RCC_BASEADDR)
+
+//============================= CLOCK & RESET MACROS (CORRECTED) =================================
+// CLOCK ENABLE MACROS for GPIOx
+#define GPIOA_PCLK_EN()    (RCC->AHB1ENR |= (1 << 0))
+#define GPIOB_PCLK_EN()    (RCC->AHB1ENR |= (1 << 1))
+#define GPIOC_PCLK_EN()    (RCC->AHB1ENR |= (1 << 2))
+#define GPIOD_PCLK_EN()    (RCC->AHB1ENR |= (1 << 3))
+#define GPIOE_PCLK_EN()    (RCC->AHB1ENR |= (1 << 4))
+#define GPIOF_PCLK_EN()    (RCC->AHB1ENR |= (1 << 5))
+#define GPIOG_PCLK_EN()    (RCC->AHB1ENR |= (1 << 6))
+#define GPIOH_PCLK_EN()    (RCC->AHB1ENR |= (1 << 7))
+
+// Add other peripheral clock enable macros here as needed...
+
+// CLOCK DISABLE MACROS for GPIOx
+#define GPIOA_PCLK_DI()    (RCC->AHB1ENR &= ~(1 << 0))
+#define GPIOB_PCLK_DI()    (RCC->AHB1ENR &= ~(1 << 1))
+// ... and so on for other GPIOs if needed
+
+// MACROS FOR GPIOx REGISTER RESET
+#define GPIOA_REG_RESET()   do{ (RCC->AHB1RSTR |= (1 << 0)); (RCC->AHB1RSTR &= ~(1 << 0)); } while(0)
+#define GPIOB_REG_RESET()   do{ (RCC->AHB1RSTR |= (1 << 1)); (RCC->AHB1RSTR &= ~(1 << 1)); } while(0)
+#define GPIOC_REG_RESET()   do{ (RCC->AHB1RSTR |= (1 << 2)); (RCC->AHB1RSTR &= ~(1 << 2)); } while(0)
+#define GPIOD_REG_RESET()   do{ (RCC->AHB1RSTR |= (1 << 3)); (RCC->AHB1RSTR &= ~(1 << 3)); } while(0)
+#define GPIOE_REG_RESET()   do{ (RCC->AHB1RSTR |= (1 << 4)); (RCC->AHB1RSTR &= ~(1 << 4)); } while(0)
+#define GPIOF_REG_RESET()   do{ (RCC->AHB1RSTR |= (1 << 5)); (RCC->AHB1RSTR &= ~(1 << 5)); } while(0)
+#define GPIOG_REG_RESET()   do{ (RCC->AHB1RSTR |= (1 << 6)); (RCC->AHB1RSTR &= ~(1 << 6)); } while(0)
+#define GPIOH_REG_RESET()   do{ (RCC->AHB1RSTR |= (1 << 7)); (RCC->AHB1RSTR &= ~(1 << 7)); } while(0)
+
+//============================= GENERIC MACROS ====================================
+#define ENABLE         1
+#define DISABLE        0
+#define SET            ENABLE
+#define RESET          DISABLE
+#define GPIO_PIN_SET   SET
+#define GPIO_PIN_RESET RESET
+
+#include "STM32F446RE_GPIO_DRIVER.h"
+
+#endif /* STM32F446RE_H_ */

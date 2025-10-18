@@ -6,7 +6,7 @@ wc = pi/4;
 
 % Ideal impulse response (sinc function)
 hd = sin(wc*(n - a)) ./ (pi * (n - a));
-%hd(a+1) = wc / pi;  % Handle division by zero at center
+hd(a+1) = wc / pi;  % Handle division by zero at center
 
 % Rectangular window
 w_rect = ones(1, N);
@@ -16,6 +16,11 @@ w_tri = 1 - (2 * abs(n - a)) / (N - 1);
 
 % Hanning window
 w_hann = 0.5 - 0.5 * cos(2 * pi * n / (N - 1));
+%%
+% 
+%  PREFORMATTED
+%  TEXT
+% 
 
 % Hamming window
 w_hamm = 0.54 - 0.46 * cos(2 * pi * n / (N - 1));

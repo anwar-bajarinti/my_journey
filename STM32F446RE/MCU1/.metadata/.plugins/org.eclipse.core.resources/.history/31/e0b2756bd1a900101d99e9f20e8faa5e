@@ -1,0 +1,154 @@
+/*
+ * STM32F446RE_GPIO_DRIVER.h
+ *
+ *  Created on: Oct 14, 2025
+ *      Author: notty
+ */
+#include"STM32F446RE.h"
+#include<stdint.h>
+
+#ifndef INC_STM32F446RE_GPIO_DRIVER_H_
+#define INC_STM32F446RE_GPIO_DRIVER_H_
+typedef struct
+{  uint8_t  GPIO_PinNumber;
+   uint8_t	GPIO_PiMode;
+   uint8_t	GPIO_PinSpeed;
+   uint8_t	GPIO_PinPupdControl;
+   uint8_t	GPIO_PinOpType;
+   uint8_t  GPIO_PinAltFunMode;
+
+}GPIO_Pin_Config_t;
+typedef struct
+{   GPIO_Reg_Def *pGPIOX;
+    GPIO_Pin_Config_t  *GPIO_Pin_Config;
+
+}GPIO_Handle_t;
+
+// gpio peripheral clock configuration
+void GPIO_PeriClockControl(GPIO_Reg_Def *pGPIOX,uint8_t EiorDi);
+// gpio initialisation and deinitialation
+void GPIO_Init(GPIO_Handle_t *pGPIOHandle);
+void GPIO_DeInit(GPIO_Reg_Def *pGPIOX);
+
+// read data from pin and port
+uint8_t GPIO_ReadFromInputPin(PIO_Reg_Def *pGPIOX,uint8_t PinNumber);
+uint16_t GPIO_ReadFromInputPort(PIO_Reg_Def *pGPIOX);
+// write data to pin and port
+void GPIO_WriteToOutPutPin(PIO_Reg_Def *pGPIOX,uint8_t PinNumber,uint8_t Value);
+void GPIO_WriteToOutPutPort(PIO_Reg_Def *pGPIOX,uint16_t Value);
+void GPIO_ToggleOutPutPin(PIO_Reg_Def *pGPIOX,uint8_t PinNumber);
+// IRQ interrupt and handling
+void GPIO_IRQConfig(uint8_t IRQNumber,uint8_t IRQPriority,uint8_t EiorDi);
+void GPIO_IRQHandling(uint8_t PinNumber);
+// FUNCTION DEFINATIONS
+// gpio peripheral clock configuration
+void GPIO_PeriClockControl(GPIO_Reg_Def *pGPIOX,uint8_t EiorDi)
+{
+	if(EiorDi==ENABLE))
+		{
+			if(*pGPOI==GPIOA)
+			{
+				GPIOA_PCLK_ENABLE();
+			}
+			elseif(*pGPOI==GPIOB)
+			{
+				GPIOB_PCLK_ENABLE();
+			}
+			elseif(*pGPOI==GPIOC)
+			{
+				GPIOC_PCLK_ENABLE();
+			}
+			elseif(*pGPOI==GPIOD)
+			{
+				GPIOD_PCLK_ENABLE();
+			}
+			elseif(*pGPOI==GPIOE)
+			{
+				GPIOE_PCLK_ENABLE();
+			}
+			elseif(*pGPOI==GPIOF)
+			{
+				GPIOF_PCLK_ENABLE();
+			}
+			elseif(*pGPOI==GPIOG)
+			{
+				GPIOG_PCLK_ENABLE();
+			}
+			elseif(*pGPOI==GPIOH)
+			{
+			   GPIOH_PCLK_ENABLE();
+			}
+		}
+		else
+		{  if(*pGPOI==GPIOA)
+		{
+			GPIOA_PCLK_DISABLE();
+		}
+		elseif(*pGPOI==GPIOB)
+		{
+			GPIOB_PCLK_DISABLE();
+		}
+		elseif(*pGPOI==GPIOC)
+		{
+			GPIOC_PCLK_DISABLE();
+		}
+		elseif(*pGPOI==GPIOD)
+		{
+			GPIOD_PCLK_DISABLE();
+		}
+		elseif(*pGPOI==GPIOE)
+		{
+			GPIOE_PCLK_DISABLE();
+		}
+		elseif(*pGPOI==GPIOF)
+		{
+			GPIOF_PCLK_DISABLE();
+		}
+		elseif(*pGPOI==GPIOG)
+		{
+			GPIOG_PCLK_DISABLE();
+		}
+		elseif(*pGPOI==GPIOH)
+		{
+		   GPIOH_PCLK_DISABLE();
+		}
+
+		}
+}
+// gpio initialisation and deinitialation
+void GPIO_Init(GPIO_Handle_t *pGPIOHandle)
+{
+
+}
+void GPIO_DeInit(GPIO_Reg_Def *pGPIOX){
+
+}
+
+// read data from pin and port
+uint8_t GPIO_ReadFromInputPin(PIO_Reg_Def *pGPIOX,uint8_t PinNumber){
+
+}
+uint16_t GPIO_ReadFromInputPort(PIO_Reg_Def *pGPIOX){
+
+}
+// write data to pin and port
+void GPIO_WriteToOutPutPin(PIO_Reg_Def *pGPIOX,uint8_t PinNumber,uint8_t Value){
+
+}
+void GPIO_WriteToOutPutPort(PIO_Reg_Def *pGPIOX,uint16_t Value){
+
+}
+void GPIO_ToggleOutPutPin(PIO_Reg_Def *pGPIOX,uint8_t PinNumber){
+
+}
+// IRQ interrupt and handling
+void GPIO_IRQConfig(uint8_t IRQNumber,uint8_t IRQPriority,uint8_t EiorDi){
+
+}
+void GPIO_IRQHandling(uint8_t PinNumber){
+
+}
+
+
+
+#endif /* INC_STM32F446RE_GPIO_DRIVER_H_ */

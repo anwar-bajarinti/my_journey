@@ -1,0 +1,45 @@
+/*
+ * 001TOGGLELED.C
+ *
+ * Created on: Oct 16, 2025
+ * Author: notty
+ */
+
+#include "STM32F446RE.h"
+#include "STM32F446RE_GPIO_DRIVER.h"
+
+// Simple delay function
+void delay(void)
+{
+    // A simple loop to create a software delay
+    for (uint32_t i = 0; i < 500000; i++);
+}
+
+int main(void)
+{
+    // 1. Declare a handle for the GPIO pin
+    GPIO_Handle_t GpioLed;
+
+    // 2. Configure the settings for the LED pin (PA5 on Nucleo-F446RE)
+    GpioLed.pGPIOX = GPIOA; // Set the GPIO port to GPIOA
+    GpioLed.GPIO_Pin_Config.GPIO_PinNumber = GPIO_PIN_NO_5;
+    GpioLed.GPIO_Pin_Config.GPIO_PiMode = GPIO_MODE_OUT;
+    GpioLed.GPIO_Pin_Config.GPIO_PinSpeed = GPIO_SPEED_FAST;
+    GpioLed.GPIO_Pin_Config.GPIO_PinOpType = GPIO_OP_TYPE_PP; // Push-Pull output
+    GpioLed.GPIO_Pin_Config.GPIO_PinPupdControl = GPIO_NO_PUPD; // No pull-up/pull-down
+
+    // 3. Enable the peripheral clock for GPIOA
+    GPIO_PeriClockControl(GPIOA, ENABLE);
+
+    // 4. Initialize the GPIO pin with the configured settings
+    GPIO_Init(&GpioLed);
+
+    // 5. Infinite loop to toggle the LED
+    while (1)
+    {
+        GPIO_ToggleOutputPin(GPIOA, GPIO_PIN_NO_5);
+        delay();
+    }
+
+    return 0; // This line will not be reached
+}
