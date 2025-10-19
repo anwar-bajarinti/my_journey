@@ -1,0 +1,56 @@
+/*
+ * 004buttton_interrupt.c
+ *
+ *  Created on: Oct 19, 2025
+ *      Author: notty
+ */
+
+
+#include"stm32f446re.h"
+#include"STM32F446RE_GPIO_DRIVER.h"
+// Simple delay function
+void delay(void)
+{
+    // A simple loop to create a software delay
+    for (uint32_t i = 0; i < 500000; i++);
+}
+
+int main(void)
+{
+    GPIO_Handle_t GpioLed,Gpiobtn;
+
+    // Configure settings for the LED pin (PA5 on Nucleo-F446RE)
+    GpioLed.pGPIOx = GPIOA;
+    GpioLed.GPIO_Pin_Config.GPIO_PinNumber = GPIO_PIN_NO_5;
+    GpioLed.GPIO_Pin_Config.GPIO_PinMode = GPIO_MODE_OUT;
+    GpioLed.GPIO_Pin_Config.GPIO_PinSpeed = GPIO_SPEED_FAST;
+    GpioLed.GPIO_Pin_Config.GPIO_PinOpType = GPIO_OP_TYPE_OD;
+    GpioLed.GPIO_Pin_Config.GPIO_PinPupdControl =GPIO_PIN_PU  ;
+
+    // Enable the peripheral clock for GPIOA
+    GPIO_PeriClockControl(GPIOA, ENABLE);
+
+
+    Gpiobtn.pGPIOx = GPIOC;
+       Gpiobtn.GPIO_Pin_Config.GPIO_PinNumber = GPIO_PIN_NO_3;
+       Gpiobtn.GPIO_Pin_Config.GPIO_PinMode = GPIO_MODE_IT_RT;
+       Gpiobtn.GPIO_Pin_Config.GPIO_PinSpeed = GPIO_SPEED_FAST;
+       //Gpiobtn.GPIO_Pin_Config.GPIO_PinOpType = GPIO_OP_TYPE_OD;
+       Gpiobtn.GPIO_Pin_Config.GPIO_PinPupdControl =GPIO_PIN_PD  ;
+       GPIO_PeriClockControl(GPIOC, ENABLE);
+
+    // Initialize the GPIO pin
+    GPIO_Init(&GpioLed);
+    GPIO_Init(&Gpiobtn);
+GPIO_IRQPriorityConfig(IRQNO_EXTI3 , NVIC_IRQ_Pro_No3);
+GPIO_IRQConfig(IRQNO_EXTI3, SET);
+    // Infinite loop to toggle the LED
+
+
+    return 0;
+}
+void  EXTI3_IRQHandler(void)
+{
+	GPIO_IRQHandling(GPIO_PIN_NO_3);
+	  GPIO_ToggleOutputPin(GPIOA, GPIO_PIN_NO_5);
+}

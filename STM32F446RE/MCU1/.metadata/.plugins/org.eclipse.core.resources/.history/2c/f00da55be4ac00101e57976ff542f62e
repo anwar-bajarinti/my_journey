@@ -1,0 +1,67 @@
+/*
+ * 003external_button_led.c
+ *
+ * Created on: Oct 19, 2025
+ * Author: notty
+ *
+ * Description:
+ * Toggle an external LED (PA3) when an external button (PC3) is pressed.
+ */
+
+#include "stm32f446re.h"
+#include<stdio.h>
+#include "STM32F446RE_GPIO_DRIVER.h"
+
+#define PRESSED 1   // Button gives logic high when pressed
+
+// Simple software delay (for debouncing)
+void delay(void)
+{
+    for (uint32_t i = 0; i < 900000; i++);
+}
+
+int main(void)
+{
+    // Handle structures for LED and Button
+    GPIO_Handle_t GpioLed, GpioBtn;
+
+    // ------------------ LED Configuration ------------------
+    GpioLed.pGPIOX = GPIOA;
+    GpioLed.GPIO_Pin_Config.GPIO_PinNumber = GPIO_PIN_NO_3;  // PA3
+    GpioLed.GPIO_Pin_Config.GPIO_PiMode = GPIO_MODE_OUT;     // Output mode
+    GpioLed.GPIO_Pin_Config.GPIO_PinSpeed = GPIO_SPEED_FAST;
+    GpioLed.GPIO_Pin_Config.GPIO_PinOpType = GPIO_OP_TYPE_PP; // Push-pull
+    GpioLed.GPIO_Pin_Config.GPIO_PinPupdControl = GPIO_NO_PUPD;
+
+    // ------------------ Button Configuration ------------------
+    GpioBtn.pGPIOX = GPIOC;
+    GpioBtn.GPIO_Pin_Config.GPIO_PinNumber = GPIO_PIN_NO_3;  // PC3
+    GpioBtn.GPIO_Pin_Config.GPIO_PiMode = GPIO_MODE_IN;      // Input mode
+    GpioBtn.GPIO_Pin_Config.GPIO_PinSpeed = GPIO_SPEED_FAST;
+    GpioBtn.GPIO_Pin_Config.GPIO_PinPupdControl = GPIO_PIN_PD ; // External pull-up/down
+
+    // ------------------ Enable Peripheral Clocks ------------------
+    GPIO_PeriClockControl(GPIOA, ENABLE);
+    GPIO_PeriClockControl(GPIOC, ENABLE);
+
+    // ------------------ Initialize GPIOs ------------------
+    GPIO_Init(&GpioLed);
+    GPIO_Init(&GpioBtn);
+
+    // ------------------ Main Loop ------------------
+    while (1)
+    {
+        // Check if button is pressed
+        if (GPIO_ReadFromInputPin(GPIOC, GPIO_PIN_NO_3) == PRESSED)
+        {        	printf(" inside if \n");
+
+            delay(); // Debounce delay
+            GPIO_WriteToOutputPin(GPIOA, GPIO_PIN_NO_3,1); // Toggle LED
+          //  while(GPIO_ReadFromInputPin(GPIOC, GPIO_PIN_NO_3) == PRESSED); // Wait until button released
+        }
+    	else printf(" outside if \n");
+
+    }
+
+    return 0;
+}

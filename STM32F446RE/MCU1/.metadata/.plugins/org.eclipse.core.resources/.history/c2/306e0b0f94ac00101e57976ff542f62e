@@ -1,0 +1,70 @@
+/*
+ * 003external _button _led.c
+ *
+ *  Created on: Oct 19, 2025
+ *      Author: notty
+ */
+
+
+
+
+#include "stm32f446re.h"
+#include "STM32F446RE_GPIO_DRIVER.h"
+
+#define PRESSED 1   // On Nucleo boards, the button gives logic LOW (0) when pressed
+
+// -------------------------------------------------------------------
+// Simple software delay (not accurate, just for button debouncing)
+// -------------------------------------------------------------------
+void delay(void)
+{
+    for (uint32_t i = 0; i < 500000; i++);  // crude delay loop
+}
+
+int main(void)
+{
+    // Create handle structures for LED and Button
+    GPIO_Handle_t GpioLed, GpioBtn;
+
+    // ------------------ LED Configuration ------------------
+    // PA5 → LED (LD2 on Nucleo)
+    GpioLed.pGPIOX = GPIOA;                                 // Select GPIO Port A
+    GpioLed.GPIO_Pin_Config.GPIO_PinNumber = GPIO_PIN_NO_3;  // Pin 5 (PA5)
+    GpioLed.GPIO_Pin_Config.GPIO_PiMode = GPIO_MODE_IN;     // Output mode
+    GpioLed.GPIO_Pin_Config.GPIO_PinSpeed = GPIO_SPEED_FAST; // Fast speed
+    //GpioLed.GPIO_Pin_Config.GPIO_PinOpType = GPIO_OP_TYPE_OD;// Open-drain output
+    GpioLed.GPIO_Pin_Config.GPIO_PinPupdControl = GPIO_PIN_PU; // Enable internal pull-up
+
+    // ------------------ Button Configuration ------------------
+    // PC13 → User Button (blue button on Nucleo)
+    GpioBtn.pGPIOX = GPIOC;                                  // Select GPIO Port C
+    GpioBtn.GPIO_Pin_Config.GPIO_PinNumber = GPIO_PIN_NO_3;  // Pin 13 (PC13)
+    GpioBtn.GPIO_Pin_Config.GPIO_PiMode = GPIO_MODE_OUT;       // Input mode
+    GpioBtn.GPIO_Pin_Config.GPIO_PinSpeed = GPIO_SPEED_FAST;
+    GpioLed.GPIO_Pin_Config.GPIO_PinOpType = GPIO_OP_TYPE_PP;// Fast input
+    GpioBtn.GPIO_Pin_Config.GPIO_PinPupdControl = GPIO_NO_PUPD; // No pull-up/pull-down (external circuit handles it)
+
+    // ------------------ Enable Peripheral Clocks ------------------
+    GPIO_PeriClockControl(GPIOA, ENABLE);  // Enable clock for Port A (for LED)
+    GPIO_PeriClockControl(GPIOC, ENABLE);  // Enable clock for Port C (for Button)
+
+    // ------------------ Initialize GPIOs ------------------
+    GPIO_Init(&GpioLed);
+    GPIO_Init(&GpioBtn);
+
+    // ------------------ Main Loop ------------------
+    while (1)
+    {
+        // Read button state (returns 0 when pressed, 1 when released)
+        if (GPIO_ReadFromInputPin(GPIOC, GPIO_PIN_NO_3) == PRESSED)
+        {
+            delay(); // simple debounce delay
+
+            // Toggle LED state (ON ↔ OFF)
+            GPIO_ToggleOutputPin(GPIOA, GPIO_PIN_NO_3);
+        }
+    }
+
+    // Code never reaches here
+    return 0;
+}

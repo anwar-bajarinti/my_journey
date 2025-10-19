@@ -1,17 +1,10 @@
-16:21:35 **** Incremental Build of configuration Debug for project STM32F446RE_drivers ****
+19:13:41 **** Incremental Build of configuration Debug for project STM32F446RE_drivers ****
 make -j12 all 
-arm-none-eabi-gcc "../Src/002button.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC" -I"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/SRC" -I"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS" -I"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/Inc" -include"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_GPIO_DRIVER.h" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/002button.d" -MT"Src/002button.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/002button.o"
-arm-none-eabi-gcc -o "STM32F446RE_drivers.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\all files\FUTURE\GIT HUB\my_journey\STM32F446RE\MCU1\STM32F446RE_drivers\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F446RE_drivers.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: STM32F446RE_drivers.elf
- 
 arm-none-eabi-size  STM32F446RE_drivers.elf 
-arm-none-eabi-objdump -h -S STM32F446RE_drivers.elf  > "STM32F446RE_drivers.list"
    text	   data	    bss	    dec	    hex	filename
-   1600	      0	   1568	   3168	    c60	STM32F446RE_drivers.elf
+   6832	     92	   1900	   8824	   2278	STM32F446RE_drivers.elf
 Finished building: default.size.stdout
  
-Finished building: STM32F446RE_drivers.list
- 
 
-16:21:36 Build Finished. 0 errors, 0 warnings. (took 903ms)
+19:13:41 Build Finished. 0 errors, 0 warnings. (took 273ms)
 

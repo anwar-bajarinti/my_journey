@@ -1,0 +1,90 @@
+/*
+ * 004buttton_interrupt.c
+ *
+ * Created on: Oct 19, 2025
+ * Author: notty
+ */
+
+#include "stm32f446re.h"
+#include<stdio.h>
+#include "STM32F446RE_GPIO_DRIVER.h"
+
+// Simple delay function (though not needed for interrupt)
+void delay(void)
+{
+    // A simple loop to create a software delay
+    for (uint32_t i = 0; i < 500000; i++);
+}
+
+int main(void)
+{
+    GPIO_Handle_t GpioLed, Gpiobtn;
+
+    // --- Configure settings for the LED pin (PA5) ---
+    GpioLed.pGPIOx = GPIOA;
+    GpioLed.GPIO_Pin_Config.GPIO_PinNumber = GPIO_PIN_NO_5;
+    GpioLed.GPIO_Pin_Config.GPIO_PinMode = GPIO_MODE_OUT;
+    GpioLed.GPIO_Pin_Config.GPIO_PinSpeed = GPIO_SPEED_FAST;
+    // (FIX 4: Recommended) Use Push-Pull for LEDs, it's more direct
+    GpioLed.GPIO_Pin_Config.GPIO_PinOpType = GPIO_OP_TYPE_PP;
+    GpioLed.GPIO_Pin_Config.GPIO_PinPupdControl = GPIO_NO_PUPD;
+
+    // Enable the peripheral clock for GPIOA
+    GPIO_PeriClockControl(GPIOA, ENABLE);
+    // Initialize the LED pin
+    GPIO_Init(&GpioLed);
+
+
+    // --- Configure settings for the Button pin (PC3) ---
+    Gpiobtn.pGPIOx = GPIOC;
+    // (FIX 1: Mismatch Error) Use Pin 3 to match the interrupt
+    Gpiobtn.GPIO_Pin_Config.GPIO_PinNumber = GPIO_PIN_NO_3;
+    // (FIX 2: Logic Error) Use Rising Trigger (RT) because you pull-down (LOW)
+    // and connect to VCC (HIGH). This is a 0 -> 1 rising edge.
+    Gpiobtn.GPIO_Pin_Config.GPIO_PinMode = GPIO_MODE_IT_RT;
+    Gpiobtn.GPIO_Pin_Config.GPIO_PinSpeed = GPIO_SPEED_FAST;
+    // This is correct for your hardware plan:
+    Gpiobtn.GPIO_Pin_Config.GPIO_PinPupdControl = GPIO_PIN_PD;
+
+    // Enable the peripheral clock for GPIOC
+    GPIO_PeriClockControl(GPIOC, ENABLE);
+    // Initialize the Button pin
+    GPIO_Init(&Gpiobtn);
+
+
+    // --- Configure the Interrupt (NVIC) ---
+    // (FIX 3: Compile Error) Use a real number (0-15) for priority
+    GPIO_IRQPriorityConfig(IRQNO_EXTI3, 15); // 15 is lowest priority
+
+    // This enables the interrupt line for EXTI3 (which is IRQ Number 9)
+    GPIO_IRQConfig(IRQNO_EXTI3, ENABLE);
+
+
+    // (FIX 5: Program Halt Error) Add an infinite loop
+    // The CPU will wait here. When the interrupt happens,
+    // it will pause this loop, run the ISR, then come back.
+    while(1)
+    {
+        // Wait for interrupt
+    	printf(" inside while/n");
+    }
+
+    // This code will never be reached, which is correct
+    return 0;
+}
+
+/**
+ * @brief Interrupt Service Routine for EXTI Line 3
+ * This function name is specific and must be exact.
+ * It runs when PC3 (or PA3, PB3, etc.) triggers an interrupt.
+ */
+void EXTI3_IRQHandler(void)
+{
+    // IMPORTANT: Clear the pending flag for Pin 3 *first*.
+    // This tells the hardware you've handled the interrupt.
+    GPIO_IRQHandling(GPIO_PIN_NO_3);
+
+    // Now, do your work
+    GPIO_ToggleOutputPin(GPIOA, GPIO_PIN_NO_5);
+    printf(" inside int/n");
+}

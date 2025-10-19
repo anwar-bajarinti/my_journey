@@ -59,8 +59,8 @@ all: main-build
 main-build: 001\ Hello\ world.elf secondary-outputs
 
 # Tool invocations
-001\ Hello\ world.elf 001\ Hello\ world.map: $(OBJS) $(USER_OBJS) E:\STM32F446RE\MCU1\001\ Hello\ world\STM32F446RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "001 Hello world.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"E:\STM32F446RE\MCU1\001 Hello world\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="001 Hello world.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+001\ Hello\ world.elf 001\ Hello\ world.map: $(OBJS) $(USER_OBJS) E:\all\ files\FUTURE\GIT\ HUB\my_journey\STM32F446RE\MCU1\001\ Hello\ world\STM32F446RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "001 Hello world.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"E:\all files\FUTURE\GIT HUB\my_journey\STM32F446RE\MCU1\001 Hello world\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="001 Hello world.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
