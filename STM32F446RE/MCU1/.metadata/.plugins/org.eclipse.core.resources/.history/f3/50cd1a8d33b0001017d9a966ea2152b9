@@ -1,0 +1,49 @@
+/*
+ * 005SPI_TX_Testing.c
+ *
+ *  Created on: Oct 23, 2025
+ *      Author: notty
+ */
+ // AF 5  spi-2
+/*
+ * pA9-sck
+ * pb9- nss
+ pb10-sclk
+ pb12- nss
+ pb13-sck
+ pb14-miso
+ pb15 -mosi
+ pc2-miso
+ pc3-mosiO
+ pc7-sclk
+ pd3-sclk
+
+ */
+void SPI_GPIO_Init(){
+	GPIO_Handle_t SPIPins;
+	//NSS
+	SPIPins->pGPIOx =GPIOB;
+	SPIPins->GPIO_Pin_Config->GPIO_PinAltFunMode=5;
+	SPIPins->GPIO_Pin_Config->GPIO_PinMode=GPIO_MODE_OUT;
+	SPIPins->GPIO_Pin_Config->GPIO_PinOpType=GPIO_OP_TYPE_PP;
+	SPIPins->GPIO_Pin_Config->GPIO_PinPupdControl=GPIO_NO_PUPD;
+	SPIPins->GPIO_Pin_Config->GPIO_PinSpeed=GPIO_SPEED_FAST;
+	SPIPins->GPIO_Pin_Config->GPIO_PinNumber=GPIO_PIN_NO_12;
+	GPIO_Init(&SPIPins);
+	//sclk
+
+		SPIPins->GPIO_Pin_Config->GPIO_PinNumber=GPIO_PIN_NO_13;
+		GPIO_Init(&SPIPins);
+		//miso
+		SPIPins->GPIO_Pin_Config->GPIO_PinNumber=GPIO_PIN_NO_14;
+		GPIO_Init(&SPIPins);
+		//mosi
+		SPIPins->GPIO_Pin_Config->GPIO_PinNumber=GPIO_PIN_NO_15;
+		GPIO_Init(&SPIPins);
+
+}
+int main(void)
+{
+	SPI_GPIO_Init();
+	return o;
+}

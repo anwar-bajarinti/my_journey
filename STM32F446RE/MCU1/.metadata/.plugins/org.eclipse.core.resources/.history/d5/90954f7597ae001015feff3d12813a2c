@@ -1,0 +1,37 @@
+/*
+ * STM32F446RE_SPI_DRIVERS.c
+ *
+ *  Created on: Oct 21, 2025
+ *      Author: notty
+ */
+#include "STM32F466RE_SPI_DRIVERS.h"
+void SPI_PeriClockControl(SPI_RegDef_t *pSPIx,uint8_t EiorDi){
+	if (EnOrDi == ENABLE)
+	    {
+	        if (pSPIx == SPI1) { SPI1_PCLK_EN(); }
+	        else if (pSPIx == SPI2) { SPI2_PCLK_EN(); }
+	        else if (pSPIx == SPI3) { SPI13_PCLK_EN(); }
+	        else if (pSPIx == SPI4) { SPI4_PCLK_EN(); }
+
+	    }
+	    else
+	    {
+	    	 if (pSPIx == SPI1) { SPI1_PCLK_EN(); }
+	    		        else if (pSPIx == SPI2) { SPI2_PCLK_DI(); }
+	    		        else if (pSPIx == SPI3) { SPI13_PCLK_DI(); }
+	    		        else if (pSPIx == SPI4) { SPI4_PCLK_DI(); }
+
+	    }
+}
+void SPI_Init(SPI_Handle_t SPI_Handle){
+
+}
+void SPI_Dinit(SPI_RegDef_t *SPIx){
+
+}
+void SPI_SendData(SPI_RegDef_t *pSPIx,uint8_t *pTxBuffer,uint32_t Len);
+void SPI_ReceiveData(SPI_RegDef_t *pSPIx,uint8_t *pRxBuffer,uint32_t Len);
+
+void SPI_IRQConfig(uint8_t IRQNumber, uint8_t EnOrDi);
+void SPI_IRQPriorityConfig(uint8_t IRQNumber, uint8_t IRQPriority);
+void SPI_IRQHandling(SPI_Handle_t *SPI_Handle);

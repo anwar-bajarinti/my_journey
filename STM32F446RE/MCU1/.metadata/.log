@@ -2072,3 +2072,102 @@ org.eclipse.core.internal.resources.ResourceException: '004buttton_interrupt ' i
 
 !ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2025-10-19 19:13:48.606
 !MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 16000000; div: 8
+!SESSION 2025-10-20 10:20:00.298 -----------------------------------------------
+eclipse.buildId=Version 1.19.0
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-10-20 10:21:10.798
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-10-20 10:21:10.800
+!MESSAGE Log4j2 initialized with config file E:\all files\FUTURE\GIT HUB\my_journey\STM32F446RE\MCU1\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-10-20 10:21:20.390
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2025-10-21 07:31:25.641 -----------------------------------------------
+eclipse.buildId=Version 1.19.0
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-10-21 07:32:23.803
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-10-21 07:32:23.808
+!MESSAGE Log4j2 initialized with config file E:\all files\FUTURE\GIT HUB\my_journey\STM32F446RE\MCU1\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-10-21 07:32:37.224
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2025-10-21 14:24:29.563 -----------------------------------------------
+eclipse.buildId=Version 1.19.0
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-10-21 14:25:38.576
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-10-21 14:25:38.579
+!MESSAGE Log4j2 initialized with config file E:\all files\FUTURE\GIT HUB\my_journey\STM32F446RE\MCU1\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-10-21 14:25:53.127
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-10-21 19:57:07.885
+!MESSAGE Indexed 'STM32F446RE_drivers' (5 sources, 59 headers) in 0.58 sec: 2,307 declarations; 3,942 references; 1 unresolved inclusions; 1 syntax errors; 11 unresolved names (0.18%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-10-21 21:51:24.979
+!MESSAGE Indexed 'STM32F446RE_drivers' (5 sources, 59 headers) in 1.33 sec: 2,307 declarations; 3,942 references; 1 unresolved inclusions; 1 syntax errors; 11 unresolved names (0.18%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-10-21 21:55:41.985
+!MESSAGE Indexed 'STM32F446RE_drivers' (5 sources, 59 headers) in 0.39 sec: 2,307 declarations; 3,942 references; 1 unresolved inclusions; 1 syntax errors; 11 unresolved names (0.18%)
+!SESSION 2025-10-22 07:14:35.614 -----------------------------------------------
+eclipse.buildId=Version 1.19.0
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-10-22 07:16:21.802
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-10-22 07:16:21.805
+!MESSAGE Log4j2 initialized with config file E:\all files\FUTURE\GIT HUB\my_journey\STM32F446RE\MCU1\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-10-22 07:16:39.267
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2025-10-22 18:56:51.083 -----------------------------------------------
+eclipse.buildId=Version 1.19.0
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-10-22 18:57:46.328
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-10-22 18:57:46.334
+!MESSAGE Log4j2 initialized with config file E:\all files\FUTURE\GIT HUB\my_journey\STM32F446RE\MCU1\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-10-22 18:57:58.014
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2025-10-23 19:38:30.796 -----------------------------------------------
+eclipse.buildId=Version 1.19.0
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-10-23 19:39:26.614
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-10-23 19:39:26.615
+!MESSAGE Log4j2 initialized with config file E:\all files\FUTURE\GIT HUB\my_journey\STM32F446RE\MCU1\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-10-23 19:39:36.167
+!MESSAGE Started RMI Server, listening on port 41337

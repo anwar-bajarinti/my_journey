@@ -1,0 +1,25 @@
+/*
+ * STM32F466RE_SPI_DRIVERS.h
+ *
+ *  Created on: Oct 21, 2025
+ *      Author: notty
+ */
+
+#ifndef STM32F466RE_SPI_DRIVERS_H_
+#define STM32F466RE_SPI_DRIVERS_H_
+typedef struct{
+	uint8_t Spi_DeviceMode;
+	uint8_t BusConfig;
+	uint8_t SCLK_Speed;
+	uint8_t DFF;
+	uint8_t CPOL;
+	uint8_t CPHA;
+	uint8_t SSM;
+}SPI_Config_t;
+
+typedef struct {
+	SPI_RegDef *PSPIx;
+	SPI_Config_t SPI_Config;
+}SPI_Handle;
+
+#endif /* STM32F466RE_SPI_DRIVERS_H_ */

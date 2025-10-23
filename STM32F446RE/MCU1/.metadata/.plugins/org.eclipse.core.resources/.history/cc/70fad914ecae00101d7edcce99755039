@@ -1,0 +1,34 @@
+/*
+ * STM32F466RE_SPI_DRIVERS.h
+ *
+ *  Created on: Oct 21, 2025
+ *      Author: notty
+ */
+#include<stdint.h>
+#include"stm32f446re.h"
+#ifndef STM32F466RE_SPI_DRIVERS_H_
+#define STM32F466RE_SPI_DRIVERS_H_
+typedef struct{
+	uint8_t Spi_DeviceMode;
+	uint8_t BusConfig;
+	uint8_t SCLK_Speed;
+	uint8_t DFF;
+	uint8_t CPOL;
+	uint8_t CPHA;
+	uint8_t SSM;
+}SPI_Config_t;
+
+typedef struct {
+	SPI_RegDef_t *PSPIx;
+	SPI_Config_t SPI_Config;
+}SPI_Handle_t;
+void SPI_PeriClockControl(SPI_RegDef_t *pSPIx,uint8_t EiorDi);
+void SPI_Init(SPI_Handle_t *SPI_Handle);
+void SPI_Dinit(SPI_RegDef_t *SPIx);
+void SPI_SendData(SPI_RegDef_t *pSPIx,uint8_t *pTxBuffer,uint32_t Len);
+void SPI_ReceiveData(SPI_RegDef_t *pSPIx,uint8_t *pRxBuffer,uint32_t Len);
+
+void SPI_IRQConfig(uint8_t IRQNumber, uint8_t EnOrDi);
+void SPI_IRQPriorityConfig(uint8_t IRQNumber, uint8_t IRQPriority);
+void SPI_IRQHandling(SPI_Handle_t *SPI_Handle);
+#endif /* STM32F466RE_SPI_DRIVERS_H_ */

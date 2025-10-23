@@ -17,9 +17,7 @@
  * @{
  */
 
-// <-- FIX: Moved '__vo' definition to the top. It needs to be defined
-//          before it's used by the NVIC macros below.
-#define __vo volatile
+#define __vo volatile  /*!< Macro to define volatile pointers */
 
 #define ENABLE         1
 #define DISABLE        0
@@ -27,8 +25,13 @@
 #define RESET          DISABLE
 #define GPIO_PIN_SET   SET
 #define GPIO_PIN_RESET RESET
+#define FLAG_SET       SET
+#define FLAG_RESET     RESET
 
-#define NO_OF_PR_BITS_IMPLEMENTED  4 // <-- NOTE: Moved this up, as it's related to NVIC
+/*
+ * @brief Number of priority bits implemented in the NVIC
+ */
+#define NO_OF_PR_BITS_IMPLEMENTED  4
 /*
  * @}
  */
@@ -38,7 +41,6 @@
 /* NVIC & CORTEX-M4 PROCESSOR REGISTER ADDRESSES             */
 /* */
 /******************************************************************************/
-// <-- NOTE: I'm using '__vo' here instead of '__v' to match your definition
 // NVIC ISER (Interrupt Set-Enable Registers)
 #define NVIC_ISER0 ((__vo uint32_t*)0xE000E100)
 #define NVIC_ISER1 ((__vo uint32_t*)0xE000E104)
@@ -50,11 +52,11 @@
 #define NVIC_ICER1 ((__vo uint32_t*)0XE000E184)
 #define NVIC_ICER2 ((__vo uint32_t*)0XE000E188)
 #define NVIC_ICER3 ((__vo uint32_t*)0XE000E18c)
-// <-- FIX: Removed the duplicate definition of NVIC_ICER3 that was here.
 
 // NVIC IPR (Interrupt Priority Registers)
 #define NVIC_PR_BASEADDR  ((__vo uint32_t*)0xE000E400)
 
+// <-- NOTE: This macro seems unused and unclear. Is it a typo?
 #define NVIC_IRQ_Pro_No3  10
 
 
@@ -151,6 +153,39 @@
 /******************************************************************************/
 
 /**
+ * @brief SPI Peripheral Base Addresses
+ */
+#define  SPI1_BASEADDR  ( APB2_BASEADDR + 0x3000UL ) // SPI1 is on APB2
+#define  SPI2_BASEADDR  ( APB1_BASEADDR + 0x3800UL ) // SPI2 is on APB1
+#define  SPI3_BASEADDR  ( APB1_BASEADDR + 0x3C00UL ) // SPI3 is on APB1
+#define  SPI4_BASEADDR  ( APB2_BASEADDR + 0x3400UL ) // SPI4 is on APB2
+
+
+/**
+ * @brief SPI Register Definition Structure
+ */
+typedef struct {
+	__vo uint32_t  SPI_CR1;      /*!< SPI Control register 1,                Offset: 0x00 */
+	__vo uint32_t  SPI_CR2;      /*!< SPI Control register 2,                Offset: 0x04 */
+	__vo uint32_t  SPI_SR;       /*!< SPI Status register,                   Offset: 0x08 */
+	__vo uint32_t  SPI_DR;       /*!< SPI Data register,                     Offset: 0x0C */
+	__vo uint32_t  SPI_CRCPR;    /*!< SPI CRC polynomial register,           Offset: 0x10 */
+	__vo uint32_t  SPI_RXCRCR;   /*!< SPI RX CRC register,                   Offset: 0x14 */
+	__vo uint32_t  SPI_TXCRCR;   /*!< SPI TX CRC register,                   Offset: 0x18 */
+	__vo uint32_t  SPI_I2SCFGR;  /*!< SPI_I2S configuration register,        Offset: 0x1C */
+	__vo uint32_t  SPI_I2SPR;    /*!< SPI_I2S prescaler register,            Offset: 0x20 */
+
+}SPI_RegDef_t;
+
+
+/**
+ * @brief SPI Peripheral Access Macros (pointers to the structs)
+ */
+#define SPI1 ((SPI_RegDef_t*)SPI1_BASEADDR)
+#define SPI2 ((SPI_RegDef_t*)SPI2_BASEADDR)
+#define SPI3 ((SPI_RegDef_t*)SPI3_BASEADDR)
+#define SPI4 ((SPI_RegDef_t*)SPI4_BASEADDR)
+/**
  * @brief GPIO Register Definition Structure
  */
 typedef struct
@@ -164,7 +199,7 @@ typedef struct
     __vo uint32_t BSRR;     /*!< GPIO port bit set/reset register,          Offset: 0x18 */
     __vo uint32_t LCKR;     /*!< GPIO port configuration lock register,     Offset: 0x1C */
     __vo uint32_t AFR[2];   /*!< AFR[0]: AFRL, AFR[1]: AFRH                Offset: 0x20-0x24 */
-} GPIO_RegDef;
+} GPIO_RegDef_t; // <-- NOTE: Changed to GPIO_RegDef_t for consistency, though GPIO_RegDef works too
 
 /**
  * @brief Reset and Clock Control (RCC) Register Definition Structure
@@ -189,7 +224,7 @@ typedef struct
     __vo uint32_t APB1ENR;        /*!< RCC APB1 peripheral clock enable register, Offset: 0x40 */
     __vo uint32_t APB2ENR;        /*!< RCC APB2 peripheral clock enable register, Offset: 0x44 */
     /* ... other registers can be added here as needed */
-} RCC_RegDef;
+} RCC_RegDef_t; // <-- NOTE: Changed to RCC_RegDef_t for consistency
 
 /**
  * @brief External Interrupt/Event (EXTI) Register Definition Structure
@@ -202,7 +237,7 @@ typedef struct
     __vo uint32_t FTSR;     /*!< Falling trigger selection register,        Offset: 0x0C */
     __vo uint32_t SWIER;    /*!< Software interrupt event register,         Offset: 0x10 */
     __vo uint32_t PR;       /*!< Pending register,                          Offset: 0x14 */
-} EXTI_RegDef;
+} EXTI_RegDef_t; // <-- NOTE: Changed to EXTI_RegDef_t for consistency
 
 /**
  * @brief System Configuration (SYSCFG) Register Definition Structure
@@ -211,13 +246,12 @@ typedef struct
 {
     __vo uint32_t MEMRMP;       /*!< SYSCFG memory remap register,                   Offset: 0x00 */
     __vo uint32_t PMC;          /*!< SYSCFG peripheral mode configuration register,  Offset: 0x04 */
-    // <-- NOTE: This array is the correct way to handle these registers. Good.
     __vo uint32_t EXTICR[4];    /*!< SYSCFG external interrupt configuration reg 1-4,  Offset: 0x08-0x14 */
     uint32_t      RESERVED1[2]; /*!< Reserved, 0x18-0x1C */
     __vo uint32_t CMPCR;        /*!< Compensation cell control register,             Offset: 0x20 */
     uint32_t      RESERVED2[2]; /*!< Reserved, 0x24-0x28 */
     __vo uint32_t CFGR;         /*!< SYSCFG configuration register,                  Offset: 0x2C */
-} SYSCFG_RegDef;
+} SYSCFG_RegDef_t; // <-- NOTE: Changed to SYSCFG_RegDef_t for consistency
 
 
 /******************************************************************************/
@@ -229,18 +263,18 @@ typedef struct
  * @defgroup Peripheral_Access_Macros Peripheral Access Macros
  * @{
  */
-#define GPIOA   ((GPIO_RegDef*)GPIOA_BASEADDR)
-#define GPIOB   ((GPIO_RegDef*)GPIOB_BASEADDR)
-#define GPIOC   ((GPIO_RegDef*)GPIOC_BASEADDR)
-#define GPIOD   ((GPIO_RegDef*)GPIOD_BASEADDR)
-#define GPIOE   ((GPIO_RegDef*)GPIOE_BASEADDR)
-#define GPIOF   ((GPIO_RegDef*)GPIOF_BASEADDR)
-#define GPIOG   ((GPIO_RegDef*)GPIOG_BASEADDR)
-#define GPIOH   ((GPIO_RegDef*)GPIOH_BASEADDR)
+#define GPIOA   ((GPIO_RegDef_t*)GPIOA_BASEADDR)
+#define GPIOB   ((GPIO_RegDef_t*)GPIOB_BASEADDR)
+#define GPIOC   ((GPIO_RegDef_t*)GPIOC_BASEADDR)
+#define GPIOD   ((GPIO_RegDef_t*)GPIOD_BASEADDR)
+#define GPIOE   ((GPIO_RegDef_t*)GPIOE_BASEADDR)
+#define GPIOF   ((GPIO_RegDef_t*)GPIOF_BASEADDR)
+#define GPIOG   ((GPIO_RegDef_t*)GPIOG_BASEADDR)
+#define GPIOH   ((GPIO_RegDef_t*)GPIOH_BASEADDR)
 
-#define RCC     ((RCC_RegDef*)RCC_BASEADDR)
-#define EXTI    ((EXTI_RegDef*)EXTI_BASEADDR)
-#define SYSCFG  ((SYSCFG_RegDef*)SYSCFG_BASEADDR)
+#define RCC     ((RCC_RegDef_t*)RCC_BASEADDR)
+#define EXTI    ((EXTI_RegDef_t*)EXTI_BASEADDR)
+#define SYSCFG  ((SYSCFG_RegDef_t*)SYSCFG_BASEADDR)
 
 /**
  * @}
@@ -287,7 +321,27 @@ typedef struct
  * @}
  */
 
-// <-- NOTE: This is a great macro for the EXTI configuration.
+/**
+ * @defgroup SPI_Clock_Enable_Disable SPI Clock Enable/Disable Macros
+ * @{
+ */
+// --- FIX: Corrected macros to use RCC->APBxENR registers --- // <-- NOTE: Your original comment was correct!
+#define SPI1_PCLK_EN()		( RCC->APB2ENR |= (1 << 12) ) // SPI1 on APB2
+#define SPI2_PCLK_EN()		( RCC->APB1ENR |= (1 << 14) ) // SPI2 on APB1
+#define SPI3_PCLK_EN()		( RCC->APB1ENR |= (1 << 15) ) // SPI3 on APB1
+#define SPI4_PCLK_EN()		( RCC->APB2ENR |= (1 << 13) ) // SPI4 on APB2
+
+#define SPI1_PCLK_DI()		( RCC->APB2ENR &= ~(1 << 12) )
+#define SPI2_PCLK_DI()		( RCC->APB1ENR &= ~(1 << 14) )
+#define SPI3_PCLK_DI()		( RCC->APB1ENR &= ~(1 << 15) )
+#define SPI4_PCLK_DI()		( RCC->APB2ENR &= ~(1 << 13) )
+/**
+ * @}
+ */
+
+/**
+ * @brief Macro to get GPIO Port Code (0-7) from its base address
+ */
 #define GPIO_BASEADDR_TO_PORTCODE(x)        ((x==GPIOA)? 0:\
 											(x==GPIOB)? 1:\
 											(x==GPIOC)? 2:\
@@ -303,7 +357,6 @@ typedef struct
  * and then clearing the corresponding bit in the AHB1RSTR register.
  * @{
  */
- // <-- NOTE: Using do-while(0) is the correct and safe way to write multi-statement macros.
 #define GPIOA_REG_RESET()   do{ (RCC->AHB1RSTR |= (1 << 0)); (RCC->AHB1RSTR &= ~(1 << 0)); } while(0)
 #define GPIOB_REG_RESET()   do{ (RCC->AHB1RSTR |= (1 << 1)); (RCC->AHB1RSTR &= ~(1 << 1)); } while(0)
 #define GPIOC_REG_RESET()   do{ (RCC->AHB1RSTR |= (1 << 2)); (RCC->AHB1RSTR &= ~(1 << 2)); } while(0)
@@ -316,8 +369,59 @@ typedef struct
  * @}
  */
 
+/**
+ * @defgroup SPI_CR1_BitFields SPI_CR1 Register Bit Positions
+ * @{
+ */
+#define  SPI_CR1_CPHA        0
+#define  SPI_CR1_CPOL        1
+#define  SPI_CR1_MSTR        2
+#define  SPI_CR1_BR          3
+#define  SPI_CR1_SPE         6
+#define  SPI_CR1_LSBFIRST    7
+#define  SPI_CR1_SSI         8
+#define  SPI_CR1_SSM         9
+// <-- FIX: Removed duplicate definition of SPI_CR1_SSM
+#define  SPI_CR1_RXONLY      10
+#define  SPI_CR1_DFF         11
+#define  SPI_CR1_CRCNEXT     12
+#define  SPI_CR1_CRCEN       13
+#define  SPI_CR1_BIDIOE      14
+#define  SPI_CR1_BIDIMODE    15
+/**
+ * @}
+ */
 
-// <-- FIX: Removed the #include "STM32F446RE_GPIO_DRIVER.h" line
-//          It caused a circular dependency.
+/**
+ * @defgroup SPI_CR2_BitFields SPI_CR2 Register Bit Positions
+ * @{
+ */
+#define SPI_CR2_RXDMAEN 0
+#define SPI_CR2_TXDMAEN 1
+#define SPI_CR2_SSOE    2
+#define SPI_CR2_FRF     4
+#define SPI_CR2_ERRIE   5
+#define SPI_CR2_RXNEIE  6
+#define SPI_CR2_TXEIE   7
+/**
+ * @}
+ */
+
+/**
+ * @defgroup SPI_SR_BitFields SPI_SR Register Bit Positions (Flags)
+ * @{
+ */
+#define SPI_SR_RXNE    0  /*!< Receive buffer not empty flag */
+#define SPI_SR_TXE     1  /*!< Transmit buffer empty flag */
+#define SPI_SR_CHSIDE  2
+#define SPI_SR_UDR     3
+#define SPI_SR_CRCERR  4
+#define SPI_SR_MODF    5
+#define SPI_SR_OVR     6
+#define SPI_SR_BSY     7  /*!< Busy flag */
+#define SPI_SR_FRE     8
+/**
+ * @}
+ */
 
 #endif /* STM32F446RE_H_ */

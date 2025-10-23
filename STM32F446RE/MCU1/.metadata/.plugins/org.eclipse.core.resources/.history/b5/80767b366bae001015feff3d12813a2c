@@ -1,0 +1,13 @@
+/*
+ * STM32F466RE_SPI_DRIVERS.h
+ *
+ *  Created on: Oct 21, 2025
+ *      Author: notty
+ */
+
+#ifndef STM32F466RE_SPI_DRIVERS_H_
+#define STM32F466RE_SPI_DRIVERS_H_
+
+
+
+#endif /* STM32F466RE_SPI_DRIVERS_H_ */

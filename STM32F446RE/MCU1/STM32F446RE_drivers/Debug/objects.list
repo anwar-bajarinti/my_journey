@@ -1,5 +1,6 @@
 "./DRIVERS/SRC/STM32F446RE_GPIO_DRIVER.o"
-"./Src/004buttton_interrupt.o"
+"./DRIVERS/SRC/STM32F446RE_SPI_DRIVERS.o"
+"./Src/005SPI_TX_Testing.o"
 "./Src/syscalls.o"
 "./Src/sysmem.o"
 "./Startup/startup_stm32f446retx.o"

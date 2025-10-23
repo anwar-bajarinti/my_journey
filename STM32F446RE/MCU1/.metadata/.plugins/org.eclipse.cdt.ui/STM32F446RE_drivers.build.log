@@ -1,10 +1,308 @@
-19:13:41 **** Incremental Build of configuration Debug for project STM32F446RE_drivers ****
+23:02:49 **** Incremental Build of configuration Debug for project STM32F446RE_drivers ****
 make -j12 all 
-arm-none-eabi-size  STM32F446RE_drivers.elf 
-   text	   data	    bss	    dec	    hex	filename
-   6832	     92	   1900	   8824	   2278	STM32F446RE_drivers.elf
-Finished building: default.size.stdout
- 
+arm-none-eabi-gcc "../Src/005SPI_TX_Testing.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC" -I"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_SPI_DRIVERS.h" -I"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_SPI_DRIVERS.h" -I"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC" -I"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/SRC" -I"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS" -I"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/Inc" -include"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_SPI_DRIVERS.h" -include"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_SPI_DRIVERS.h" -include"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_GPIO_DRIVER.h" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/005SPI_TX_Testing.d" -MT"Src/005SPI_TX_Testing.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/005SPI_TX_Testing.o"
+arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC" -I"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_SPI_DRIVERS.h" -I"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_SPI_DRIVERS.h" -I"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC" -I"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/SRC" -I"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS" -I"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/Inc" -include"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_SPI_DRIVERS.h" -include"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_SPI_DRIVERS.h" -include"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_GPIO_DRIVER.h" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/syscalls.o"
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC" -I"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_SPI_DRIVERS.h" -I"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_SPI_DRIVERS.h" -I"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC" -I"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/SRC" -I"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS" -I"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/Inc" -include"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_SPI_DRIVERS.h" -include"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_SPI_DRIVERS.h" -include"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_GPIO_DRIVER.h" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/sysmem.o"
+arm-none-eabi-gcc "../DRIVERS/SRC/STM32F446RE_GPIO_DRIVER.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC" -I"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_SPI_DRIVERS.h" -I"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_SPI_DRIVERS.h" -I"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC" -I"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/SRC" -I"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS" -I"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/Inc" -include"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_SPI_DRIVERS.h" -include"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_SPI_DRIVERS.h" -include"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_GPIO_DRIVER.h" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"DRIVERS/SRC/STM32F446RE_GPIO_DRIVER.d" -MT"DRIVERS/SRC/STM32F446RE_GPIO_DRIVER.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "DRIVERS/SRC/STM32F446RE_GPIO_DRIVER.o"
+arm-none-eabi-gcc "../DRIVERS/SRC/STM32F446RE_SPI_DRIVERS.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC" -I"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_SPI_DRIVERS.h" -I"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_SPI_DRIVERS.h" -I"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC" -I"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/SRC" -I"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS" -I"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/Inc" -include"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_SPI_DRIVERS.h" -include"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_SPI_DRIVERS.h" -include"E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_GPIO_DRIVER.h" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"DRIVERS/SRC/STM32F446RE_SPI_DRIVERS.d" -MT"DRIVERS/SRC/STM32F446RE_SPI_DRIVERS.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "DRIVERS/SRC/STM32F446RE_SPI_DRIVERS.o"
+cc1.exe: warning: E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_SPI_DRIVERS.h: not a directory
+cc1.exe: warning: E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_SPI_DRIVERS.h: not a directory
+cc1.exe: warning: E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_SPI_DRIVERS.h: not a directory
+cc1.exe: warning: E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_SPI_DRIVERS.h: not a directory
+cc1.exe: warning: E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_SPI_DRIVERS.h: not a directory
+cc1.exe: warning: E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_SPI_DRIVERS.h: not a directory
+In file included from <command-line>:
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_GPIO_DRIVER.h:32:5: error: unknown type name 'GPIO_RegDef'
+   32 |     GPIO_RegDef *pGPIOx;               // Pointer to base address of the GPIO port
+      |     ^~~~~~~~~~~
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_GPIO_DRIVER.h:83:28: error: unknown type name 'GPIO_RegDef'; did you mean 'GPIO_RegDef_t'?
+   83 | void GPIO_PeriClockControl(GPIO_RegDef *pGPIOx, uint8_t EnOrDi);
+      |                            ^~~~~~~~~~~
+      |                            GPIO_RegDef_t
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_GPIO_DRIVER.h:87:18: error: unknown type name 'GPIO_RegDef'; did you mean 'GPIO_RegDef_t'?
+   87 | void GPIO_DeInit(GPIO_RegDef *pGPIOx); // Note: DeInit resets the whole port
+      |                  ^~~~~~~~~~~
+      |                  GPIO_RegDef_t
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_GPIO_DRIVER.h:90:31: error: unknown type name 'GPIO_RegDef'; did you mean 'GPIO_RegDef_t'?
+   90 | uint8_t GPIO_ReadFromInputPin(GPIO_RegDef *pGPIOx, uint8_t PinNumber);
+      |                               ^~~~~~~~~~~
+      |                               GPIO_RegDef_t
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_GPIO_DRIVER.h:91:33: error: unknown type name 'GPIO_RegDef'; did you mean 'GPIO_RegDef_t'?
+   91 | uint16_t GPIO_ReadFromInputPort(GPIO_RegDef *pGPIOx);
+      |                                 ^~~~~~~~~~~
+      |                                 GPIO_RegDef_t
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_GPIO_DRIVER.h:92:28: error: unknown type name 'GPIO_RegDef'; did you mean 'GPIO_RegDef_t'?
+   92 | void GPIO_WriteToOutputPin(GPIO_RegDef *pGPIOx, uint8_t PinNumber, uint8_t Value);
+      |                            ^~~~~~~~~~~
+      |                            GPIO_RegDef_t
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_GPIO_DRIVER.h:93:29: error: unknown type name 'GPIO_RegDef'; did you mean 'GPIO_RegDef_t'?
+   93 | void GPIO_WriteToOutputPort(GPIO_RegDef *pGPIOx, uint16_t Value);
+      |                             ^~~~~~~~~~~
+      |                             GPIO_RegDef_t
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_GPIO_DRIVER.h:94:27: error: unknown type name 'GPIO_RegDef'; did you mean 'GPIO_RegDef_t'?
+   94 | void GPIO_ToggleOutputPin(GPIO_RegDef *pGPIOx, uint8_t PinNumber);
+      |                           ^~~~~~~~~~~
+      |                           GPIO_RegDef_t
+In file included from <command-line>:
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_GPIO_DRIVER.h:32:5: error: unknown type name 'GPIO_RegDef'
+   32 |     GPIO_RegDef *pGPIOx;               // Pointer to base address of the GPIO port
+      |     ^~~~~~~~~~~
+../Src/005SPI_TX_Testing.c:24:10: fatal error: STM32F446RE_GPIO_DRIVERS.h: No such file or directory
+   24 | #include "STM32F446RE_GPIO_DRIVERS.h" // You will need to include your GPIO driver header
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_GPIO_DRIVER.h:83:28: error: unknown type name 'GPIO_RegDef'; did you mean 'GPIO_RegDef_t'?
+   83 | void GPIO_PeriClockControl(GPIO_RegDef *pGPIOx, uint8_t EnOrDi);
+      |                            ^~~~~~~~~~~
+      |                            GPIO_RegDef_t
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_GPIO_DRIVER.h:87:18: error: unknown type name 'GPIO_RegDef'; did you mean 'GPIO_RegDef_t'?
+   87 | void GPIO_DeInit(GPIO_RegDef *pGPIOx); // Note: DeInit resets the whole port
+      |                  ^~~~~~~~~~~
+      |                  GPIO_RegDef_t
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_GPIO_DRIVER.h:90:31: error: unknown type name 'GPIO_RegDef'; did you mean 'GPIO_RegDef_t'?
+   90 | uint8_t GPIO_ReadFromInputPin(GPIO_RegDef *pGPIOx, uint8_t PinNumber);
+      |                               ^~~~~~~~~~~
+      |                               GPIO_RegDef_t
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_GPIO_DRIVER.h:91:33: error: unknown type name 'GPIO_RegDef'; did you mean 'GPIO_RegDef_t'?
+   91 | uint16_t GPIO_ReadFromInputPort(GPIO_RegDef *pGPIOx);
+      |                                 ^~~~~~~~~~~
+      |                                 GPIO_RegDef_t
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_GPIO_DRIVER.h:92:28: error: unknown type name 'GPIO_RegDef'; did you mean 'GPIO_RegDef_t'?
+   92 | void GPIO_WriteToOutputPin(GPIO_RegDef *pGPIOx, uint8_t PinNumber, uint8_t Value);
+      |                            ^~~~~~~~~~~
+      |                            GPIO_RegDef_t
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_GPIO_DRIVER.h:93:29: error: unknown type name 'GPIO_RegDef'; did you mean 'GPIO_RegDef_t'?
+   93 | void GPIO_WriteToOutputPort(GPIO_RegDef *pGPIOx, uint16_t Value);
+      |                             ^~~~~~~~~~~
+      |                             GPIO_RegDef_t
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_GPIO_DRIVER.h:94:27: error: unknown type name 'GPIO_RegDef'; did you mean 'GPIO_RegDef_t'?
+   94 | void GPIO_ToggleOutputPin(GPIO_RegDef *pGPIOx, uint8_t PinNumber);
+      |                           ^~~~~~~~~~~
+      |                           GPIO_RegDef_t
+make: *** [Src/subdir.mk:25: Src/005SPI_TX_Testing.o] Error 1
+make: *** Waiting for unfinished jobs....
+In file included from <command-line>:
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_GPIO_DRIVER.h:32:5: error: unknown type name 'GPIO_RegDef'
+   32 |     GPIO_RegDef *pGPIOx;               // Pointer to base address of the GPIO port
+      |     ^~~~~~~~~~~
+cc1.exe: warning: E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_SPI_DRIVERS.h: not a directory
+cc1.exe: warning: E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_SPI_DRIVERS.h: not a directory
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_GPIO_DRIVER.h:83:28: error: unknown type name 'GPIO_RegDef'; did you mean 'GPIO_RegDef_t'?
+   83 | void GPIO_PeriClockControl(GPIO_RegDef *pGPIOx, uint8_t EnOrDi);
+      |                            ^~~~~~~~~~~
+      |                            GPIO_RegDef_t
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_GPIO_DRIVER.h:87:18: error: unknown type name 'GPIO_RegDef'; did you mean 'GPIO_RegDef_t'?
+   87 | void GPIO_DeInit(GPIO_RegDef *pGPIOx); // Note: DeInit resets the whole port
+      |                  ^~~~~~~~~~~
+      |                  GPIO_RegDef_t
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_GPIO_DRIVER.h:90:31: error: unknown type name 'GPIO_RegDef'; did you mean 'GPIO_RegDef_t'?
+   90 | uint8_t GPIO_ReadFromInputPin(GPIO_RegDef *pGPIOx, uint8_t PinNumber);
+      |                               ^~~~~~~~~~~
+      |                               GPIO_RegDef_t
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_GPIO_DRIVER.h:91:33: error: unknown type name 'GPIO_RegDef'; did you mean 'GPIO_RegDef_t'?
+   91 | uint16_t GPIO_ReadFromInputPort(GPIO_RegDef *pGPIOx);
+      |                                 ^~~~~~~~~~~
+      |                                 GPIO_RegDef_t
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_GPIO_DRIVER.h:92:28: error: unknown type name 'GPIO_RegDef'; did you mean 'GPIO_RegDef_t'?
+   92 | void GPIO_WriteToOutputPin(GPIO_RegDef *pGPIOx, uint8_t PinNumber, uint8_t Value);
+      |                            ^~~~~~~~~~~
+      |                            GPIO_RegDef_t
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_GPIO_DRIVER.h:93:29: error: unknown type name 'GPIO_RegDef'; did you mean 'GPIO_RegDef_t'?
+   93 | void GPIO_WriteToOutputPort(GPIO_RegDef *pGPIOx, uint16_t Value);
+      |                             ^~~~~~~~~~~
+      |                             GPIO_RegDef_t
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_GPIO_DRIVER.h:94:27: error: unknown type name 'GPIO_RegDef'; did you mean 'GPIO_RegDef_t'?
+   94 | void GPIO_ToggleOutputPin(GPIO_RegDef *pGPIOx, uint8_t PinNumber);
+      |                           ^~~~~~~~~~~
+      |                           GPIO_RegDef_t
+cc1.exe: warning: E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_SPI_DRIVERS.h: not a directory
+cc1.exe: warning: E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_SPI_DRIVERS.h: not a directory
+In file included from <command-line>:
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_GPIO_DRIVER.h:32:5: error: unknown type name 'GPIO_RegDef'
+   32 |     GPIO_RegDef *pGPIOx;               // Pointer to base address of the GPIO port
+      |     ^~~~~~~~~~~
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_GPIO_DRIVER.h:83:28: error: unknown type name 'GPIO_RegDef'; did you mean 'GPIO_RegDef_t'?
+   83 | void GPIO_PeriClockControl(GPIO_RegDef *pGPIOx, uint8_t EnOrDi);
+      |                            ^~~~~~~~~~~
+      |                            GPIO_RegDef_t
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_GPIO_DRIVER.h:87:18: error: unknown type name 'GPIO_RegDef'; did you mean 'GPIO_RegDef_t'?
+   87 | void GPIO_DeInit(GPIO_RegDef *pGPIOx); // Note: DeInit resets the whole port
+      |                  ^~~~~~~~~~~
+      |                  GPIO_RegDef_t
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_GPIO_DRIVER.h:90:31: error: unknown type name 'GPIO_RegDef'; did you mean 'GPIO_RegDef_t'?
+   90 | uint8_t GPIO_ReadFromInputPin(GPIO_RegDef *pGPIOx, uint8_t PinNumber);
+      |                               ^~~~~~~~~~~
+      |                               GPIO_RegDef_t
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_GPIO_DRIVER.h:91:33: error: unknown type name 'GPIO_RegDef'; did you mean 'GPIO_RegDef_t'?
+   91 | uint16_t GPIO_ReadFromInputPort(GPIO_RegDef *pGPIOx);
+      |                                 ^~~~~~~~~~~
+      |                                 GPIO_RegDef_t
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_GPIO_DRIVER.h:92:28: error: unknown type name 'GPIO_RegDef'; did you mean 'GPIO_RegDef_t'?
+   92 | void GPIO_WriteToOutputPin(GPIO_RegDef *pGPIOx, uint8_t PinNumber, uint8_t Value);
+      |                            ^~~~~~~~~~~
+      |                            GPIO_RegDef_t
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_GPIO_DRIVER.h:93:29: error: unknown type name 'GPIO_RegDef'; did you mean 'GPIO_RegDef_t'?
+   93 | void GPIO_WriteToOutputPort(GPIO_RegDef *pGPIOx, uint16_t Value);
+      |                             ^~~~~~~~~~~
+      |                             GPIO_RegDef_t
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_GPIO_DRIVER.h:94:27: error: unknown type name 'GPIO_RegDef'; did you mean 'GPIO_RegDef_t'?
+   94 | void GPIO_ToggleOutputPin(GPIO_RegDef *pGPIOx, uint8_t PinNumber);
+      |                           ^~~~~~~~~~~
+      |                           GPIO_RegDef_t
+../DRIVERS/SRC/STM32F446RE_GPIO_DRIVER.c:22:28: error: unknown type name 'GPIO_RegDef'; did you mean 'GPIO_RegDef_t'?
+   22 | void GPIO_PeriClockControl(GPIO_RegDef *pGPIOx, uint8_t EnOrDi)
+      |                            ^~~~~~~~~~~
+      |                            GPIO_RegDef_t
+../DRIVERS/SRC/STM32F446RE_GPIO_DRIVER.c: In function 'GPIO_Init':
+../DRIVERS/SRC/STM32F446RE_GPIO_DRIVER.c:66:5: warning: implicit declaration of function 'GPIO_PeriClockControl'; did you mean 'SPI_PeriClockControl'? [-Wimplicit-function-declaration]
+   66 |     GPIO_PeriClockControl(pGPIOHandle->pGPIOx, ENABLE);
+      |     ^~~~~~~~~~~~~~~~~~~~~
+      |     SPI_PeriClockControl
+../DRIVERS/SRC/STM32F446RE_GPIO_DRIVER.c:75:28: error: request for member 'MODER' in something not a structure or union
+   75 |         pGPIOHandle->pGPIOx->MODER &= ~(0x3 << (2 * pGPIOHandle->GPIO_Pin_Config.GPIO_PinNumber)); // Clear bits
+      |                            ^~
+../DRIVERS/SRC/STM32F446RE_GPIO_DRIVER.c:76:28: error: request for member 'MODER' in something not a structure or union
+   76 |         pGPIOHandle->pGPIOx->MODER |= temp; // Set bits
+      |                            ^~
+In file included from E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_SPI_DRIVERS.h:13,
+                 from <command-line>:
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/Inc/stm32f446re.h:345:48: warning: comparison of distinct pointer types lacks a cast
+  345 | #define GPIO_BASEADDR_TO_PORTCODE(x)        ((x==GPIOA)? 0:\
+      |                                                ^~
+../DRIVERS/SRC/STM32F446RE_GPIO_DRIVER.c:115:29: note: in expansion of macro 'GPIO_BASEADDR_TO_PORTCODE'
+  115 |          uint8_t portCode = GPIO_BASEADDR_TO_PORTCODE(pGPIOHandle->pGPIOx);
+      |                             ^~~~~~~~~~~~~~~~~~~~~~~~~
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/Inc/stm32f446re.h:346:91: warning: comparison of distinct pointer types lacks a cast
+  346 |                                                                                         (x==GPIOB)? 1:\
+      |                                                                                           ^~
+../DRIVERS/SRC/STM32F446RE_GPIO_DRIVER.c:115:29: note: in expansion of macro 'GPIO_BASEADDR_TO_PORTCODE'
+  115 |          uint8_t portCode = GPIO_BASEADDR_TO_PORTCODE(pGPIOHandle->pGPIOx);
+      |                             ^~~~~~~~~~~~~~~~~~~~~~~~~
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/Inc/stm32f446re.h:347:91: warning: comparison of distinct pointer types lacks a cast
+  347 |                                                                                         (x==GPIOC)? 2:\
+      |                                                                                           ^~
+../DRIVERS/SRC/STM32F446RE_GPIO_DRIVER.c:115:29: note: in expansion of macro 'GPIO_BASEADDR_TO_PORTCODE'
+  115 |          uint8_t portCode = GPIO_BASEADDR_TO_PORTCODE(pGPIOHandle->pGPIOx);
+      |                             ^~~~~~~~~~~~~~~~~~~~~~~~~
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/Inc/stm32f446re.h:348:91: warning: comparison of distinct pointer types lacks a cast
+  348 |                                                                                         (x==GPIOD)? 3:\
+      |                                                                                           ^~
+../DRIVERS/SRC/STM32F446RE_GPIO_DRIVER.c:115:29: note: in expansion of macro 'GPIO_BASEADDR_TO_PORTCODE'
+  115 |          uint8_t portCode = GPIO_BASEADDR_TO_PORTCODE(pGPIOHandle->pGPIOx);
+      |                             ^~~~~~~~~~~~~~~~~~~~~~~~~
+make: *** [Src/subdir.mk:25: Src/sysmem.o] Error 1
+In file included from <command-line>:
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_GPIO_DRIVER.h:32:5: error: unknown type name 'GPIO_RegDef'
+   32 |     GPIO_RegDef *pGPIOx;               // Pointer to base address of the GPIO port
+      |     ^~~~~~~~~~~
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/Inc/stm32f446re.h:349:91: warning: comparison of distinct pointer types lacks a cast
+  349 |                                                                                         (x==GPIOE)? 4:\
+      |                                                                                           ^~
+../DRIVERS/SRC/STM32F446RE_GPIO_DRIVER.c:115:29: note: in expansion of macro 'GPIO_BASEADDR_TO_PORTCODE'
+  115 |          uint8_t portCode = GPIO_BASEADDR_TO_PORTCODE(pGPIOHandle->pGPIOx);
+      |                             ^~~~~~~~~~~~~~~~~~~~~~~~~
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_GPIO_DRIVER.h:83:28: error: unknown type name 'GPIO_RegDef'; did you mean 'GPIO_RegDef_t'?
+   83 | void GPIO_PeriClockControl(GPIO_RegDef *pGPIOx, uint8_t EnOrDi);
+      |                            ^~~~~~~~~~~
+      |                            GPIO_RegDef_t
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/Inc/stm32f446re.h:350:91: warning: comparison of distinct pointer types lacks a cast
+  350 |                                                                                         (x==GPIOF)? 5:\
+      |                                                                                           ^~
+../DRIVERS/SRC/STM32F446RE_GPIO_DRIVER.c:115:29: note: in expansion of macro 'GPIO_BASEADDR_TO_PORTCODE'
+  115 |          uint8_t portCode = GPIO_BASEADDR_TO_PORTCODE(pGPIOHandle->pGPIOx);
+      |                             ^~~~~~~~~~~~~~~~~~~~~~~~~
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_GPIO_DRIVER.h:87:18: error: unknown type name 'GPIO_RegDef'; did you mean 'GPIO_RegDef_t'?
+   87 | void GPIO_DeInit(GPIO_RegDef *pGPIOx); // Note: DeInit resets the whole port
+      |                  ^~~~~~~~~~~
+      |                  GPIO_RegDef_t
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/Inc/stm32f446re.h:351:91: warning: comparison of distinct pointer types lacks a cast
+  351 |                                                                                         (x==GPIOG)? 6:\
+      |                                                                                           ^~
+../DRIVERS/SRC/STM32F446RE_GPIO_DRIVER.c:115:29: note: in expansion of macro 'GPIO_BASEADDR_TO_PORTCODE'
+  115 |          uint8_t portCode = GPIO_BASEADDR_TO_PORTCODE(pGPIOHandle->pGPIOx);
+      |                             ^~~~~~~~~~~~~~~~~~~~~~~~~
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/Inc/stm32f446re.h:352:91: warning: comparison of distinct pointer types lacks a cast
+  352 |                                                                                         (x==GPIOH)? 7:0)
+      |                                                                                           ^~
+../DRIVERS/SRC/STM32F446RE_GPIO_DRIVER.c:115:29: note: in expansion of macro 'GPIO_BASEADDR_TO_PORTCODE'
+  115 |          uint8_t portCode = GPIO_BASEADDR_TO_PORTCODE(pGPIOHandle->pGPIOx);
+      |                             ^~~~~~~~~~~~~~~~~~~~~~~~~
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_GPIO_DRIVER.h:90:31: error: unknown type name 'GPIO_RegDef'; did you mean 'GPIO_RegDef_t'?
+   90 | uint8_t GPIO_ReadFromInputPin(GPIO_RegDef *pGPIOx, uint8_t PinNumber);
+      |                               ^~~~~~~~~~~
+      |                               GPIO_RegDef_t
+../DRIVERS/SRC/STM32F446RE_GPIO_DRIVER.c:136:24: error: request for member 'OSPEEDR' in something not a structure or union
+  136 |     pGPIOHandle->pGPIOx->OSPEEDR &= ~(0x3 << (2 * pGPIOHandle->GPIO_Pin_Config.GPIO_PinNumber));
+      |                        ^~
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_GPIO_DRIVER.h:91:33: error: unknown type name 'GPIO_RegDef'; did you mean 'GPIO_RegDef_t'?
+   91 | uint16_t GPIO_ReadFromInputPort(GPIO_RegDef *pGPIOx);
+      |                                 ^~~~~~~~~~~
+      |                                 GPIO_RegDef_t
+../DRIVERS/SRC/STM32F446RE_GPIO_DRIVER.c:137:24: error: request for member 'OSPEEDR' in something not a structure or union
+  137 |     pGPIOHandle->pGPIOx->OSPEEDR |= temp;
+      |                        ^~
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_GPIO_DRIVER.h:92:28: error: unknown type name 'GPIO_RegDef'; did you mean 'GPIO_RegDef_t'?
+   92 | void GPIO_WriteToOutputPin(GPIO_RegDef *pGPIOx, uint8_t PinNumber, uint8_t Value);
+      |                            ^~~~~~~~~~~
+      |                            GPIO_RegDef_t
+../DRIVERS/SRC/STM32F446RE_GPIO_DRIVER.c:142:24: error: request for member 'PUPDR' in something not a structure or union
+  142 |     pGPIOHandle->pGPIOx->PUPDR &= ~(0x3 << (2 * pGPIOHandle->GPIO_Pin_Config.GPIO_PinNumber));
+      |                        ^~
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_GPIO_DRIVER.h:93:29: error: unknown type name 'GPIO_RegDef'; did you mean 'GPIO_RegDef_t'?
+   93 | void GPIO_WriteToOutputPort(GPIO_RegDef *pGPIOx, uint16_t Value);
+      |                             ^~~~~~~~~~~
+      |                             GPIO_RegDef_t
+../DRIVERS/SRC/STM32F446RE_GPIO_DRIVER.c:143:24: error: request for member 'PUPDR' in something not a structure or union
+  143 |     pGPIOHandle->pGPIOx->PUPDR |= temp;
+      |                        ^~
+E:/all files/FUTURE/GIT HUB/my_journey/STM32F446RE/MCU1/STM32F446RE_drivers/DRIVERS/INC/STM32F446RE_GPIO_DRIVER.h:94:27: error: unknown type name 'GPIO_RegDef'; did you mean 'GPIO_RegDef_t'?
+   94 | void GPIO_ToggleOutputPin(GPIO_RegDef *pGPIOx, uint8_t PinNumber);
+      |                           ^~~~~~~~~~~
+      |                           GPIO_RegDef_t
+../DRIVERS/SRC/STM32F446RE_GPIO_DRIVER.c:148:24: error: request for member 'OTYPER' in something not a structure or union
+  148 |     pGPIOHandle->pGPIOx->OTYPER &= ~(0x1 << pGPIOHandle->GPIO_Pin_Config.GPIO_PinNumber);
+      |                        ^~
+../DRIVERS/SRC/STM32F446RE_GPIO_DRIVER.c:149:24: error: request for member 'OTYPER' in something not a structure or union
+  149 |     pGPIOHandle->pGPIOx->OTYPER |= temp;
+      |                        ^~
+../DRIVERS/SRC/STM32F446RE_GPIO_DRIVER.c:162:28: error: request for member 'AFR' in something not a structure or union
+  162 |         pGPIOHandle->pGPIOx->AFR[temp1] &= ~(0xF << (4 * temp2)); // Clear 4 bits
+      |                            ^~
+../DRIVERS/SRC/STM32F446RE_GPIO_DRIVER.c:163:28: error: request for member 'AFR' in something not a structure or union
+  163 |         pGPIOHandle->pGPIOx->AFR[temp1] |= (pGPIOHandle->GPIO_Pin_Config.GPIO_PinAltFunMode << (4 * temp2)); // Set 4 bits
+      |                            ^~
+../DRIVERS/SRC/STM32F446RE_GPIO_DRIVER.c:155:17: warning: variable 'temp1' set but not used [-Wunused-but-set-variable]
+  155 |         uint8_t temp1, temp2;
+      |                 ^~~~~
+../DRIVERS/SRC/STM32F446RE_GPIO_DRIVER.c: At top level:
+../DRIVERS/SRC/STM32F446RE_GPIO_DRIVER.c:177:18: error: unknown type name 'GPIO_RegDef'; did you mean 'GPIO_RegDef_t'?
+  177 | void GPIO_DeInit(GPIO_RegDef *pGPIOx)
+      |                  ^~~~~~~~~~~
+      |                  GPIO_RegDef_t
+../DRIVERS/SRC/STM32F446RE_GPIO_DRIVER.c:199:31: error: unknown type name 'GPIO_RegDef'; did you mean 'GPIO_RegDef_t'?
+  199 | uint8_t GPIO_ReadFromInputPin(GPIO_RegDef *pGPIOx, uint8_t PinNumber)
+      |                               ^~~~~~~~~~~
+      |                               GPIO_RegDef_t
+../DRIVERS/SRC/STM32F446RE_GPIO_DRIVER.c:216:33: error: unknown type name 'GPIO_RegDef'; did you mean 'GPIO_RegDef_t'?
+  216 | uint16_t GPIO_ReadFromInputPort(GPIO_RegDef *pGPIOx)
+      |                                 ^~~~~~~~~~~
+      |                                 GPIO_RegDef_t
+../DRIVERS/SRC/STM32F446RE_GPIO_DRIVER.c:234:28: error: unknown type name 'GPIO_RegDef'; did you mean 'GPIO_RegDef_t'?
+  234 | void GPIO_WriteToOutputPin(GPIO_RegDef *pGPIOx, uint8_t PinNumber, uint8_t Value)
+      |                            ^~~~~~~~~~~
+      |                            GPIO_RegDef_t
+../DRIVERS/SRC/STM32F446RE_GPIO_DRIVER.c:258:29: error: unknown type name 'GPIO_RegDef'; did you mean 'GPIO_RegDef_t'?
+  258 | void GPIO_WriteToOutputPort(GPIO_RegDef *pGPIOx, uint16_t Value)
+      |                             ^~~~~~~~~~~
+      |                             GPIO_RegDef_t
+../DRIVERS/SRC/STM32F446RE_GPIO_DRIVER.c:274:27: error: unknown type name 'GPIO_RegDef'; did you mean 'GPIO_RegDef_t'?
+  274 | void GPIO_ToggleOutputPin(GPIO_RegDef *pGPIOx, uint8_t PinNumber)
+      |                           ^~~~~~~~~~~
+      |                           GPIO_RegDef_t
+make: *** [DRIVERS/SRC/subdir.mk:22: DRIVERS/SRC/STM32F446RE_SPI_DRIVERS.o] Error 1
+make: *** [Src/subdir.mk:25: Src/syscalls.o] Error 1
+make: *** [DRIVERS/SRC/subdir.mk:22: DRIVERS/SRC/STM32F446RE_GPIO_DRIVER.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
 
-19:13:41 Build Finished. 0 errors, 0 warnings. (took 273ms)
+23:02:50 Build Failed. 64 errors, 10 warnings. (took 560ms)
 
