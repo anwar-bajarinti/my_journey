@@ -56,8 +56,8 @@
 // NVIC IPR (Interrupt Priority Registers)
 #define NVIC_PR_BASEADDR  ((__vo uint32_t*)0xE000E400)
 
-// <-- NOTE: This macro seems unused and unclear. Is it a typo?
-#define NVIC_IRQ_Pro_No3  10
+// <-- NOTE: This macro seems unused and unclear.
+// #define NVIC_IRQ_Pro_No3  10
 
 
 // IRQ (Interrupt Request) Numbers
@@ -199,7 +199,7 @@ typedef struct
     __vo uint32_t BSRR;     /*!< GPIO port bit set/reset register,          Offset: 0x18 */
     __vo uint32_t LCKR;     /*!< GPIO port configuration lock register,     Offset: 0x1C */
     __vo uint32_t AFR[2];   /*!< AFR[0]: AFRL, AFR[1]: AFRH                Offset: 0x20-0x24 */
-} GPIO_RegDef_t; // <-- NOTE: Changed to GPIO_RegDef_t for consistency, though GPIO_RegDef works too
+} GPIO_RegDef_t; // <-- NOTE: Added _t suffix for consistency
 
 /**
  * @brief Reset and Clock Control (RCC) Register Definition Structure
@@ -224,7 +224,7 @@ typedef struct
     __vo uint32_t APB1ENR;        /*!< RCC APB1 peripheral clock enable register, Offset: 0x40 */
     __vo uint32_t APB2ENR;        /*!< RCC APB2 peripheral clock enable register, Offset: 0x44 */
     /* ... other registers can be added here as needed */
-} RCC_RegDef_t; // <-- NOTE: Changed to RCC_RegDef_t for consistency
+} RCC_RegDef_t; // <-- NOTE: Added _t suffix for consistency
 
 /**
  * @brief External Interrupt/Event (EXTI) Register Definition Structure
@@ -237,7 +237,7 @@ typedef struct
     __vo uint32_t FTSR;     /*!< Falling trigger selection register,        Offset: 0x0C */
     __vo uint32_t SWIER;    /*!< Software interrupt event register,         Offset: 0x10 */
     __vo uint32_t PR;       /*!< Pending register,                          Offset: 0x14 */
-} EXTI_RegDef_t; // <-- NOTE: Changed to EXTI_RegDef_t for consistency
+} EXTI_RegDef_t; // <-- NOTE: Added _t suffix for consistency
 
 /**
  * @brief System Configuration (SYSCFG) Register Definition Structure
@@ -251,7 +251,7 @@ typedef struct
     __vo uint32_t CMPCR;        /*!< Compensation cell control register,             Offset: 0x20 */
     uint32_t      RESERVED2[2]; /*!< Reserved, 0x24-0x28 */
     __vo uint32_t CFGR;         /*!< SYSCFG configuration register,                  Offset: 0x2C */
-} SYSCFG_RegDef_t; // <-- NOTE: Changed to SYSCFG_RegDef_t for consistency
+} SYSCFG_RegDef_t; // <-- NOTE: Added _t suffix for consistency
 
 
 /******************************************************************************/
@@ -325,7 +325,6 @@ typedef struct
  * @defgroup SPI_Clock_Enable_Disable SPI Clock Enable/Disable Macros
  * @{
  */
-// --- FIX: Corrected macros to use RCC->APBxENR registers --- // <-- NOTE: Your original comment was correct!
 #define SPI1_PCLK_EN()		( RCC->APB2ENR |= (1 << 12) ) // SPI1 on APB2
 #define SPI2_PCLK_EN()		( RCC->APB1ENR |= (1 << 14) ) // SPI2 on APB1
 #define SPI3_PCLK_EN()		( RCC->APB1ENR |= (1 << 15) ) // SPI3 on APB1

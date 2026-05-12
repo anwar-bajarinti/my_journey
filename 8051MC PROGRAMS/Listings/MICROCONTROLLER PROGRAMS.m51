@@ -1,16 +1,16 @@
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    10/17/2025  11:12:22  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    10/24/2025  10:41:45  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22.4.0, INVOKED BY:
-C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\RAMP.obj TO .\Objects\MICROCONTROLLER PROGRAMS PRINT (.\Listings\MICROCONTROLLER P
->> ROGRAMS.m51) RAMSIZE (256)
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\TRAFFIC_MECHANISM.obj TO .\Objects\MICROCONTROLLER PROGRAMS PRINT (.\Listings\MICR
+>> OCONTROLLER PROGRAMS.m51) RAMSIZE (256)
 
 
 INPUT MODULES INCLUDED:
-  .\Objects\RAMP.obj (RAMP)
+  .\Objects\TRAFFIC_MECHANISM.obj (TRAFFIC_MECHANISM)
 
 
-LINK MAP OF MODULE:  .\Objects\MICROCONTROLLER PROGRAMS (RAMP)
+LINK MAP OF MODULE:  .\Objects\MICROCONTROLLER PROGRAMS (TRAFFIC_MECHANISM)
 
 
             TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
@@ -20,41 +20,63 @@ LINK MAP OF MODULE:  .\Objects\MICROCONTROLLER PROGRAMS (RAMP)
             REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
 
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
-            CODE    0000H     0018H     ABSOLUTE     
+            CODE    0000H     0038H     ABSOLUTE     
 
 
 
-SYMBOL TABLE OF MODULE:  .\Objects\MICROCONTROLLER PROGRAMS (RAMP)
+SYMBOL TABLE OF MODULE:  .\Objects\MICROCONTROLLER PROGRAMS (TRAFFIC_MECHANISM)
 
   VALUE           TYPE          NAME
   ----------------------------------
 
-  -------         MODULE        RAMP
-  C:0002H         SYMBOL        BACK
-  C:000BH         SYMBOL        DELAY
-  C:0009H         SYMBOL        HERE
+  -------         MODULE        TRAFFIC_MECHANISM
+  C:0024H         SYMBOL        DELAY
+  B:00D0H.5       SYMBOL        F0
+  C:002EH         SYMBOL        HERE
+  C:0006H         SYMBOL        L1
+  C:0026H         SYMBOL        L2
   D:0090H         SYMBOL        P1
-  C:000DH         SYMBOL        WAIT1
-  C:000FH         SYMBOL        WAIT2
-  C:0011H         SYMBOL        WAIT3
+  B:0088H.5       SYMBOL        TF0
+  D:008CH         SYMBOL        TH0
+  D:008AH         SYMBOL        TL0
+  D:0089H         SYMBOL        TMOD
+  B:0088H.4       SYMBOL        TR0
   C:0000H         LINE#         2
-  C:0002H         LINE#         3
-  C:0004H         LINE#         4
-  C:0005H         LINE#         5
-  C:0007H         LINE#         6
-  C:0009H         LINE#         7
-  C:000BH         LINE#         8
-  C:000DH         LINE#         9
-  C:000FH         LINE#         10
-  C:0011H         LINE#         11
-  C:0013H         LINE#         12
-  C:0015H         LINE#         13
+  C:0003H         LINE#         3
+  C:0006H         LINE#         4
+  C:0008H         LINE#         5
+  C:0009H         LINE#         6
+  C:000BH         LINE#         7
+  C:000DH         LINE#         8
+  C:000FH         LINE#         9
+  C:0010H         LINE#         10
+  C:0012H         LINE#         11
+  C:0014H         LINE#         12
+  C:0016H         LINE#         13
   C:0017H         LINE#         14
-  -------         ENDMOD        RAMP
+  C:0019H         LINE#         15
+  C:001BH         LINE#         16
+  C:001DH         LINE#         17
+  C:001EH         LINE#         18
+  C:0020H         LINE#         19
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  10/24/2025  10:41:45  PAGE 2
+
+
+  C:0022H         LINE#         20
+  C:0024H         LINE#         21
+  C:0026H         LINE#         22
+  C:0029H         LINE#         23
+  C:002CH         LINE#         24
+  C:002EH         LINE#         25
+  C:0031H         LINE#         26
+  C:0033H         LINE#         27
+  C:0035H         LINE#         28
+  C:0037H         LINE#         29
+  -------         ENDMOD        TRAFFIC_MECHANISM
 
 ******************************************************************************
-* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0018H BYTE ( 1%) *
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0038H BYTE ( 2%) *
 ******************************************************************************
 
-Program Size: data=8.0 xdata=0 code=24
+Program Size: data=8.0 xdata=0 code=56
 LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

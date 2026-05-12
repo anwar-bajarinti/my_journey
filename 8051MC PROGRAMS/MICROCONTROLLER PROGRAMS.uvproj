@@ -377,9 +377,9 @@
           <GroupName>Source Group 1</GroupName>
           <Files>
             <File>
-              <FileName>RAMP.ASM</FileName>
+              <FileName>TRAFFIC_MECHANISM.asm</FileName>
               <FileType>2</FileType>
-              <FilePath>.\DAC\RAMP.ASM</FilePath>
+              <FilePath>.\TRAFFIC_MECHANISM.asm</FilePath>
             </File>
           </Files>
         </Group>

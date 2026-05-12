@@ -8,7 +8,6 @@
 #ifndef INC_STM32F446RE_GPIO_DRIVER_H_
 #define INC_STM32F446RE_GPIO_DRIVER_H_
 
-// <-- NOTE: This include is correct. The driver header includes the MCU header.
 #include "STM32F446RE.h"
 
 
@@ -28,8 +27,8 @@ typedef struct
 typedef struct
 {
     // <-- FIX: Changed 'pGPIOX' to 'pGPIOx' (lowercase 'x') for consistency.
-    //          This now matches your peripheral access macros (GPIOA, GPIOB, etc.)
-    GPIO_RegDef *pGPIOx;               // Pointer to base address of the GPIO port
+    // <-- FIX: Changed 'GPIO_RegDef' to 'GPIO_RegDef_t' to match the typedef.
+    GPIO_RegDef_t *pGPIOx;               // Pointer to base address of the GPIO port
     GPIO_Pin_Config_t GPIO_Pin_Config; // Holds the pin configuration settings
 } GPIO_Handle_t;
 
@@ -80,18 +79,18 @@ typedef struct
 //=========================== API Function Prototypes ===========================
 
 // Peripheral Clock Setup
-void GPIO_PeriClockControl(GPIO_RegDef *pGPIOx, uint8_t EnOrDi);
+void GPIO_PeriClockControl(GPIO_RegDef_t *pGPIOx, uint8_t EnOrDi);
 
 // Init and De-init
 void GPIO_Init(GPIO_Handle_t *pGPIOHandle);
-void GPIO_DeInit(GPIO_RegDef *pGPIOx); // Note: DeInit resets the whole port
+void GPIO_DeInit(GPIO_RegDef_t *pGPIOx); // Note: DeInit resets the whole port
 
 // Data Read and Write
-uint8_t GPIO_ReadFromInputPin(GPIO_RegDef *pGPIOx, uint8_t PinNumber);
-uint16_t GPIO_ReadFromInputPort(GPIO_RegDef *pGPIOx);
-void GPIO_WriteToOutputPin(GPIO_RegDef *pGPIOx, uint8_t PinNumber, uint8_t Value);
-void GPIO_WriteToOutputPort(GPIO_RegDef *pGPIOx, uint16_t Value);
-void GPIO_ToggleOutputPin(GPIO_RegDef *pGPIOx, uint8_t PinNumber);
+uint8_t GPIO_ReadFromInputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber);
+uint16_t GPIO_ReadFromInputPort(GPIO_RegDef_t *pGPIOx);
+void GPIO_WriteToOutputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber, uint8_t Value);
+void GPIO_WriteToOutputPort(GPIO_RegDef_t *pGPIOx, uint16_t Value);
+void GPIO_ToggleOutputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber);
 
 // IRQ Configuration and Handling
 void GPIO_IRQConfig(uint8_t IRQNumber, uint8_t EnOrDi);

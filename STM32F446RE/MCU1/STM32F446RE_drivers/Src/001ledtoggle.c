@@ -19,9 +19,9 @@ int main(void)
     GPIO_Handle_t GpioLed;
 
     // Configure settings for the LED pin (PA5 on Nucleo-F446RE)
-    GpioLed.pGPIOX = GPIOA;
+    GpioLed.pGPIOx = GPIOA;
     GpioLed.GPIO_Pin_Config.GPIO_PinNumber = GPIO_PIN_NO_5;
-    GpioLed.GPIO_Pin_Config.GPIO_PiMode = GPIO_MODE_OUT;
+    GpioLed.GPIO_Pin_Config.GPIO_PinMode = GPIO_MODE_OUT;
     GpioLed.GPIO_Pin_Config.GPIO_PinSpeed = GPIO_SPEED_FAST;
     GpioLed.GPIO_Pin_Config.GPIO_PinOpType = GPIO_OP_TYPE_OD;
     GpioLed.GPIO_Pin_Config.GPIO_PinPupdControl =GPIO_PIN_PU  ;

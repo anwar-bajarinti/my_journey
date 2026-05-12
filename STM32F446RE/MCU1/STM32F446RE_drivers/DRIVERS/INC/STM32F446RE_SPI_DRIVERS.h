@@ -9,8 +9,7 @@
 #ifndef STM32F446RE_SPI_DRIVERS_H_
 #define STM32F446RE_SPI_DRIVERS_H_
 
-#include <stdint.h>
-#include "stm32f446re.h" // Include the MCU-specific header
+#include "STM32F446RE.h" // Include the MCU-specific header
 
 /**
  * @brief Configuration structure for an SPI peripheral
@@ -45,17 +44,20 @@ typedef struct {
 /**
  * @brief Enables or disables the peripheral clock for a given SPI port.
  */
+// <-- FIX: Corrected prototype, which was moved from the .c file
 void SPI_PeriClockControl(SPI_RegDef_t *pSPIx, uint8_t EnOrDi);
 
 /**
  * @brief Initializes a given SPI peripheral with the settings in the handle.
  */
-void SPI_Init(SPI_Handle_t *pSPIHandle); // <-- NOTE: Changed variable name for clarity
+// <-- FIX: Corrected syntax error in parameter (was 'SPI_Handle_t SPI_Handle_t')
+void SPI_Init(SPI_Handle_t *pSPIHandle);
 
 /**
  * @brief De-initializes a given SPI peripheral, resetting it.
  */
-void SPI_DeInit(SPI_RegDef_t *pSPIx); // <-- NOTE: Renamed from SPI_Dinit
+// <-- FIX: Corrected typo (was SPI_Dinit)
+void SPI_DeInit(SPI_RegDef_t *pSPIx);
 
 /**
  * @brief Sends data over SPI (blocking call).
@@ -72,19 +74,27 @@ void SPI_ReceiveData(SPI_RegDef_t *pSPIx, uint8_t *pRxBuffer, uint32_t Len);
  */
 uint8_t SPI_GetFlagStatus(SPI_RegDef_t *pSPIx, uint32_t FLAG_NAME);
 
+/**
+ * @brief Enables or disables the SPI peripheral (SPE bit).
+ */
+// <-- FIX: Corrected prototype based on definition in .c and usage in main.c
+void SPI_PeripheralControl(SPI_RegDef_t *pSPIx, uint8_t EnOrDi);
+void SPI_SSIControl(SPI_RegDef_t *pSPIx, uint8_t EnOrDi);
+
 /*
  * IRQ (Interrupt) Configuration and Handling
  */
 void SPI_IRQConfig(uint8_t IRQNumber, uint8_t EnOrDi);
 void SPI_IRQPriorityConfig(uint8_t IRQNumber, uint8_t IRQPriority);
-void SPI_IRQHandling(SPI_Handle_t *pSPIHandle); // <-- NOTE: Changed variable name for clarity
+void SPI_IRQHandling(SPI_Handle_t *pSPIHandle);
+
 
 /**
  * @defgroup SPI_Device_Modes SPI Device Modes
  * @{
  */
 #define SPI_DEVICE_MODE_MASTER  1
-#define SPI_DEVICE_MODE_SLAVE   0 // <-- NOTE: Conventionally, Slave is 0
+#define SPI_DEVICE_MODE_SLAVE   0
 /**
  * @}
  */
@@ -152,7 +162,8 @@ void SPI_IRQHandling(SPI_Handle_t *pSPIHandle); // <-- NOTE: Changed variable na
  * @{
  */
 #define SPI_SSM_DI 0
-#define SPI_SSM_EN 1 // <-- FIX: Corrected capitalization from "En" to "EN"
+// <-- FIX: Corrected capitalization from "En" to "EN"
+#define SPI_SSM_EN 1
 /**
  * @}
  */

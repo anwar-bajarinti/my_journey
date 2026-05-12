@@ -1,0 +1,65 @@
+A51 MACRO ASSEMBLER  TRAFFIC_MECHANISM                                                    10/24/2025 10:41:45 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\TRAFFIC_MECHANISM.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE TRAFFIC_MECHANISM.asm SET(SMALL) DEBUG PRINT(.\Listings\TRAFFIC_MECHANI
+                      SM.lst) OBJECT(.\Objects\TRAFFIC_MECHANISM.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00H
+0000 758901            2             MOV TMOD,#01H
+0003 90FFC0            3             MOV DPTR ,#0FFC0H
+0006 746A              4             L1:MOV A,#6AH
+0008 F0                5             MOVX @DPTR,A;
+0009 F590              6             MOV P1,A;
+000B 1124              7             ACALL DELAY;
+000D 749A              8             MOV A,#9AH
+000F F0                9             MOVX @DPTR,A;
+0010 F590             10             MOV P1,A;
+0012 1124             11             ACALL DELAY;
+0014 74A6             12             MOV A,#0A6H;
+0016 F0               13             MOVX @DPTR,A
+0017 F590             14             MOV P1,A;
+0019 1124             15             ACALL DELAY;
+001B 74A9             16             MOV A,#0A9H
+001D F0               17             MOVX @DPTR,A;
+001E F590             18             MOV P1,A;
+0020 1124             19             ACALL DELAY;
+0022 80E2             20             SJMP L1;
+0024 780E             21             DELAY:MOV R0,#0EH
+0026 758A00           22             L2:MOV TL0,#00H
+0029 758C00           23             MOV TH0,#00H;
+002C D28C             24             SETB TR0;
+002E 308DFD           25             HERE: JNB TF0,HERE;
+0031 C2D5             26             CLR F0;
+0033 C28C             27             CLR TR0;
+0035 D8EF             28             DJNZ R0,L2;
+0037 22               29             RET;
+                      30             END
+A51 MACRO ASSEMBLER  TRAFFIC_MECHANISM                                                    10/24/2025 10:41:45 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY. . . . . . .  C ADDR   0024H   A   
+F0 . . . . . . . .  B ADDR   00D0H.5 A   
+HERE . . . . . . .  C ADDR   002EH   A   
+L1 . . . . . . . .  C ADDR   0006H   A   
+L2 . . . . . . . .  C ADDR   0026H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+TF0. . . . . . . .  B ADDR   0088H.5 A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

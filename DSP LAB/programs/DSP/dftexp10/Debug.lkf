@@ -1,0 +1,5 @@
+-z -c -m"./Debug/dftexp10.map" -o"./Debug/dftexp10.out" -w -x -i"C:/CCStudio_v3.1/C6000/rtdx/lib" -i"C:/CCStudio_v3.1/C6000/csl/lib" -i"C:/CCStudio_v3.1/C6000/xdais/lib" -i"C:/CCStudio_v3.1/C6000/bios/lib" -i"C:/CCStudio_v3.1/C6000/cgtools/lib"
+"C:\CCStudio_v3.1\C6000\cgtools\lib\lnk.cmd"
+"E:\DSP\dftexp10\Debug\dftexp10.obj"
+"C:\CCStudio_v3.1\C6000\cgtools\lib\rts6700.lib"
+"C:\CCStudio_v3.1\C6000\cgtools\lib\rts6700e.lib"

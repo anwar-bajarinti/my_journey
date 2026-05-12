@@ -19,7 +19,7 @@
  *
  * @return            - none
  */
-void GPIO_PeriClockControl(GPIO_RegDef *pGPIOx, uint8_t EnOrDi)
+void GPIO_PeriClockControl(GPIO_RegDef_t *pGPIOx, uint8_t EnOrDi)
 {
     if (EnOrDi == ENABLE)
     {
@@ -61,8 +61,6 @@ void GPIO_Init(GPIO_Handle_t *pGPIOHandle)
     uint32_t temp = 0; // Temporary register variable
 
     // 0. Enable the peripheral clock before configuring registers
-    // <-- NOTE: This is a good practice, though you might do it just once
-    //          outside this function before initializing multiple pins.
     GPIO_PeriClockControl(pGPIOHandle->pGPIOx, ENABLE);
 
     // 1. Configure the mode of the pin
@@ -121,9 +119,10 @@ void GPIO_Init(GPIO_Handle_t *pGPIOHandle)
          uint8_t reg_idx = pGPIOHandle->GPIO_Pin_Config.GPIO_PinNumber / 4;
          uint8_t pin_idx = pGPIOHandle->GPIO_Pin_Config.GPIO_PinNumber % 4;
 
-         // <-- NOTE: This logic is correct, good job.
-         SYSCFG->EXTICR[reg_idx] &= ~(0xF << (4 * pin_idx)); // Clear
-         SYSCFG->EXTICR[reg_idx] |= (portCode << (4 * pin_idx)); // Set
+         uint32_t shift_amount = pin_idx * 4; // <-- FIX: Renamed variable for clarity
+
+         SYSCFG->EXTICR[reg_idx] &= ~(0xF << shift_amount); // Clear
+         SYSCFG->EXTICR[reg_idx] |= (portCode << shift_amount); // Set
 
 
         // 3. Enable the EXTI interrupt delivery using IMR (Interrupt Mask Register)
@@ -154,13 +153,13 @@ void GPIO_Init(GPIO_Handle_t *pGPIOHandle)
     {
         uint8_t temp1, temp2;
 
-        // <-- NOTE: This logic for AFR[0] vs AFR[1] is correct.
         temp1 = pGPIOHandle->GPIO_Pin_Config.GPIO_PinNumber / 8; // Chooses AFR[0] or AFR[1]
         temp2 = pGPIOHandle->GPIO_Pin_Config.GPIO_PinNumber % 8; // Chooses bit offset in that register
+        uint32_t shift_amount = temp2 * 4; // <-- FIX: Renamed variable for clarity
 
         // <-- FIX: Changed 'pGPIOX' to 'pGPIOx'
-        pGPIOHandle->pGPIOx->AFR[temp1] &= ~(0xF << (4 * temp2)); // Clear 4 bits
-        pGPIOHandle->pGPIOx->AFR[temp1] |= (pGPIOHandle->GPIO_Pin_Config.GPIO_PinAltFunMode << (4 * temp2)); // Set 4 bits
+        pGPIOHandle->pGPIOx->AFR[temp1] &= ~(0xF << shift_amount); // Clear 4 bits
+        pGPIOHandle->pGPIOx->AFR[temp1] |= (pGPIOHandle->GPIO_Pin_Config.GPIO_PinAltFunMode << shift_amount); // Set 4 bits
     }
 }
 
@@ -174,7 +173,7 @@ void GPIO_Init(GPIO_Handle_t *pGPIOHandle)
  *
  * @return            - none
  */
-void GPIO_DeInit(GPIO_RegDef *pGPIOx)
+void GPIO_DeInit(GPIO_RegDef_t *pGPIOx)
 {
     if (pGPIOx == GPIOA) { GPIOA_REG_RESET(); }
     else if (pGPIOx == GPIOB) { GPIOB_REG_RESET(); }
@@ -196,7 +195,7 @@ void GPIO_DeInit(GPIO_RegDef *pGPIOx)
  *
  * @return            - 0 or 1 (uint8_t)
  */
-uint8_t GPIO_ReadFromInputPin(GPIO_RegDef *pGPIOx, uint8_t PinNumber)
+uint8_t GPIO_ReadFromInputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber)
 {
     uint8_t value;
     // Shift the bit to the 0th position and mask it
@@ -213,7 +212,7 @@ uint8_t GPIO_ReadFromInputPin(GPIO_RegDef *pGPIOx, uint8_t PinNumber)
  *
  * @return            - 16-bit value of the IDR (uint16_t)
  */
-uint16_t GPIO_ReadFromInputPort(GPIO_RegDef *pGPIOx)
+uint16_t GPIO_ReadFromInputPort(GPIO_RegDef_t *pGPIOx)
 {
     // The IDR is 32-bits, but only the lower 16 are used for pins.
     return (uint16_t)pGPIOx->IDR;
@@ -231,7 +230,7 @@ uint16_t GPIO_ReadFromInputPort(GPIO_RegDef *pGPIOx)
  *
  * @return            - none
  */
-void GPIO_WriteToOutputPin(GPIO_RegDef *pGPIOx, uint8_t PinNumber, uint8_t Value)
+void GPIO_WriteToOutputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber, uint8_t Value)
 {
     if (Value == GPIO_PIN_SET)
     {
@@ -255,7 +254,7 @@ void GPIO_WriteToOutputPin(GPIO_RegDef *pGPIOx, uint8_t PinNumber, uint8_t Value
  *
  * @return            - none
  */
-void GPIO_WriteToOutputPort(GPIO_RegDef *pGPIOx, uint16_t Value)
+void GPIO_WriteToOutputPort(GPIO_RegDef_t *pGPIOx, uint16_t Value)
 {
     pGPIOx->ODR = Value;
 }
@@ -271,7 +270,7 @@ void GPIO_WriteToOutputPort(GPIO_RegDef *pGPIOx, uint16_t Value)
  *
  * @return            - none
  */
-void GPIO_ToggleOutputPin(GPIO_RegDef *pGPIOx, uint8_t PinNumber)
+void GPIO_ToggleOutputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber)
 {
     // The XOR (^) operator is perfect for toggling a bit
     pGPIOx->ODR ^= (1 << PinNumber);
@@ -287,7 +286,6 @@ void GPIO_ToggleOutputPin(GPIO_RegDef *pGPIOx, uint8_t PinNumber)
  *
  * @return            - none
  */
-// <-- FIX: Removed IRQPriority, it doesn't belong in this function.
 void GPIO_IRQConfig(uint8_t IRQNumber, uint8_t EnOrDi)
 {
 	if(EnOrDi == ENABLE)
@@ -295,39 +293,37 @@ void GPIO_IRQConfig(uint8_t IRQNumber, uint8_t EnOrDi)
 		if(IRQNumber <= 31)
 		{
 			// Program ISER0 register
-			*NVIC_ISER0 |= ( 1 << IRQNumber );
+			*NVIC_ISER0 = ( 1 << IRQNumber );
 		}
-		// <-- FIX: Corrected syntax error (removed duplicate 'else if')
-		// <-- FIX: Added correct logic for ISER1
+		// <-- FIX: Corrected modulo logic for ISER1
 		else if(IRQNumber > 31 && IRQNumber < 64)
 		{
 			// Program ISER1 register
-			*NVIC_ISER1 |= ( 1 << (IRQNumber % 32) );
+			*NVIC_ISER1 = ( 1 << (IRQNumber % 32) );
 		}
-		// <-- FIX: Fixed typo 'RQNumber' to 'IRQNumber'
+		// <-- FIX: Corrected modulo logic for ISER2
 		else if(IRQNumber >= 64 && IRQNumber < 96)
 		{
 			// Program ISER2 register
-			*NVIC_ISER2 |= ( 1 << (IRQNumber % 64) );
+			*NVIC_ISER2 = ( 1 << (IRQNumber % 32) );
 		}
 	}
 	else // (EnOrDi == DISABLE)
 	{
+		// <-- FIX: Use ICER (Interrupt Clear-Enable Register) to disable
 		if(IRQNumber <= 31)
 		{
-			// <-- FIX: Use ICER (Interrupt Clear-Enable Register) to disable
-			*NVIC_ICER0 |= ( 1 << IRQNumber );
+			*NVIC_ICER0 = ( 1 << IRQNumber );
 		}
+		// <-- FIX: Use ICER1
 		else if(IRQNumber > 31 && IRQNumber < 64)
 		{
-			// <-- FIX: Use ICER1
-			*NVIC_ICER1 |= ( 1 << (IRQNumber % 32) );
+			*NVIC_ICER1 = ( 1 << (IRQNumber % 32) );
 		}
+		// <-- FIX: Use ICER2
 		else if(IRQNumber >= 64 && IRQNumber < 96)
 		{
-			// <-- FIX: Use ICER2
-			// <-- FIX: Fixed typo 'RQNumber' to 'IRQNumber' (in my head, you didn't have it here)
-			*NVIC_ICER2 |= ( 1 << (IRQNumber % 64) );
+			*NVIC_ICER2 = ( 1 << (IRQNumber % 32) );
 		}
 	}
 }
@@ -342,28 +338,26 @@ void GPIO_IRQConfig(uint8_t IRQNumber, uint8_t EnOrDi)
  *
  * @return            - none
  */
-// <-- FIX: Swapped IRQPriority and IRQNumber to be more logical
 void GPIO_IRQPriorityConfig(uint8_t IRQNumber, uint8_t IRQPriority)
 {
     // <-- FIX: Logic was incorrect. We find the register and section
     //          using the IRQNumber, not the IRQPriority.
 	// 1. Find the IPR register (IPR0, IPR1, etc.)
 	uint8_t IPR_reg_idx = IRQNumber / 4;
-    // 2. Find the 8-bit section within that register
+    // 2. Find the 8-bit section (byte) within that register
 	uint8_t IPR_section_idx = IRQNumber % 4;
 
     // <-- FIX: Priority bits are in the *upper* 4 bits of the 8-bit field.
     //          We need to shift the priority value left.
 	uint8_t shift_amount = ( 8 * IPR_section_idx ) + ( 8 - NO_OF_PR_BITS_IMPLEMENTED );
 
-    // <-- FIX: Pointer arithmetic syntax was wrong (IPR_reg*).
-    //          Also, we must clear the old priority first.
+    // <-- FIX: Corrected pointer arithmetic and logic
     // (NVIC_PR_BASEADDR) points to the start of IPR0.
-    // (NVIC_PR_BASEADDR + IPR_reg_idx) moves the pointer to the correct IPR register.
+    // (NVIC_PR_BASEADDR + IPR_reg_idx) moves the pointer to the correct 32-bit IPR register.
     volatile uint32_t* priority_reg = (NVIC_PR_BASEADDR + IPR_reg_idx);
 
-    // Clear the 8-bit priority field first
-    *priority_reg &= ~( 0xFF << shift_amount );
+    // Clear the 8-bit priority field first (all 8 bits)
+    *priority_reg &= ~( 0xFF << (8 * IPR_section_idx) );
 
     // Set the new priority
     // We shift the 4-bit priority value to align it to the left
@@ -388,8 +382,7 @@ void GPIO_IRQHandling(uint8_t PinNumber)
 	if(EXTI->PR & (1 << PinNumber))
 	{
         // <-- FIX: Clear the pending bit by *writing 1* to it.
-        //          Using '|= 1' will not work and is a common bug.
-        //          You must write the bit to 1 to clear it.
+        //          This is a "write 1 to clear" register.
 		EXTI->PR = (1 << PinNumber);
 	}
 }
